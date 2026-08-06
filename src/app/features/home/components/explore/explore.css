@@ -1,0 +1,19 @@
+/* <!-- Cleared explore.css --> */
+
+/* Force popup theme to be independent of global nav bar theme */
+.fixed-theme-popup {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.fixed-theme-popup h4 {
+  color: #8C1C13 !important;
+}
+
+/* .fixed-theme-popup p {
+  color: #374151 !important;
+} */
+
+.fixed-theme-popup .material-symbols-outlined {
+  color: #8C1C13 !important;
+}

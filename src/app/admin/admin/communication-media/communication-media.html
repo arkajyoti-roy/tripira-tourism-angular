@@ -1,0 +1,69 @@
+<div class="page-action-header">
+  <h2>Communication Media Settings</h2>
+</div>
+
+<div class="settings-container">
+  <div *ngIf="message" class="alert success">{{message}}</div>
+  <div *ngIf="error" class="alert error">{{error}}</div>
+
+  <form (ngSubmit)="onSubmit()" #settingsForm="ngForm">
+    <div class="settings-grid">
+      <!-- Card 1: Contact Details -->
+      <div class="form-card">
+        <h3>Contact Details (Footer)</h3>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" name="phone" [(ngModel)]="phone" class="raw-input" placeholder="e.g. 0381-2325966">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" [(ngModel)]="email" class="raw-input" placeholder="e.g. contact@domain.com">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Physical Address</label>
+          <textarea id="address" name="address" [(ngModel)]="address" rows="5" class="raw-input" placeholder="Enter physical address..."></textarea>
+        </div>
+      </div>
+
+      <!-- Card 2: Social Media Links -->
+      <div class="form-card">
+        <h3>Social Media Links</h3>
+
+        <div class="form-group">
+          <label for="facebook">Facebook URL</label>
+          <input type="url" id="facebook" name="facebook" [(ngModel)]="facebook" class="raw-input" placeholder="https://facebook.com/yourpage">
+        </div>
+
+        <div class="form-group">
+          <label for="twitter">Twitter / X URL</label>
+          <input type="url" id="twitter" name="twitter" [(ngModel)]="twitter" class="raw-input" placeholder="https://twitter.com/yourprofile">
+        </div>
+
+        <div class="form-group">
+          <label for="instagram">Instagram URL</label>
+          <input type="url" id="instagram" name="instagram" [(ngModel)]="instagram" class="raw-input" placeholder="https://instagram.com/yourprofile">
+        </div>
+
+        <div class="form-group">
+          <label for="youtube">YouTube Channel URL</label>
+          <input type="url" id="youtube" name="youtube" [(ngModel)]="youtube" class="raw-input" placeholder="https://youtube.com/@yourchannel">
+        </div>
+
+        <div class="form-group">
+          <label for="linkedin">LinkedIn URL</label>
+          <input type="url" id="linkedin" name="linkedin" [(ngModel)]="linkedin" class="raw-input" placeholder="https://linkedin.com/company/yourpage">
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="loading" class="btn-primary">
+        {{ loading ? 'Saving...' : 'Save Settings' }}
+      </button>
+    </div>
+  </form>
+</div>

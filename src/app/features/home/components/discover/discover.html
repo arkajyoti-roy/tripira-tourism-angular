@@ -1,0 +1,65 @@
+<section class="relative py-[100px] min-h-[600px] flex items-center justify-center bg-cover bg-center bg-no-repeat bg-fixed"
+         style="background-image: 
+         url('img_8002.png');"
+         >
+         
+  <!-- Overlay to slightly darken the background image if needed, though original image seems quite clear -->
+  <div class="absolute inset-0 bg-black/10 z-0"></div>
+
+  <div class="relative z-10 max-w-[1200px] mx-auto w-full px-4 flex flex-col md:flex-row gap-12 lg:gap-20 items-center justify-center">
+    
+    <!-- Left Column (Grid of Icons) -->
+    <div class="w-full md:w-[45%] flex justify-center md:justify-end">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 w-full max-w-[550px]">
+        
+        <a *ngFor="let theme of themes" 
+             [routerLink]="['/adventure']"
+             [queryParams]="{type: theme.title}"
+             class="bg-white rounded-xl aspect-square shadow-lg flex flex-col items-center justify-center p-4 hover:-translate-y-1 hover:shadow-xl transition-all cursor-pointer">
+          <ng-container *ngIf="theme.icon.endsWith('.svg'); else matIcon">
+            <img [src]="theme.icon" [alt]="theme.title" class="w-14 h-14 mb-3 object-contain" />
+          </ng-container>
+          <ng-template #matIcon>
+            <span class="material-symbols-outlined text-[3.5rem] mb-3 font-light {{theme.color}}">
+              {{ theme.icon }}
+            </span>
+          </ng-template>
+          <h4 class="font-bold text-[0.9rem] sm:text-[1rem] text-center {{theme.color}}">{{ theme.title }}</h4>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Right Column (Text Box) -->
+    <div class="w-full md:w-[45%] max-w-[550px]">
+      <div class="bg-white p-10 md:p-14 rounded-2xl shadow-2xl text-center">
+        
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+          .script-font {
+            font-family: 'Kaushan Script', cursive;
+          }
+        </style>
+
+        <!-- Red Script Title -->
+        <h2 class="text-[#b91c49] text-[3.5rem] leading-[1.1] mb-3 script-font drop-shadow-sm font-black">
+          Discover<br>Tripura with<br>ease
+        </h2>
+        
+        <!-- Orange Subheader -->
+        <p class="text-[#f97316] text-[1.1rem] font-medium italic tracking-wide mb-6">
+          Your ultimate travel companion
+        </p>
+        
+        <p class="text-gray-600 text-[1rem] font-medium leading-relaxed mb-10 px-2">
+          Access a user-friendly platform for effortless trip planning. Enjoy a streamlined booking process for flights, accommodations, and activities. Create and manage your travel itinerary in one convenient location.
+        </p>
+        <a href="https://tourism.tripura.gov.in/hotel" target="_blank" class="rounded-full bg-[#F4C95D] text-[#7A1A1A] font-bold px-10 h-[54px] hover:bg-[#E3B94D] transition-all flex items-center justify-center mx-auto gap-2 shadow-[0_0_15px_rgba(244,201,93,0.4)] hover:shadow-[0_0_20px_rgba(244,201,93,0.6)] uppercase tracking-widest text-[0.95rem] w-max" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+          KNOW MORE <span class="text-2xl leading-none mt-[-2px]">&rarr;</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>

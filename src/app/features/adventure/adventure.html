@@ -1,0 +1,118 @@
+<div class="w-full min-h-screen relative">
+  <!-- Fixed Hero Background -->
+  <img loading="lazy" src="img_8002.png" 
+    class="fixed inset-0 w-full h-screen object-cover z-0">
+  <div class="fixed inset-0 bg-black/60 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div
+    class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+    <div class="flex flex-col items-center justify-center pt-[52px]">
+      <h1 class="text-[#8C593B] text-[1.2rem] md:text-[1.5rem] font-bold text-center tracking-widest uppercase mb-2">
+        Experience the Thrill
+      </h1>
+      <h2 class="text-white text-[2.5rem] md:text-[4rem] font-bold text-center leading-tight drop-shadow-md tracking-wide pointer-events-auto" style="font-family: 'Impact', 'Arial Black', sans-serif;">
+        Adventure Tourism
+      </h2>
+      <p class="text-gray-300 mt-4 flex items-center gap-2 drop-shadow-sm font-medium pointer-events-auto">
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
+        <span class="text-xs">&gt;</span> 
+        <span class="text-white">Adventure</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="relative z-20 w-full bg-[#e6e8e8] py-[60px] md:py-[80px] overflow-hidden">
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" alt="" class="absolute top-[20%] left-0 w-[40%] object-contain opacity-[0.03] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" alt="" class="absolute top-[60%] right-0 w-[40%] object-contain opacity-[0.03] pointer-events-none z-0">
+
+    <div class="w-full max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+      
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-3 mb-[50px]">
+        <button (click)="selectType(null)"
+                [ngClass]="!selectedType() ? 'bg-[#8C593B] text-white' : 'bg-white text-gray-700 hover:bg-gray-100'"
+                class="px-6 py-2 rounded-full font-bold shadow-sm transition-colors uppercase tracking-wider text-sm">
+          All Adventures
+        </button>
+        @for (type of adventureTypes(); track type) {
+          <button (click)="selectType(type)"
+                  [ngClass]="selectedType() === type ? 'bg-[#b91c49] text-white' : 'bg-white text-gray-700 hover:bg-gray-100'"
+                  class="px-6 py-2 rounded-full font-bold shadow-sm transition-colors uppercase tracking-wider text-sm">
+            {{ type }}
+          </button>
+        }
+      </div>
+
+      <!-- Adventure Grid -->
+      @for (type of adventureTypes(); track type) {
+        @if (!selectedType() || selectedType() === type) {
+          <div class="mb-[60px]">
+            <h3 class="text-[2rem] font-bold text-gray-800 mb-[30px] uppercase border-l-4 border-[#8C593B] pl-4" style="font-family: 'Impact', 'Arial Black', sans-serif;">{{ type }}</h3>
+            
+            <div class="flex flex-col gap-8">
+              @for (adv of groupedAdventures()[type]; track adv.id) {
+                <div class="bg-white shadow-sm flex flex-col md:flex-row w-full p-3 gap-6 rounded-md">
+                  
+                  <!-- Left: Image -->
+                  <div class="w-full md:w-[45%] lg:w-[40%] relative min-h-[300px]">
+                    @if(adv.image_url){
+                    <img loading="lazy" [src]="adv.image_url"  [alt]="adv.name" class="absolute inset-0 w-full h-full object-cover">
+                  }
+                  </div>
+                  
+                  <!-- Right: Content -->
+                  <div class="w-full md:w-[55%] lg:w-[60%] py-4 pr-6 flex flex-col">
+                    
+                    <h4 class="text-[#333] text-[1.7rem] font-normal mb-4">
+                      {{ adv.name }}
+                    </h4>
+                    
+                    <p class="text-gray-600 text-[0.95rem] leading-relaxed mb-8 text-justify">
+                      {{ adv.description }}
+                    </p>
+                    
+                    <h5 class="text-[#111] text-[1.2rem] font-normal mb-5">
+                      Adventure Details
+                    </h5>
+                    
+                    <div class="flex flex-col gap-4">
+                      <!-- Location -->
+                      <div class="flex items-end w-full">
+                        <span class="text-gray-700 text-[0.9rem] whitespace-nowrap mb-[2px]">Location</span>
+                        <div class="flex-grow border-b-[2px] border-dotted border-gray-400 mx-3 opacity-50 mb-[6px]"></div>
+                        <span class="text-orange-400 text-[0.9rem] text-right max-w-[60%] mb-[2px]">{{ adv.location }}</span>
+                      </div>
+                      
+                      <!-- Price -->
+                      <div class="flex items-end w-full">
+                        <span class="text-gray-700 text-[0.9rem] whitespace-nowrap mb-[2px]">Price</span>
+                        <div class="flex-grow border-b-[2px] border-dotted border-gray-400 mx-3 opacity-50 mb-[6px]"></div>
+                        <span class="text-orange-400 text-[0.9rem] text-right max-w-[60%] mb-[2px]">₹{{ adv.price }}</span>
+                      </div>
+                      
+                      <!-- Contact -->
+                      <div class="flex items-end w-full">
+                        <span class="text-gray-700 text-[0.9rem] whitespace-nowrap mb-[2px]">Contact</span>
+                        <div class="flex-grow border-b-[2px] border-dotted border-gray-400 mx-3 opacity-50 mb-[6px]"></div>
+                        <span class="text-orange-400 text-[0.9rem] text-right max-w-[60%] mb-[2px]">{{ adv.contact_phone }}</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      }
+      
+      @if (adventureTypes().length === 0) {
+        <div class="text-center py-20 text-gray-500 font-medium text-lg bg-white rounded-xl shadow-sm">
+          No adventure activities available at the moment.
+        </div>
+      }
+    </div>
+  </div>
+</div>

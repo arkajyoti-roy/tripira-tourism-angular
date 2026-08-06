@@ -1,0 +1,79 @@
+<div class="w-full min-h-screen relative">
+  
+  <!-- Fixed Hero Background -->
+  <!-- User will provide image -->
+  <img loading="lazy" src="/Ongoing_Projects.jpg" class="fixed inset-0 w-full h-screen object-cover z-0">
+  <div class="fixed inset-0 bg-black/40 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+    <div class="text-center mt-16 pointer-events-auto">
+      <h1 class="text-white text-[2rem] sm:text-[2.5rem] md:text-[4rem] font-normal tracking-wide drop-shadow-lg leading-tight px-4" style="font-family: 'Impact', 'Arial Black', sans-serif;">
+        OnGoing Projects
+      </h1>
+      <p class="text-white text-sm md:text-base font-medium mt-4 flex items-center gap-2 justify-center drop-shadow-md">
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
+        <span class="text-xs">&gt;</span> 
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors">Dept Info</span> 
+        <span class="text-xs">&gt;</span> 
+        <span>OnGoing Projects</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="relative z-20 w-full bg-[#e6e8e8] py-[60px] md:py-[80px] overflow-hidden min-h-[40vh]">
+    
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    
+    <div class="w-full max-w-[1300px] mx-auto px-4 relative z-10 flex flex-col items-center">
+      
+      <!-- Loading State -->
+      @if (isLoading()) {
+      <div class="w-full bg-white rounded-md shadow-sm border border-gray-200 p-8 flex justify-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      </div>
+      }
+      
+      <!-- Error State -->
+      @if (error()) {
+      <div class="w-full bg-white rounded-md shadow-sm border border-gray-200 p-8 text-center text-red-500 font-medium">
+        {{ error() }}
+      </div>
+      }
+      
+      <!-- Documents List Container -->
+      @if (!isLoading()) {
+      <div class="w-full mt-4">
+        @if (documents().length > 0) {
+        <div class="grid grid-cols-1 gap-6">
+          @for (doc of documents(); track doc.id || doc.docid) {
+          <div class="bg-white rounded-md shadow-sm border border-gray-100 p-5 md:p-6 hover:shadow-md hover:border-gray-200 transition-all duration-300 relative overflow-hidden group">
+            
+            <!-- Left color bar -->
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            
+            <h3 class="flex items-center gap-3 m-0">
+              <a [href]="getPDFUrl(doc)" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 flex items-center justify-center bg-red-50 p-2 rounded-md group-hover:bg-red-100 transition-colors">
+                <img loading="lazy" style="height: 24px; width: 24px;" src="/images/pdf/application-pdf.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg'" alt="PDF">
+              </a>
+              <a [href]="getPDFUrl(doc)" target="_blank" rel="noopener noreferrer" class="text-[#333] hover:text-red-600 font-medium font-sans text-base md:text-lg transition-colors w-full">
+                {{ doc.des }}
+              </a>
+            </h3>
+          </div>
+          }
+        </div>
+        } @else {
+        <div class="w-full flex justify-center py-10 bg-white rounded-md shadow-sm border border-gray-100">
+          <h2 class="text-gray-500 text-xl font-medium">No ongoing projects found.</h2>
+        </div>
+        }
+      </div>
+      }
+
+    </div>
+  </div>
+</div>

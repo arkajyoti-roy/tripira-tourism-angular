@@ -1,0 +1,32 @@
+<section class="w-full bg-[#FBF4EC] py-16 flex flex-col items-center">
+  <!-- Headers -->
+  <span class="text-[#8C1C13] text-[1.2rem] italic font-bold mb-2">Cuisines to Explore</span>
+  <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] font-black tracking-tight mb-12" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+    Discover Exquisite Local Cuisines!
+  </h2>
+
+  <!-- Cuisines Grid -->
+  <div class="flex flex-col md:flex-row justify-between gap-6 w-full px-[50px]">
+    <!-- Loop through cuisines -->
+    <a *ngFor="let item of cuisines"
+       routerLink="/about/food"
+       class="bg-white rounded-xl shadow-md hover:-translate-y-2 hover:shadow-xl transition-all cursor-pointer flex flex-col items-center p-6 flex-1 min-h-[350px]">
+      
+      <!-- Dish Image -->
+      <div class="w-full h-[180px] sm:h-[220px] md:h-[200px] lg:h-[220px] xl:h-[250px] flex items-center justify-center mb-6">
+        <img [src]="item.image" [alt]="item.name" class="w-full h-full object-contain rounded-md transition-transform duration-300" [ngClass]="item.name === 'MACH BATH' ? 'scale-98' : 'scale-[1.20]'" />
+      </div>
+ 
+      <!-- Dish Name -->
+      <h3 class="font-bold text-[1.2rem] text-gray-800 uppercase tracking-wide mb-3 text-center" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+        {{ item.name }}
+      </h3>
+
+      <!-- Dish Description -->
+      <p class="text-gray-500 text-[0.85rem] text-center leading-relaxed">
+        {{ item.description }}
+      </p>
+
+    </a>
+  </div>
+</section>

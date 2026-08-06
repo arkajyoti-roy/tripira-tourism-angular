@@ -1,0 +1,57 @@
+<div class="w-full min-h-screen relative ">
+  <!-- Faint Map Watermark -->
+  
+  <!-- Fixed Hero Background -->
+ 
+
+   <!-- Fixed Hero Background -->
+  <img loading="lazy" src="/gallery2/BeautiesofTripura.png" 
+    class="fixed inset-0 w-full h-screen object-cover z-0">
+  <div class="fixed inset-0 bg-black/40 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div
+    class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+
+     <div class="flex flex-col items-center justify-center">
+          <h1 class="text-white text-[2.5rem] md:text-[3.5rem] font-normal text-center leading-tight drop-shadow-md tracking-wide" style="font-family: 'Impact', 'Arial Black', sans-serif;">
+            Tripura: Photos Galleries
+          </h1>
+          <p class="text-white mt-4 flex items-center gap-2 drop-shadow-sm font-medium">
+            <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
+            <span class="text-xs">&gt;</span> 
+            <span class="hover:text-[#8C593B] cursor-pointer transition-colors">Galleries</span> 
+            <span class="text-xs">&gt;</span> 
+            <span>Photo Galleries</span>
+          </p>
+        </div>
+  </div>
+
+
+  <div class="relative z-20 w-full bg-[#e6e8e8] py-[60px] md:py-[80px] overflow-hidden">
+    
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    
+    <div class="w-full max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+      
+      <!-- Lodges Grid -->
+     
+   <div class="relative z-10 max-w-[1300px] mx-auto px-4 py-[60px]">
+    <h2 class="text-[2rem] font-normal text-center text-gray-800 mb-[40px] uppercase" style="font-family: 'Impact', 'Arial Black', sans-serif;">Photo Galleries of Tripura</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
+      @for (photo of photos(); track $index) {
+        <div class="flex flex-col gap-3">
+          <h3 class="font-bold text-gray-800 text-[1.1rem]">{{ photo.name }}</h3>
+          @if(photo.image_url){
+          <img loading="lazy" [src]="photo.image_url" [alt]="photo.title" class="w-full aspect-[16/9] object-cover rounded-md shadow-md bg-gray-200">
+          }
+        </div>
+      }
+    </div>
+  </div>
+    </div>
+  </div>
+</div>

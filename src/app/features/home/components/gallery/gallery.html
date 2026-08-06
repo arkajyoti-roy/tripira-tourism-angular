@@ -1,0 +1,47 @@
+<section class="bg-[#FBF4EC] bg-grid py-[80px] relative">
+  <div class="max-w-[1400px] mx-auto px-4 text-center">
+    
+    <div class="mb-10">
+      <p class="text-[#8C593B] text-[1.1rem] font-bold mb-2 tracking-wider" style="font-family: 'Kaushan Script', cursive;">Happy Moments Gallery</p>
+      <h2 class="text-[#333333] text-[1.8rem] font-bold font-['Impact',_'Arial_Black',_sans-serif] uppercase tracking-wide opacity-80" style="font-family: 'Impact', 'Arial Black', sans-serif;">Some Of Our Happy Journey</h2>
+    </div>
+
+    <!-- Gallery Ribbon -->
+    <div class="relative w-full overflow-hidden pt-10 pb-6">
+      
+      <div class="gallery-track flex gap-4 sm:gap-6 min-h-[420px] items-center">
+        <!-- Set 1 -->
+        <div class="flex gap-4 sm:gap-6 shrink-0 min-w-max items-center pr-4 sm:pr-6">
+          @for (img of images; track img.src; let i = $index) {
+            <div class="flex-shrink-0 w-[260px] sm:w-[320px] aspect-[4/5] rounded-xl overflow-hidden shadow-lg relative transition-all duration-300 hover:scale-[1.02] bg-gray-300"
+                 [ngClass]="i % 2 === 0 ? 'mt-12' : '-mt-12'">
+              @if (!img.isVideo) {
+                <img [src]="img.src" loading="lazy" decoding="async" class="w-full h-full object-cover">
+              }
+              @if (img.isVideo) {
+                <video preload="none" [src]="img.src" autoplay loop muted [muted]="true" playsinline class="w-full h-full object-cover"></video>
+              }
+            </div>
+          }
+        </div>
+        
+        <!-- Set 2 (Duplicate for seamless loop) -->
+        <div class="flex gap-4 sm:gap-6 shrink-0 min-w-max items-center pr-4 sm:pr-6" aria-hidden="true">
+          @for (img of images; track img.src; let i = $index) {
+            <div class="flex-shrink-0 w-[260px] sm:w-[320px] aspect-[4/5] rounded-xl overflow-hidden shadow-lg relative cursor-pointer transition-all duration-300 hover:scale-[1.02] bg-gray-300"
+                 [ngClass]="i % 2 === 0 ? 'mt-12' : '-mt-12'">
+              @if (!img.isVideo) {
+                <img [src]="img.src" loading="lazy" decoding="async" class="w-full h-full object-cover">
+              }
+              @if (img.isVideo) {
+                <video preload="none" [src]="img.src" autoplay loop muted [muted]="true" playsinline class="w-full h-full object-cover"></video>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+</section>

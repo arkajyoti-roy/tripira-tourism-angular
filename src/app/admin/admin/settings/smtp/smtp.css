@@ -1,0 +1,224 @@
+.smtp-container {
+  max-width: 680px;
+  margin-top: 24px;
+}
+
+/* Horizontal Form Groups */
+.form-group-horizontal {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.form-group-horizontal label {
+  width: 250px;
+  flex-shrink: 0;
+  font-size: 13.5px;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 0;
+}
+
+.form-group-horizontal .form-control {
+  flex: 1;
+  background-color: #ffffff !important;
+  border: 1px solid #c4b5b2 !important;
+  border-radius: 4px;
+  padding: 8px 11px;
+  font-size: 13.5px;
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+.form-group-horizontal .form-control:focus {
+  outline: none;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(180, 33, 44, 0.12);
+}
+
+.btn-back {
+  background-color: #ffffff;
+  border: 1.5px solid var(--line);
+  color: #4a4240;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: bold;
+  transition: all 0.15s ease;
+}
+
+.btn-back:hover {
+  background-color: var(--primary-soft);
+  border-color: #e6b9b9;
+  color: var(--primary);
+}
+
+.form-actions-smtp {
+  margin-top: 24px;
+  border-top: 1px solid #ebdcd9;
+  padding-top: 18px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-submit-smtp {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: bold;
+  font-size: 13.5px;
+  transition: background-color 0.15s ease;
+}
+
+.btn-submit-smtp:hover:not([disabled]) {
+  background-color: var(--primary-dark);
+}
+
+.btn-submit-smtp:disabled {
+  background-color: #d9c9c2;
+  border-color: #d9c9c2;
+  color: #8e817c;
+  cursor: not-allowed;
+}
+
+.btn-cancel-smtp {
+  background-color: #fcf9f6;
+  border: 1.5px solid #cfbdaf;
+  color: #4a4240;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: bold;
+  font-size: 13.5px;
+  transition: all 0.15s ease;
+}
+
+.btn-cancel-smtp:hover {
+  background-color: #ebdcd3;
+  border-color: #bfa99b;
+}
+
+/* Confirmation overlays */
+.smtp-confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(30, 10, 8, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.smtp-confirm-box {
+  background-color: #ffffff;
+  border: 2px solid #ebdcd9;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 440px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(88, 36, 25, 0.25);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.smtp-confirm-box.red-border {
+  border-color: var(--primary);
+}
+
+.confirm-head {
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ebdcd9;
+  padding-bottom: 10px;
+}
+
+.warning-badge {
+  color: #b7791f;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.critical-badge {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.confirm-body {
+  color: #3b3431;
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.danger-text {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.confirm-input-wrap {
+  margin-top: 12px;
+}
+
+.confirm-text-field {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+}
+
+.confirm-text-field:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-proceed {
+  background-color: #b7791f;
+  color: #ffffff;
+  border: 1px solid #b7791f;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-proceed:hover {
+  background-color: #975a16;
+}
+
+.btn-critical-save {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-critical-save:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-abort, .btn-abort:hover {
+  background-color: #ffffff;
+  border: 1.5px solid var(--line);
+  color: #4a4240;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}

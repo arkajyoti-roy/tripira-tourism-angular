@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tripura Tourism</title>
+  
+  <!-- SEO Fallbacks (Will be overwritten dynamically by Angular SeoService) -->
+  <meta name="description" content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
+  <meta name="keywords" content="Tripura Tourism, Travel, North East India, Agartala, Tourism, Holiday, Vacation">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Fallbacks -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tripura Tourism">
+  <meta property="og:title" content="Tripura Tourism">
+  <meta property="og:description" content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
+  <meta property="og:image" content="https://tripuratourism.gov.in/tripuratourismlogo.png">
+  
+  <!-- Twitter Card Fallbacks -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tripura Tourism">
+  <meta name="twitter:description" content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
+  <meta name="twitter:image" content="https://tripuratourism.gov.in/tripuratourismlogo.png">
+  
+  <meta name="theme-color" content="#00897B">
+  <link rel="icon" href="tripuratourismlogo.png" type="image/x-icon">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Preload LCP Hero Image -->
+  <link rel="preload" as="image" href="https://res.cloudinary.com/drtvxt1v3/video/upload/so_0,f_auto,q_auto/v1783924804/landing_page_video_qygqah.jpg" fetchpriority="high">
+
+  <!-- Preload logo (above-the-fold in loader + navbar) -->
+  <link rel="preload" as="image" href="tourism_new_logo5.png">
+
+  <!-- Preconnect to font + media CDNs -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+
+  <!-- Poppins font (display=swap ensures font files load non-blocking) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Material Symbols: pinned axes (opsz@24,wght@400,FILL variable) — ~50KB vs 3.8MB full variable -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=block"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+  
+  <app-root></app-root>
+
+  <!-- Global Premium Loader -->
+  <div id="global-loader"
+    style="position: fixed; top: 0; left: 0; z-index: 9999; display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; background-color: #ffffff; flex-direction: column; font-family: sans-serif; transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
+    <style>
+      .pulse-logo {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      @keyframes pulse {
+
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 0.7;
+          transform: scale(1.05);
+        }
+      }
+
+      .spinner {
+        border: 3px solid rgba(0, 0, 0, 0.05);
+        border-left-color: #0b1120;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin-top: 30px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <img src="tourism_new_logo5.png" alt="Tripura Tourism" style="height: 140px; width: auto;" class="pulse-logo">
+    <div class="spinner"></div>
+  </div>
+</body>
+
+</html>

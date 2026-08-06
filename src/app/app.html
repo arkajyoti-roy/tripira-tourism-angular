@@ -1,0 +1,19 @@
+<div class="flex flex-col min-h-screen relative">
+  <app-nav-bar *ngIf="!isAdminRoute()"></app-nav-bar>
+  
+  <main class="flex-1 relative grid-router-container" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </main>
+  
+  <app-footer *ngIf="!isAdminRoute()"></app-footer>
+
+  <!-- Global Scroll to Top Button -->
+  <button 
+    *ngIf="!isAdminRoute()"
+    (click)="scrollToTop()" 
+    [ngClass]="{'opacity-100 translate-y-0': showScrollToTop(), 'opacity-0 translate-y-10 pointer-events-none': !showScrollToTop()}" 
+    class="fixed bottom-8 right-8 z-[1050] bg-[#8C593B] hover:bg-[#69422A] text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 border-2 border-white"
+    aria-label="Scroll to Top">
+    <span class="material-symbols-outlined font-bold text-2xl">arrow_upward</span>
+  </button>
+</div>

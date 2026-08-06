@@ -1,0 +1,83 @@
+<div class="w-full min-h-screen relative ">
+  <!-- Faint Map Watermark -->
+  
+  <!-- Fixed Hero Background -->
+ 
+
+   <!-- Fixed Hero Background -->
+  <img loading="lazy" src="/gallery2/Video.jpg" 
+    class="fixed inset-0 w-full h-screen object-cover z-0">
+  <div class="fixed inset-0 bg-black/40 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div
+    class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+
+     <div class="flex flex-col items-center justify-center">
+          <h1 class="text-white text-[2.5rem] md:text-[3.5rem] font-normal text-center leading-tight drop-shadow-md tracking-wide" style="font-family: 'Impact', 'Arial Black', sans-serif;">
+           Tripura: Video Galleries
+          </h1>
+          <p class="text-white mt-4 flex items-center gap-2 drop-shadow-sm font-medium">
+            <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
+            <span class="text-xs">&gt;</span> 
+            <span class="hover:text-[#8C593B] cursor-pointer transition-colors">Galleries</span> 
+            <span class="text-xs">&gt;</span> 
+            <span>Video Galleries</span>
+          </p>
+        </div>
+  </div>
+
+
+  <div class="relative z-20 w-full bg-[#e6e8e8] py-[60px] md:py-[80px] overflow-hidden">
+    
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    
+    <div class="w-full max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+      
+      <!-- Lodges Grid -->
+     
+   <div class="relative z-10 max-w-[1300px] mx-auto px-4 py-[60px]">
+    <h2 class="text-[2rem] font-normal text-center text-gray-800 mb-[40px] uppercase" style="font-family: 'Impact', 'Arial Black', sans-serif;">Video Galleries of Tripura</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
+      @for (video of videos(); track $index) {
+        <div class="flex flex-col gap-3">
+          <h3 class="font-bold text-gray-800 text-[1.2rem]">{{ video.name }}</h3>
+          
+          <!-- Interactive Preview Card -->
+          <div (click)="openVideoPopup(video)" class="relative w-full aspect-video rounded-md shadow-md overflow-hidden bg-black group cursor-pointer border border-gray-300">
+            @if(video.videoId) {
+              <img [src]="'https://img.youtube.com/vi/' + video.videoId + '/hqdefault.jpg'" class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 rounded-md" alt="{{ video.name }}" />
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-16 h-11 bg-red-600/90 group-hover:bg-red-600 rounded-xl flex items-center justify-center shadow-lg transition-all duration-200 group-hover:scale-110">
+                  <svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            } @else {
+              <div class="w-full h-full flex items-center justify-center text-white bg-gray-900">
+                <span>Play Video</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <!-- Video Player Popup Modal -->
+  <div *ngIf="selectedVideo()" (click)="closeVideoPopup()" class="fixed inset-0 bg-black/85 z-[99999] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
+    <div (click)="$event.stopPropagation()" class="relative w-full max-w-[800px] bg-black rounded-lg overflow-hidden shadow-2xl border border-gray-800">
+      <div class="flex justify-between items-center px-4 py-3 bg-gray-900 border-b border-gray-800 text-white">
+        <h3 class="font-bold text-[1rem] truncate max-w-[80%]">{{ selectedVideo().name }}</h3>
+        <button (click)="closeVideoPopup()" class="text-white hover:text-red-500 text-xl font-bold transition-colors rounded-md">✕</button>
+      </div>
+      <div class="relative w-full aspect-video">
+        <iframe [src]="getSafeUrl(selectedVideo().videoId)" class="absolute inset-0 w-full h-full" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>

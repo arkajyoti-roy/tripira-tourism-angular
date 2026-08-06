@@ -1,0 +1,152 @@
+<div class="category-container">
+  
+  <div class="page-action-header">
+    <div>
+      <h2>Manage Guides</h2>
+      <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Manage all guide records.</p>
+    </div>
+    <button type="button" class="btn-add-new" (click)="openAddForm()">+ Add New Guide</button>
+  </div>
+
+  <!-- Modal Popup Form -->
+  <div class="modal-backdrop" *ngIf="showForm">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 *ngIf="!isEditing">Insert New Guides</h3>
+        <h3 *ngIf="isEditing">Edit Guides</h3>
+        <button type="button" class="close-btn" (click)="closeForm()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="alert error" *ngIf="error">{{ error }}</div>
+
+        <form (ngSubmit)="onSubmit()" #guideForm="ngForm">
+          <div class="form-group">
+            <label>Display Order <span class="required">*</span></label>
+            <input type="number" name="order" [(ngModel)]="order" required placeholder="Enter Display Order" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Name <span class="required">*</span></label>
+            <input type="text" name="name" [(ngModel)]="name" required placeholder="Enter Tour Operators / Travel Agents Name" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Address <span class="required">*</span></label>
+            <input type="text" name="address" [(ngModel)]="address" required placeholder="Enter Address" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Language <span class="required">*</span></label>
+            <input type="text" name="language" [(ngModel)]="language" required placeholder="Enter Language Can Speak" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Valid Upto <span class="required">*</span></label>
+            <input type="date" name="date" [(ngModel)]="date" required class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Spot <span class="required">*</span></label>
+            <input type="text" name="spot" [(ngModel)]="spot" required placeholder="Spot Covered" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Phone <span class="required">*</span></label>
+            <input type="text" name="phone" [(ngModel)]="phone" required placeholder="Enter Phone Number" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Tourist Guide Image (512x512) <span *ngIf="isEditing" style="font-size: 12px; color: #666;">(Leave blank to keep existing)</span></label>
+            <input type="file" (change)="onFileChange($event)" class="raw-input" />
+            <div class="image-preview-container" *ngIf="imagePreviewUrl || existingImageUrl">
+              <label>Preview:</label>
+              <img [src]="imagePreviewUrl || existingImageUrl" class="form-image-preview" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" [disabled]="loading" class="btn-primary">
+              <span *ngIf="!loading">{{ isEditing ? 'Update' : 'Create' }}</span>
+              <span *ngIf="loading">Loading...</span>
+            </button>
+            <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert success" *ngIf="message">{{ message }}</div>
+
+  <div class="table-card">
+    <h3>Manage Guides</h3>
+    <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <div style="display: flex; gap: 5px; align-items: center;">
+        <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="currentPage = 1" placeholder="Search..." class="raw-input" style="width: 100%; max-width: 300px; margin-bottom: 0;" />
+        <button type="button" *ngIf="searchTerm" (click)="searchTerm = ''; currentPage = 1" class="btn-clear" style="cursor: pointer; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 5px 10px; font-family: Arial, sans-serif; font-weight: bold; height: 32px; display: inline-flex; align-items: center; justify-content: center;">✕</button>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: bold; color: var(--ink);">
+        <span>Show:</span>
+        <select [(ngModel)]="pageSize" (change)="currentPage = 1" class="raw-input" style="width: 80px; padding: 4px; height: 32px; margin-bottom: 0;">
+          <option [value]="30">30</option>
+          <option [value]="60">60</option>
+          <option [value]="100">100</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="raw-table">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Image</th>
+            <th>Order</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Valid Upto</th>
+            <th>Language</th>
+            <th>Spot</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of (items | tableSearch:searchTerm | slice:(currentPage-1)*pageSize : currentPage*pageSize); let i = index">
+            <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td>
+              <div class="table-img-wrapper" style="width: 50px; height: 50px; border-radius: 4px; overflow: hidden; border: 1px solid #ebdcd9; background: #fffaf7; display: flex; align-items: center; justify-content: center;">
+                <img *ngIf="item.image_url" [src]="item.image_url" style="width: 100%; height: 100%; object-fit: cover;" alt="Guide avatar" />
+                <div *ngIf="!item.image_url" style="font-size: 14px; font-weight: bold; color: var(--muted);">
+                  {{ item.name ? item.name.charAt(0).toUpperCase() : 'G' }}
+                </div>
+              </div>
+            </td>
+            <td>{{ item.displayorder }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.validDate }}</td>
+            <td>{{ item.language }}</td>
+            <td>{{ item.spot }}</td>
+            <td class="action-cell">
+              <button class="btn-icon" title="Edit" (click)="editItem(item)">Edit</button>
+              <button class="btn-icon" title="Delete" (click)="deleteItem(item.id)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="(items | tableSearch:searchTerm).length === 0">
+            <td colspan="10" class="empty-state">No records found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;" *ngIf="(items | tableSearch:searchTerm).length > pageSize">
+      <button type="button" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1" class="btn-icon" style="padding: 5px 10px;">Previous</button>
+      <span style="font-size: 14px;">Page {{ currentPage }} of {{ Math.ceil((items | tableSearch:searchTerm).length / pageSize) }}</span>
+      <button type="button" [disabled]="currentPage * pageSize >= (items | tableSearch:searchTerm).length" (click)="currentPage = currentPage + 1" class="btn-icon" style="padding: 5px 10px;">Next</button>
+    </div>
+  </div>
+
+</div>

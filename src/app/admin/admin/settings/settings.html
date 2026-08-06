@@ -1,0 +1,228 @@
+<div class="admin-page-container borderless-settings-page">
+  <div class="page-header-section">
+    <div class="header-left">
+      <h1 class="page-title">Account Settings</h1>
+      <p class="page-subtitle">Configure your administrative credentials and manage authorized portal access lists.</p>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="alert alert-success" *ngIf="message">
+    {{ message }}
+  </div>
+  <div class="alert alert-error" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Forms Grid -->
+  <div class="settings-grid">
+    
+    <!-- Left Card: Change Password -->
+    <div class="settings-card">
+      <div class="section-header">
+        <h2>Change Password</h2>
+        <p class="section-subtitle">Update your password using either your existing password or a secure OTP code.</p>
+      </div>
+
+      <form (ngSubmit)="updatePassword()" #pwdForm="ngForm" class="admin-form">
+        <!-- Auth Mode Toggle -->
+        <div class="form-group-horizontal align-start">
+          <label class="toggle-label">Verification Method</label>
+          <div class="toggle-buttons">
+            <button 
+              type="button" 
+              [class.active]="passwordAuthMode === 'password'" 
+              (click)="passwordAuthMode = 'password'; error = ''; message = '';"
+              class="toggle-btn">
+              Existing Password
+            </button>
+            <button 
+              type="button" 
+              [class.active]="passwordAuthMode === 'otp'" 
+              (click)="passwordAuthMode = 'otp'; error = ''; message = '';"
+              class="toggle-btn">
+              Email OTP Code
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="newPassword">New Password *</label>
+          <input 
+            type="password" 
+            id="newPassword" 
+            name="newPassword" 
+            [(ngModel)]="newPassword" 
+            required 
+            placeholder="••••••••"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="confirmPassword">Confirm New Password *</label>
+          <input 
+            type="password" 
+            id="confirmPassword" 
+            name="confirmPassword" 
+            [(ngModel)]="confirmPassword" 
+            required 
+            placeholder="Re-enter password"
+            class="form-control" />
+        </div>
+
+        <!-- Verification Input depends on selected mode -->
+        <div class="form-group-horizontal" *ngIf="passwordAuthMode === 'password'">
+          <label for="currentPassword">Current Password *</label>
+          <input 
+            type="password" 
+            id="currentPassword" 
+            name="currentPassword" 
+            [(ngModel)]="currentPassword" 
+            required 
+            placeholder="Enter current password"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal" *ngIf="passwordAuthMode === 'otp'">
+          <label for="passwordOtp">Enter 6-Digit OTP *</label>
+          <div class="otp-input-wrapper">
+            <input 
+              type="text" 
+              id="passwordOtp" 
+              name="passwordOtp" 
+              [(ngModel)]="passwordOtp" 
+              required 
+              maxlength="6"
+              placeholder="000000"
+              class="form-control width-otp-input" />
+            <button 
+              type="button" 
+              (click)="requestOtp()" 
+              [disabled]="resendCountdown > 0 || loading" 
+              class="inline-otp-link">
+              <span *ngIf="resendCountdown > 0">Resend in {{ resendCountdown }}s</span>
+              <span *ngIf="resendCountdown <= 0">Send OTP Code</span>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!pwdForm.form.valid || loading" class="btn-submit-settings">
+          Update Password
+        </button>
+      </form>
+    </div>
+
+    <!-- Right Card: Change Primary Email -->
+    <div class="settings-card">
+      <div class="section-header">
+        <h2>Change Primary Email</h2>
+        <p class="section-subtitle">Modify the primary administrative email address. This requires email OTP verification.</p>
+      </div>
+
+      <form (ngSubmit)="updateEmail()" #emailForm="ngForm" class="admin-form">
+        <div class="form-group-horizontal">
+          <label for="newEmail">New Email Address *</label>
+          <div style="display: flex; flex-direction: column; flex: 1;">
+            <input 
+              type="email" 
+              id="newEmail" 
+              name="newEmail" 
+              [(ngModel)]="newEmail" 
+              required
+              email
+              #newEmailField="ngModel"
+              placeholder="new-admin@example.com"
+              class="form-control" />
+            <small *ngIf="newEmailField.invalid && newEmailField.dirty" style="color: var(--primary); font-size: 12px; margin-top: 5px;">
+              Please enter a valid email address.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="emailOtp">Enter 6-Digit OTP *</label>
+          <div class="otp-input-wrapper">
+            <input 
+              type="text" 
+              id="emailOtp" 
+              name="emailOtp" 
+              [(ngModel)]="emailOtp" 
+              required 
+              maxlength="6"
+              placeholder="000000"
+              class="form-control width-otp-input" />
+            <button 
+              type="button" 
+              (click)="requestOtp()" 
+              [disabled]="resendCountdown > 0 || loading || !newEmail || newEmailField.invalid" 
+              class="inline-otp-link">
+              <span *ngIf="resendCountdown > 0">Resend in {{ resendCountdown }}s</span>
+              <span *ngIf="resendCountdown <= 0">Send OTP Code</span>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!emailForm.form.valid || loading" class="btn-submit-settings">
+          Update Primary Email
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Bottom Card: Allowed Login Access Emails -->
+  <div class="settings-card margin-top-30">
+    <div class="section-header-row">
+      <div class="section-header">
+        <h2>Allowed Login Access Emails</h2>
+        <p class="section-subtitle">Specify which administrative email addresses are authorized to request OTPs and access this portal.</p>
+      </div>
+      <div class="section-header-actions">
+        <a routerLink="/admin/settings/smtp" class="btn-smtp-config-link">Mail SMTP Settings</a>
+      </div>
+    </div>
+
+    <!-- Add Email Form Inline -->
+    <form (ngSubmit)="addAccess()" #accessForm="ngForm" class="inline-add-access-form">
+      <div class="form-group flex-1">
+        <input 
+          type="email" 
+          name="newAccessEmail" 
+          [(ngModel)]="newAccessEmail" 
+          required 
+          placeholder="Enter authorized administrator email"
+          class="form-control" />
+      </div>
+      <button type="submit" [disabled]="!accessForm.form.valid || loading" class="btn-add-access-pill">
+        + Authorize Email
+      </button>
+    </form>
+
+    <!-- Allowed Emails Table List (Styled like screenshot) -->
+    <div class="access-emails-list-container margin-top-20">
+      <div class="access-list-header">
+        <div class="col-email">Authorized Email Address</div>
+        <div class="col-date">Added Date</div>
+        <div class="col-action">Actions</div>
+      </div>
+      
+      <div class="access-list-row" *ngFor="let item of accessEmails">
+        <div class="col-email font-semibold-settings">
+          {{ item.email }}
+          <span *ngIf="item.is_primary" class="primary-badge">Primary</span>
+        </div>
+        <div class="col-date text-muted-settings">{{ item.created_at | date:'mediumDate' }}</div>
+        <div class="col-action">
+          <span *ngIf="item.is_primary" class="locked-label">Cannot be revoked</span>
+          <button *ngIf="!item.is_primary && item.email !== currentUserEmail" (click)="deleteAccess(item)" class="btn-revoke-pill">
+            Revoke Access
+          </button>
+        </div>
+      </div>
+
+      <div class="access-list-row empty-row" *ngIf="accessEmails.length === 0">
+        No authorized email addresses registered.
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<section class="bg-[#FEFAF5] py-[80px]">
+  <div class="max-w-[1200px] mx-auto px-4 text-center">
+    
+    <div class="mb-8">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+        .script-font {
+          font-family: 'Kaushan Script', cursive;
+        }
+      </style>
+      <p class="text-[#8C593B] text-[1.2rem] mb-2 script-font drop-shadow-sm font-black tracking-wider">Choose Your Destination</p>
+      <h2 class="text-[#333333] text-[2rem] font-bold font-['Impact',_'Arial_Black',_sans-serif] uppercase tracking-wide opacity-80" style="font-family: 'Impact', 'Arial Black', sans-serif;">Live Where You Want</h2>
+    </div>
+
+    <!-- 3 Cards Layout -->
+    <div class="flex flex-col md:flex-row gap-4 mb-10 justify-center">
+      
+      @for (acc of accommodations; track acc.name) {
+        <a [href]="acc.link" target="_blank" class="block relative rounded-md overflow-hidden shadow-md group cursor-pointer w-full md:w-[32%] aspect-[4/3] bg-gray-200">
+          
+          <!-- IMAGE -->
+          <img [src]="acc.image" loading="lazy" decoding="async" onerror="this.src='https://tripuratourism.gov.in/images/tour/1661756901/71.jpg'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        
+        <!-- Bottom Dark Overlay Strip -->
+        <div class="absolute inset-x-0 bottom-0 h-[60px] bg-black/60 pointer-events-none z-[1] backdrop-blur-sm rounded-b-md"></div>
+        
+        <!-- Content Overlay -->
+        <div class="absolute bottom-0 left-0 right-0 h-[60px] z-10 flex items-center justify-between px-4">
+          
+          <!-- Left side: Name and Stars -->
+          <div class="flex flex-col items-start justify-center h-full gap-0.5">
+            <h4 class="text-white font-bold text-[0.85rem]">{{ acc.name }}</h4>
+            <div class="flex items-center text-[#ffc107] text-[0.7rem] gap-[2px]">
+              <span class="material-symbols-outlined !text-[0.9rem] filled" *ngFor="let star of getStars(acc.rating)" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined !text-[0.9rem] text-gray-400" *ngFor="let star of getEmptyStars(acc.rating)">star</span>
+              <span class="text-white ml-1 text-[0.65rem]">({{acc.reviews}} Reviews)</span>
+            </div>
+          </div>
+
+          <!-- Right side: Price -->
+          <div class="flex items-end h-full py-3">
+            <span class="text-white font-bold text-[0.9rem]">₹{{acc.price}} <span class="text-[0.6rem] font-normal opacity-80">/ Night</span></span>
+          </div>
+
+        </div>
+        
+      </a>
+      }
+    </div>
+<a href="https://tourism.tripura.gov.in/hotel" class="rounded-full bg-[#F4C95D] text-[#7A1A1A] font-bold px-8 h-[46px] hover:bg-[#E3B94D] transition-all flex items-center justify-center mx-auto gap-2 shadow-[0_0_15px_rgba(244,201,93,0.4)] hover:shadow-[0_0_20px_rgba(244,201,93,0.6)] uppercase tracking-widest text-[0.85rem] w-max" style="font-family: 'Arial Narrow', Arial, sans-serif;" target="_blank">
+  VIEW ALL ACCOMMODATIONS <span class="text-xl leading-none mt-[-2px]">&rarr;</span>
+</a> 
+  </div>
+</section>

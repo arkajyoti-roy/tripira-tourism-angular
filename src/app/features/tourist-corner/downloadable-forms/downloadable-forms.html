@@ -1,0 +1,76 @@
+<div class="w-full min-h-screen relative">
+  
+  <!-- Fixed Hero Background -->
+  <img loading="lazy" src="/tourist corner/Forms.jpg" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="fixed inset-0 w-full h-screen object-cover z-0">
+  <div class="fixed inset-0 bg-black/40 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+    <div class="text-center mt-16 pointer-events-auto">
+      <h1 class="text-white text-[2rem] sm:text-[2.5rem] md:text-[4rem] font-normal uppercase tracking-wide drop-shadow-lg leading-tight px-4" style="font-family: 'Impact', 'Arial Black', sans-serif;">
+        Tripura:Downloadable<br/>Forms
+      </h1>
+      <p class="text-white text-sm md:text-base font-medium mt-4 flex items-center gap-2 justify-center drop-shadow-md">
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
+        <span class="text-xs">&gt;</span> 
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors">Tourist Corner</span> 
+        <span class="text-xs">&gt;</span> 
+        <span>Downloadable Forms</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="relative z-20 w-full bg-[#e6e8e8] py-[60px] md:py-[80px] overflow-hidden min-h-[40vh]">
+    
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    
+    <div class="w-full max-w-[1300px] mx-auto px-4 relative z-10 flex flex-col items-center">
+      
+      <!-- Loading State -->
+      @if (isLoading()) {
+      <div class="w-full bg-white rounded-md shadow-sm border border-gray-200 p-8 flex justify-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      </div>
+      }
+      
+      <!-- Error State -->
+      @if (error()) {
+      <div class="w-full bg-white rounded-md shadow-sm border border-gray-200 p-8 text-center text-red-500 font-medium">
+        {{ error() }}
+      </div>
+      }
+      
+      <!-- Forms List Container -->
+      @if (!isLoading()) {
+      <div class="w-full bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-10 mb-8 min-h-[200px]">
+        @if (documents().length > 0) {
+        <ul class="flex flex-col space-y-4">
+          @for (doc of documents(); track doc.id || doc.docid) {
+          <li class="flex items-center gap-3 py-2 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors px-2 rounded-md">
+            <a [href]="getPDFUrl(doc)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-[#333] hover:text-red-600 transition-colors w-full">
+              <!-- PDF Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 14h6m-6 4h6" />
+                <!-- "PDF" Text styled inside icon -->
+                <text x="8" y="11" font-size="5" font-weight="bold" fill="currentColor" stroke="none">PDF</text>
+              </svg>
+              <span class="font-normal text-base md:text-lg">{{ doc.des }}</span>
+            </a>
+          </li>
+          }
+        </ul>
+        } @else {
+        <div class="w-full flex justify-center py-10">
+          <h2 class="text-gray-500 text-xl font-medium">No downloadable forms found.</h2>
+        </div>
+        }
+      </div>
+      }
+
+    </div>
+  </div>
+</div>

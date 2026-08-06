@@ -1,0 +1,52 @@
+<div class="w-full min-h-screen relative bg-[#e6e8e8] pt-[200px] pb-[80px]">
+  
+  <!-- Faint Map Watermark -->
+  <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+  <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+
+  <div class="w-full max-w-[1300px] mx-auto px-4 relative z-10">
+    <div class="bg-white rounded-md shadow-sm border border-gray-100 p-6 md:p-10 w-full min-h-[500px]">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        
+        <!-- Left Column: Image Carousel -->
+        <div class="relative w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-md group">
+          <img loading="lazy" [src]="images()[currentImageIndex()]" onerror="this.src='/tourist corner/publications.png'" class="w-full h-full object-cover transition-all duration-500 rounded-md">
+          
+          <!-- Navigation Arrows -->
+          <button *ngIf="images().length > 1" (click)="prevImage()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#48D1CC] hover:bg-teal-400 text-white rounded flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined font-bold">chevron_left</span>
+          </button>
+          <button *ngIf="images().length > 1" (click)="nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#48D1CC] hover:bg-teal-400 text-white rounded flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined font-bold">chevron_right</span>
+          </button>
+
+          <!-- Controls under image like in screenshot -->
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+            <button (click)="prevImage()" class="w-8 h-8 bg-[#48D1CC] hover:bg-teal-400 text-white flex items-center justify-center shadow-md rounded-md">
+              <span class="material-symbols-outlined text-sm font-bold">chevron_left</span>
+            </button>
+            <button (click)="nextImage()" class="w-8 h-8 bg-[#48D1CC] hover:bg-teal-400 text-white flex items-center justify-center shadow-md rounded-md">
+              <span class="material-symbols-outlined text-sm font-bold">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Details -->
+        <div class="flex flex-col justify-center h-full">
+          <div class="flex items-center gap-4 mb-6">
+            <h2 class="text-[#333] text-[1.4rem] font-bold m-0 tracking-tight" style="font-family: 'Arial Narrow', Arial, sans-serif;">Details</h2>
+            <div class="flex-grow border-b border-dashed border-gray-300"></div>
+          </div>
+          
+          <div class="text-[#d68523] text-base md:text-[1.05rem] leading-relaxed font-sans text-justify">
+            <p class="mb-4">
+              Tripura Tourism, Government of Tripura (GoT), through Tripura Tourism Development Corporation Ltd. (TTDCL), has embarked on a major initiative for growth of tourism and hospitality sector in Tripura. As part of this initiative, GoT has set up a world class Institute of Hotel Management at Agartala. The institute is to be run under Public-Private-Partnership (PPP) Model. Society for State Institute of Hotel Management Catering Service & Applied Nutrition, Anandanagar, Agartala, invites application from interested Firms/ Organizations for running of State Institute of Hotel Management (SIHM) in Private Public Partnership (PPP) Model.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

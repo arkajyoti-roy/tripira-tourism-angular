@@ -1,0 +1,162 @@
+<div class="admin-page-container">
+  <div class="page-header-section">
+    <div class="header-left">
+      <h1 class="page-title">Client Testimonials</h1>
+      <p class="page-subtitle">Manage client reviews displayed on the landing page.</p>
+    </div>
+    <div class="header-right">
+      <button (click)="openAddForm()" class="btn-add-new">+ Add New Testimonial</button>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="alert alert-success" *ngIf="message">{{ message }}</div>
+  <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+
+  <!-- Data List Card -->
+  <div class="settings-card table-panel">
+    <div class="table-actions-header" style="display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap;">
+      <div class="search-box-wrapper" style="flex: 1; max-width: 300px;">
+        <input 
+          type="text" 
+          placeholder="Search testimonials by name or designation..." 
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="currentPage = 1"
+          class="search-input" />
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: bold; color: var(--ink);">
+        <span>Show:</span>
+        <select [(ngModel)]="pageSize" (change)="currentPage = 1" class="raw-input" style="width: 80px; padding: 4px; height: 32px; margin-bottom: 0;">
+          <option [value]="30">30</option>
+          <option [value]="60">60</option>
+          <option [value]="100">100</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 70px;">Image</th>
+            <th style="width: 80px;">Order</th>
+            <th>Client Name</th>
+            <th>Designation</th>
+            <th>Testimonial Review</th>
+            <th style="width: 125px;">Rating</th>
+            <th style="width: 160px; text-align: center;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of (items | tableSearch: searchTerm | slice:(currentPage-1)*pageSize : currentPage*pageSize)">
+            <td>
+              <div class="table-img-wrapper">
+                <img *ngIf="item.image_url" [src]="item.image_url" class="table-img cursor-zoom" alt="Client avatar" />
+                <div *ngIf="!item.image_url" class="table-img-placeholder">
+                  {{ item.name.charAt(0).toUpperCase() }}
+                </div>
+              </div>
+            </td>
+            <td class="font-semibold">{{ item.displayorder }}</td>
+            <td class="font-semibold">{{ item.name }}</td>
+            <td class="text-muted">{{ item.designation }}</td>
+            <td class="testimonial-text-cell">{{ item.testimonial }}</td>
+            <td>
+              <div class="rating-stars-display">
+                <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.filled]="star <= item.rating">&#9733;</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-row-actions">
+                <button (click)="editItem(item)" class="btn-edit">Edit</button>
+                <button (click)="deleteItem(item.id)" class="btn-delete">Delete</button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="items.length === 0">
+            <td colspan="7" class="no-records-cell">No testimonials found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; padding: 0 15px 15px 15px;" *ngIf="(items | tableSearch: searchTerm).length > pageSize">
+      <button type="button" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1" class="btn-icon" style="padding: 5px 10px;">Previous</button>
+      <span style="font-size: 14px;">Page {{ currentPage }} of {{ Math.ceil((items | tableSearch: searchTerm).length / pageSize) }}</span>
+      <button type="button" [disabled]="currentPage * pageSize >= (items | tableSearch: searchTerm).length" (click)="currentPage = currentPage + 1" class="btn-icon" style="padding: 5px 10px;">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Modal Popup (matches tourist-category pattern exactly) ======= -->
+<div class="modal-backdrop" *ngIf="showForm" (click)="onBackdropClick($event)">
+  <div class="modal-container" style="max-width: 520px;">
+
+    <div class="modal-header">
+      <h3>{{ isEditing ? 'Edit Testimonial' : 'Insert New Testimonial' }}</h3>
+      <button type="button" class="close-btn" (click)="closeForm()">&#x2715;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="alert error" *ngIf="error">{{ error }}</div>
+
+      <form (ngSubmit)="onSubmit()" #testForm="ngForm">
+
+        <div class="form-group">
+          <label>Client Name <span class="required">*</span></label>
+          <input type="text" name="name" [(ngModel)]="name" required placeholder="Enter Client Name" class="raw-input" />
+        </div>
+
+        <div class="form-group">
+          <label>Display Order <span class="required">*</span></label>
+          <input type="number" name="order" [(ngModel)]="order" required placeholder="Enter Display Order" class="raw-input" />
+        </div>
+
+        <div class="form-group">
+          <label>Designation <span class="required">*</span></label>
+          <input type="text" name="designation" [(ngModel)]="designation" required placeholder="e.g. Tour Traveler / Architect" class="raw-input" />
+        </div>
+
+        <div class="form-group">
+          <label>Client Rating <span class="required">*</span></label>
+          <div class="star-picker-row">
+            <button 
+              type="button" 
+              *ngFor="let star of [1, 2, 3, 4, 5]" 
+              (click)="setRating(star)"
+              class="star-btn"
+              [class.star-btn--on]="star <= rating">&#9733;</button>
+            <span class="star-count-label">{{ rating }} of 5 Stars</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Testimonial Review <span class="required">*</span></label>
+          <textarea name="testimonial" [(ngModel)]="testimonial" required rows="4" placeholder="Type client's feedback here..." class="raw-input"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Client Image <span *ngIf="isEditing" class="help-text">(Leave blank to keep existing)</span></label>
+          <div class="file-upload-wrapper">
+            <input type="file" (change)="onFileChange($event)" accept="image/*" class="file-input" />
+          </div>
+          <div class="image-preview-container" *ngIf="imagePreviewUrl || existingImageUrl">
+            <label>Preview:</label>
+            <img [src]="imagePreviewUrl || existingImageUrl" class="form-image-preview" alt="Preview" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" [disabled]="!testForm.form.valid || loading" class="btn-primary">
+            <span *ngIf="!loading">{{ isEditing ? 'Update' : 'Create' }}</span>
+            <span *ngIf="loading">Saving...</span>
+          </button>
+          <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,161 @@
+<div class="category-container">
+  
+  <div class="page-action-header">
+    <div>
+      <h2>Manage Directorate</h2>
+      <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Manage all directorate records.</p>
+    </div>
+    <button type="button" class="btn-add-new" (click)="openAddForm()">+ Add New Directorate</button>
+  </div>
+
+  <!-- Modal Popup Form -->
+  <div class="modal-backdrop" *ngIf="showForm">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 *ngIf="!isEditing">Add Directorate Of Tourism</h3>
+        <h3 *ngIf="isEditing">Edit Directorate Of Tourism</h3>
+        <button type="button" class="close-btn" (click)="closeForm()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="alert error" *ngIf="error">{{ error }}</div>
+
+        <form (ngSubmit)="onSubmit()" #dirForm="ngForm">
+          <div class="form-group">
+            <label>Display Order <span class="required">*</span></label>
+            <input type="number" name="order" [(ngModel)]="order" required placeholder="Enter Display Order" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Name <span class="required">*</span></label>
+            <input type="text" name="name" [(ngModel)]="name" required placeholder="Enter Name" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Designation <span class="required">*</span></label>
+            <input type="text" name="designation" [(ngModel)]="designation" required placeholder="Enter Designation" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Address <span class="required">*</span></label>
+            <input type="text" name="address" [(ngModel)]="address" required placeholder="Enter Address" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Phone <span class="required">*</span></label>
+            <input type="text" name="phone" [(ngModel)]="phone" required placeholder="Enter Phone Number" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="email" [(ngModel)]="email" required placeholder="Enter Email Address" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Facebook</label>
+            <input type="text" name="facebook" [(ngModel)]="facebook" placeholder="Enter Facebook Profile" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Twitter</label>
+            <input type="text" name="twitter" [(ngModel)]="twitter" placeholder="Enter Twitter Profile" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Photo <span *ngIf="isEditing" style="font-size: 12px; color: #666;">(Leave blank to keep existing)</span></label>
+            <input type="file" (change)="onFileChange($event)" class="raw-input" />
+            <div class="image-preview-container" *ngIf="imagePreviewUrl || existingImageUrl">
+              <label>Preview:</label>
+              <img [src]="imagePreviewUrl || existingImageUrl" class="form-image-preview" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" [disabled]="loading" class="btn-primary">
+              <span *ngIf="!loading">{{ isEditing ? 'Update' : 'Create' }}</span>
+              <span *ngIf="loading">Loading...</span>
+            </button>
+            <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert success" *ngIf="message">{{ message }}</div>
+
+  <div class="table-card">
+    <h3>Manage Directorate Of Tourism</h3>
+    <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <div style="display: flex; gap: 5px; align-items: center;">
+        <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="currentPage = 1" placeholder="Search..." class="raw-input" style="width: 100%; max-width: 300px; margin-bottom: 0;" />
+        <button type="button" *ngIf="searchTerm" (click)="searchTerm = ''; currentPage = 1" class="btn-clear" style="cursor: pointer; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 5px 10px; font-family: Arial, sans-serif; font-weight: bold; height: 32px; display: inline-flex; align-items: center; justify-content: center;">✕</button>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: bold; color: var(--ink);">
+        <span>Show:</span>
+        <select [(ngModel)]="pageSize" (change)="currentPage = 1" class="raw-input" style="width: 80px; padding: 4px; height: 32px; margin-bottom: 0;">
+          <option [value]="30">30</option>
+          <option [value]="60">60</option>
+          <option [value]="100">100</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="raw-table">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Image</th>
+            <th>Order</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Facebook</th>
+            <th>Twitter</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of (items | tableSearch:searchTerm | slice:(currentPage-1)*pageSize : currentPage*pageSize); let i = index">
+            <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td>
+              <img *ngIf="item.image_url" [src]="item.image_url" style="height: 40px; width: 40px; object-fit: cover; border: 1px solid #000;" />
+              <span *ngIf="!item.image_url">No Image</span>
+            </td>
+            <td>{{ item.displayorder }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.designation }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.email }}</td>
+            <td>
+              <a *ngIf="item.facebook" [href]="item.facebook" target="_blank" style="text-decoration: underline; color: blue;">Facebook</a>
+              <span *ngIf="!item.facebook">N/A</span>
+            </td>
+            <td>
+              <a *ngIf="item.twitter || item.Twitter" [href]="item.twitter || item.Twitter" target="_blank" style="text-decoration: underline; color: blue;">Twitter</a>
+              <span *ngIf="!(item.twitter || item.Twitter)">N/A</span>
+            </td>
+            <td class="action-cell">
+              <button class="btn-icon" title="Edit" (click)="editItem(item)">Edit</button>
+              <button class="btn-icon" title="Delete" (click)="deleteItem(item.id)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="(items | tableSearch:searchTerm).length === 0">
+            <td colspan="11" class="empty-state">No records found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;" *ngIf="(items | tableSearch:searchTerm).length > pageSize">
+      <button type="button" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1" class="btn-icon" style="padding: 5px 10px;">Previous</button>
+      <span style="font-size: 14px;">Page {{ currentPage }} of {{ Math.ceil((items | tableSearch:searchTerm).length / pageSize) }}</span>
+      <button type="button" [disabled]="currentPage * pageSize >= (items | tableSearch:searchTerm).length" (click)="currentPage = currentPage + 1" class="btn-icon" style="padding: 5px 10px;">Next</button>
+    </div>
+  </div>
+
+</div>

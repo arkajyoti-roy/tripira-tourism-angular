@@ -1,0 +1,173 @@
+<div class="category-container">
+  <div class="page-action-header">
+    <div>
+      <h2>Manage Accommodations</h2>
+      <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Manage all your accommodation packages.</p>
+    </div>
+    <button type="button" class="btn-add-new" (click)="openAddForm()">+ Add New Accommodation</button>
+  </div>
+
+  <!-- Modal Popup Form -->
+  <div class="modal-backdrop" *ngIf="showForm">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>{{ isEditing ? 'Edit Accommodation' : 'Insert New Accommodation' }}</h3>
+        <button type="button" class="close-btn" (click)="closeForm()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="alert error" *ngIf="error">{{ error }}</div>
+
+        <form (ngSubmit)="onSubmit()" #accForm="ngForm">
+          <div class="form-group">
+            <label>Type <span class="required">*</span></label>
+            <select name="type" [(ngModel)]="type" (change)="onTypeChange()" required class="raw-input">
+              <option value="">Select Type</option>
+              <option value="1">Govt Accommodation (TTDCL)</option>
+              <option value="2">Private Accommodation (Hotels)</option>
+              <option value="3">Lease out Accommodation</option>
+              <option value="4">Homestays</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Accommodation Name <span class="required">*</span></label>
+            <input type="text" name="name" [(ngModel)]="name" required placeholder="Enter Accommodation Name" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Description <span class="required">*</span></label>
+            <textarea name="description" [(ngModel)]="description" required placeholder="Enter Description" rows="4" class="raw-input"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" name="address" [(ngModel)]="address" placeholder="Enter Address" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Contact No.</label>
+            <input type="text" name="contact" [(ngModel)]="contact" placeholder="Enter Contact No." class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" [(ngModel)]="email" placeholder="Enter Email" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Website</label>
+            <input type="text" name="website" [(ngModel)]="website" placeholder="Enter Website" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Display Order</label>
+            <input type="number" name="displayorder" [(ngModel)]="displayorder" class="raw-input" />
+          </div>
+          <div class="form-group" *ngIf="type === '3'">
+            <label>Name of Lessee</label>
+            <input type="text" name="name_of_lessee" [(ngModel)]="name_of_lessee" placeholder="Enter Name of Lessee" class="raw-input" />
+          </div>
+          <div class="form-group" *ngIf="type === '2'">
+            <label>Valid Upto</label>
+            <input type="text" name="valid_upto" [(ngModel)]="valid_upto" placeholder="Enter Valid Upto date (e.g. 31-03-2025)" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Accommodation Image <span class="required" *ngIf="!isEditing">*</span></label>
+            <input type="file" (change)="onFileSelected($event)" class="raw-input" />
+            <div class="image-preview-container" *ngIf="imagePreviewUrl || existingImageUrl">
+              <label>Preview:</label>
+              <img [src]="imagePreviewUrl || existingImageUrl" class="form-image-preview" />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" [disabled]="loading" class="btn-primary">
+              <span *ngIf="!loading">{{ isEditing ? 'Update' : 'Create' }}</span>
+              <span *ngIf="loading">Loading...</span>
+            </button>
+            <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="alert success" *ngIf="message">{{ message }}</div>
+
+  <div class="table-card">
+    <h3>Accommodation List</h3>
+    <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; flex: 1;">
+        <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="currentPage = 1" placeholder="Search..." class="raw-input" style="width: 100%; max-width: 250px; margin-bottom: 0;" />
+        <button type="button" *ngIf="searchTerm" (click)="searchTerm = ''; currentPage = 1" class="btn-clear" style="cursor: pointer; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 5px 10px; font-family: Arial, sans-serif; font-weight: bold; height: 32px; display: inline-flex; align-items: center; justify-content: center;">✕</button>
+
+        <!-- Accommodation Type Dropdown Filter -->
+        <select [(ngModel)]="selectedTypeFilter" (change)="currentPage = 1" class="raw-input" style="width: 250px; height: 32px; padding: 4px 8px; margin-bottom: 0; font-size: 13.5px; font-weight: 600; color: var(--ink); outline: none !important; box-shadow: none !important; border-color: var(--line) !important;">
+          <option value="">All Accommodation Types</option>
+          <option value="1">Govt Accommodation (TTDCL)</option>
+          <option value="2">Private Accommodation (Hotels)</option>
+          <option value="3">Lease out Accommodation</option>
+          <option value="4">Homestays</option>
+        </select>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: bold; color: var(--ink);">
+        <span>Show:</span>
+        <select [(ngModel)]="pageSize" (change)="currentPage = 1" class="raw-input" style="width: 80px; padding: 4px; height: 32px; margin-bottom: 0;">
+          <option [value]="30">30</option>
+          <option [value]="60">60</option>
+          <option [value]="100">100</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="raw-table">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Contact No.</th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>Address</th>
+            <th>Display Order</th>
+            <th>Lessee</th>
+            <th>Valid Upto</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of (getFilteredItems() | slice:(currentPage-1)*pageSize : currentPage*pageSize); let i = index">
+            <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td>
+              <img *ngIf="item.image_url" [src]="item.image_url" alt="accommodation image" style="width: 60px; height: 50px; object-fit: cover; border: 1px solid #000;" />
+              <span *ngIf="!item.image_url">-</span>
+            </td>
+            <td>{{ item.name }}</td>
+            <td>
+              {{ item.type == '1' ? 'Govt' : (item.type == '2' ? 'Private' : (item.type == '3' ? 'Lease out' : (item.type == '4' ? 'Homestay' : ''))) }}
+            </td>
+            <td [title]="item.description || ''">
+              {{ (item.description && item.description.length > 60) ? (item.description | slice:0:60) + '...' : (item.description || '-') }}
+            </td>
+            <td>{{ item.contact || '-' }}</td>
+            <td>{{ item.email || '-' }}</td>
+            <td>{{ item.website || '-' }}</td>
+            <td>{{ item.address || '-' }}</td>
+            <td>{{ item.displayorder }}</td>
+            <td>{{ item.name_of_lessee || '-' }}</td>
+            <td>{{ item.valid_upto || '-' }}</td>
+            <td class="action-cell">
+              <button class="btn-icon" title="Edit" (click)="editItem(item)">Edit</button>
+              <button class="btn-icon" title="Delete" (click)="deleteItem(item.id)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="getFilteredItems().length === 0">
+            <td colspan="13" class="empty-state">No accommodations found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;" *ngIf="getFilteredItems().length > pageSize">
+      <button type="button" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1" class="btn-icon" style="padding: 5px 10px;">Previous</button>
+      <span style="font-size: 14px;">Page {{ currentPage }} of {{ Math.ceil(getFilteredItems().length / pageSize) }}</span>
+      <button type="button" [disabled]="currentPage * pageSize >= getFilteredItems().length" (click)="currentPage = currentPage + 1" class="btn-icon" style="padding: 5px 10px;">Next</button>
+    </div>
+  </div>
+</div>

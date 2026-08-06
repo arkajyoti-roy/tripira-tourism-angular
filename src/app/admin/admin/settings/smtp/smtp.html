@@ -1,0 +1,183 @@
+<div class="admin-page-container borderless-settings-page">
+  <div class="page-header-section">
+    <div class="header-left">
+      <h1 class="page-title">SMTP Mail Settings</h1>
+      <p class="page-subtitle">Configure the application mail transport parameters and authentication credentials.</p>
+    </div>
+    <div class="header-right">
+      <a routerLink="/admin/settings" class="btn-back">← Back to Settings</a>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="alert alert-success" *ngIf="message">
+    {{ message }}
+  </div>
+  <div class="alert alert-error" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="smtp-container">
+    <div class="settings-card">
+      <div class="section-header">
+        <h2>Mail Server Parameters</h2>
+        <p class="section-subtitle">Ensure these match your mail carrier specifications exactly.</p>
+      </div>
+
+      <form (ngSubmit)="triggerSave()" #smtpForm="ngForm" class="admin-form">
+        
+        <div class="form-group-horizontal">
+          <label for="mail_mailer">Mail Driver *</label>
+          <input 
+            type="text" 
+            id="mail_mailer" 
+            name="mail_mailer" 
+            [(ngModel)]="mail_mailer" 
+            required 
+            placeholder="e.g. smtp"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="mail_host">SMTP Host Server *</label>
+          <input 
+            type="text" 
+            id="mail_host" 
+            name="mail_host" 
+            [(ngModel)]="mail_host" 
+            required 
+            placeholder="e.g. smtp.mail.yahoo.com"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="mail_port">SMTP Port *</label>
+          <input 
+            type="number" 
+            id="mail_port" 
+            name="mail_port" 
+            [(ngModel)]="mail_port" 
+            required 
+            placeholder="e.g. 587"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="mail_username">SMTP User Account *</label>
+          <input 
+            type="text" 
+            id="mail_username" 
+            name="mail_username" 
+            [(ngModel)]="mail_username" 
+            required 
+            placeholder="e.g. sender@yahoo.com"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="mail_password">Sending Application Password *</label>
+          <input 
+            type="password" 
+            id="mail_password" 
+            name="mail_password" 
+            [(ngModel)]="mail_password" 
+            required 
+            placeholder="••••••••"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="mail_encryption">Transport Security (Encryption)</label>
+          <input 
+            type="text" 
+            id="mail_encryption" 
+            name="mail_encryption" 
+            [(ngModel)]="mail_encryption" 
+            placeholder="e.g. tls or ssl"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="mail_from_address">Sender Email Address *</label>
+          <input 
+            type="email" 
+            id="mail_from_address" 
+            name="mail_from_address" 
+            [(ngModel)]="mail_from_address" 
+            required 
+            placeholder="e.g. sender@yahoo.com"
+            class="form-control" />
+        </div>
+
+        <div class="form-group-horizontal">
+          <label for="mail_from_name">Sender Label (From Name) *</label>
+          <input 
+            type="text" 
+            id="mail_from_name" 
+            name="mail_from_name" 
+            [(ngModel)]="mail_from_name" 
+            required 
+            placeholder="e.g. Tripura Tourism"
+            class="form-control" />
+        </div>
+
+        <div class="form-actions-smtp">
+          <button type="submit" [disabled]="!smtpForm.form.valid || loading" class="btn-submit-smtp">
+            Save SMTP Configuration
+          </button>
+          <a routerLink="/admin/settings" class="btn-cancel-smtp">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CONFIRMATION MODALS ================= -->
+
+<!-- Phase 1 Modal -->
+<div class="smtp-confirm-backdrop" *ngIf="showConfirmStep1">
+  <div class="smtp-confirm-box">
+    <div class="confirm-head">
+      <span class="warning-badge">⚠️ SECURITY REVIEW - STEP 1</span>
+    </div>
+    <div class="confirm-body">
+      <p>You are about to save changes to the system mail driver settings.</p>
+      <p class="danger-text">If these settings are incorrect, all OTP requests, administrative alerts, and client notifications will immediately fail.</p>
+      <p>Are you sure the entered settings are verified?</p>
+    </div>
+    <div class="confirm-actions">
+      <button (click)="confirmStep1()" class="btn-proceed">Verified, Continue</button>
+      <button (click)="cancelConfirms()" class="btn-abort">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Phase 2 Modal -->
+<div class="smtp-confirm-backdrop" *ngIf="showConfirmStep2">
+  <div class="smtp-confirm-box red-border">
+    <div class="confirm-head">
+      <span class="critical-badge">🚨 FINAL VERIFICATION - STEP 2</span>
+    </div>
+    <div class="confirm-body">
+      <p>This is the final confirmation.</p>
+      <p>Saving this configurations list will overwrite the active SMTP settings immediately.</p>
+      <p>Type <strong>CONFIRM SAVE</strong> below to complete this action:</p>
+      
+      <div class="confirm-input-wrap">
+        <input 
+          type="text" 
+          #confirmInput 
+          placeholder="CONFIRM SAVE"
+          class="confirm-text-field" />
+      </div>
+    </div>
+    <div class="confirm-actions">
+      <button 
+        (click)="confirmInput.value === 'CONFIRM SAVE' ? finalSave() : error = 'Verification text mismatched. Change discarded.'" 
+        class="btn-critical-save">
+        Over-write Configurations
+      </button>
+      <button (click)="cancelConfirms()" class="btn-abort">Abort Changes</button>
+    </div>
+  </div>
+</div>

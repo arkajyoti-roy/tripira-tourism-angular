@@ -1,0 +1,72 @@
+<div [ngClass]="{'bg-white': isScrolled(), 'bg-transparent': !isScrolled() && !isTourPage(), 'bg-[#10302b]': !isScrolled() && isTourPage()}" class="fixed top-0 left-0 w-full z-[999] transition-all duration-300 font-sans antialiased pt-[8px] pb-[4px]">
+  
+  <!-- The full-width borders with inner content -->
+  <div class="w-[1450px] max-w-full mx-auto border-t-[3.5px] border-b-[3.5px] border-solid flex items-center min-h-[42px]" 
+       [ngClass]="{'border-transparent': isScrolled(), 'border-white/50': !isScrolled() && !isTourPage(), 'border-white/20': !isScrolled() && isTourPage()}">
+       
+    <div class="max-w-[1300px] mx-auto w-full flex justify-between items-center relative px-2 sm:px-4 text-[#FCD34D] text-[0.9rem] flex-wrap sm:flex-nowrap gap-2 sm:gap-0">
+      
+      <!-- Left: TRIPURA TOURISM -->
+      <div style="color:#fdd45a; font-weight: 900;" class="text-[1.1rem] sm:text-[23px] uppercase tracking-tight">
+        TRIPURA TOURISM
+      </div>
+      
+      <!-- Right: Accessibility & Contact -->
+      <div class="flex items-center gap-2 sm:gap-4 lg:gap-6 font-bold ml-auto" [ngClass]="{'text-[#FCD34D]': !isScrolled(), 'text-[#eab308]': isScrolled()}">
+      
+      <a href="#" class="hidden lg:block hover:text-gray-800 transition-colors whitespace-nowrap">Screen Reader Access</a>
+      
+      <div class="hidden md:flex items-center gap-1 whitespace-nowrap">
+         <span class="material-symbols-outlined text-[1.2rem]">call</span>
+         0381 232 5930
+      </div>
+      
+      <div class="hidden sm:flex items-center gap-2">
+         <button (click)="accessibility.setFontSize('large')" aria-label="Increase Font Size" class="hover:text-gray-800 transition-colors text-[1rem]">A+</button>
+         <button (click)="accessibility.setFontSize('normal')" aria-label="Normal Font Size" class="hover:text-gray-800 transition-colors text-[1rem]">A</button>
+         <button (click)="accessibility.setFontSize('small')" aria-label="Decrease Font Size" class="hover:text-gray-800 transition-colors text-[1rem]">A-</button>
+       </div>
+      
+      <!-- Color Contrast Blocks -->
+       <div class="hidden sm:flex items-center gap-[2px]">
+         <button (click)="accessibility.setTheme('white')" class="w-[22px] h-[22px] bg-white border border-gray-400 flex flex-col items-center justify-center relative overflow-hidden p-[2px]" aria-label="Default Theme">
+            <div class="w-full h-[3px] bg-gray-400 mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-gray-400 mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-gray-400"></div>
+         </button>
+         <button (click)="accessibility.setTheme('dark')" class="w-[22px] h-[22px] bg-black border border-gray-400 flex flex-col items-center justify-center relative overflow-hidden p-[2px]" aria-label="Dark Theme">
+            <div class="w-full h-[3px] bg-gray-400 mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-gray-400 mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-gray-400"></div>
+         </button>
+         <button (click)="accessibility.setTheme('blue')" class="w-[22px] h-[22px] bg-blue-700 border border-gray-400 flex flex-col items-center justify-center relative overflow-hidden p-[2px]" aria-label="Blue Theme">
+            <div class="w-full h-[3px] bg-white mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-white mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-white"></div>
+         </button>
+         <button (click)="accessibility.setTheme('yellow')" class="w-[22px] h-[22px] bg-[#fef08a] border border-gray-400 flex flex-col items-center justify-center relative overflow-hidden p-[2px]" aria-label="Yellow Theme">
+            <div class="w-full h-[3px] bg-black mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-black mb-[1.5px]"></div>
+            <div class="w-full h-[3px] bg-black"></div>
+         </button>
+         <button (click)="accessibility.setTheme('default')" class="w-[22px] h-[22px] bg-gray-200 border border-gray-400 flex flex-col items-center justify-center relative overflow-hidden p-[2px] ml-1" aria-label="Reset Theme">
+            <span class="material-symbols-outlined text-[14px] text-gray-700">refresh</span>
+         </button>
+       </div>
+      
+      <!-- Search Bar (Always Visible) -->
+      <div class="relative flex items-center ml-2 border border-current rounded-full px-2 py-1" style="background-color: rgba(255,255,255,0.1); min-width: 140px;">
+        <input #searchInput type="text" placeholder="Search page..." 
+               (keydown.enter)="performSearch(searchInput.value)"
+               class="w-full bg-transparent border-none outline-none text-current text-[0.85rem] placeholder-current opacity-80 px-1">
+        <button (click)="performSearch(searchInput.value)" aria-label="Search" class="hover:text-gray-800 transition-colors block cursor-pointer ml-1">
+          <span class="material-symbols-outlined text-[1.2rem]">search</span>
+        </button>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</div>
+</div>

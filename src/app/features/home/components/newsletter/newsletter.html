@@ -1,0 +1,24 @@
+<section class="pb-20">
+  <div class="max-w-[1280px] mx-auto px-5">
+    <div class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-10 sm:p-14 flex flex-col lg:flex-row items-center justify-between gap-10 text-bg-white shadow-xl relative overflow-hidden">
+      
+      <!-- Decorative background elements -->
+      <div class="absolute -top-[50px] -right-[50px] w-[200px] h-[200px] bg-white/10 rounded-full"></div>
+      
+      <div class="flex-1 relative z-10 text-center lg:text-left">
+        <h2 class="text-[2rem] font-bold mb-4">Stay Updated with Tripura Tourism</h2>
+        <p class="text-[1.05rem] opacity-90 leading-relaxed max-w-xl mx-auto lg:mx-0">Subscribe to our newsletter to receive the latest updates, travel tips, and exclusive offers straight to your inbox.</p>
+      </div>
+      
+      <div class="flex-1 relative z-10 w-full">
+        <form (submit)="$event.preventDefault()" class="flex flex-col sm:flex-row gap-3 bg-bg-white p-2 rounded-full w-full max-w-lg mx-auto lg:mr-0">
+          <input type="email" placeholder="Enter your email address" required aria-label="Email address"
+                 class="flex-1 border-none outline-none px-5 py-3 text-base text-text-primary bg-transparent rounded-full min-w-0">
+          <button type="submit" class="bg-primary text-bg-white px-8 py-3 rounded-full font-semibold whitespace-nowrap transition-all hover:bg-primary-dark shadow-sm">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

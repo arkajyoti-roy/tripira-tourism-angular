@@ -1,0 +1,47 @@
+/* Global Design Tokens for Tripura Tourism Portal */
+
+:root {
+  /* Colors */
+  --primary-teal: #00897B;
+  --primary-teal-dark: #00695C;
+  --secondary-blue: #29B6F6;
+  --secondary-blue-light: #4FC3F7;
+  --accent-yellow: #F9A825;
+  --accent-yellow-light: #FBC02D;
+  
+  --bg-white: #FFFFFF;
+  --bg-alternate: #F7F9FB;
+  --bg-dark: #121212;
+  
+  --text-primary: #222222;
+  --text-secondary: #555555;
+  --text-light: #F5F5F5;
+  
+  --border-light: #EAEAEA;
+  --border-medium: #CCCCCC;
+
+  /* Typography */
+  --font-family-sans: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+  --shadow-hover: 0 15px 35px rgba(0,137,123,0.15);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* Layout */
+  --max-width: 1280px;
+  --spacing-section: 80px;
+  --spacing-section-mobile: 40px;
+}

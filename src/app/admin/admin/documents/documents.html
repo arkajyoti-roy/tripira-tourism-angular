@@ -1,0 +1,156 @@
+  <div class="page-action-header">
+    <div>
+      <h2>Manage Documents</h2>
+      <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Upload and manage PDFs for Guidelines, Forms, Publications, etc.</p>
+    </div>
+    <button type="button" class="btn-add-new" (click)="openAddForm()">+ Add New Document</button>
+  </div>
+
+  <!-- Modal Popup Form -->
+  <div class="modal-backdrop" *ngIf="showForm">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>{{ editingId ? 'Update Document' : 'Upload New Document' }}</h3>
+        <button type="button" class="close-btn" (click)="closeForm()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="alert error" *ngIf="error">{{ error }}</div>
+
+        <form (ngSubmit)="onSubmit()" #docForm="ngForm">
+          <div class="form-group">
+            <label>Document Type <span class="required">*</span></label>
+            <select name="doctype" [(ngModel)]="doctype" required class="raw-input">
+              <option value="">-- Select Type --</option>
+              <option *ngFor="let type of docTypes" [value]="type.id">{{ type.name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Description / Title <span class="required">*</span></label>
+            <input type="text" name="des" [(ngModel)]="des" placeholder="Enter title" class="raw-input" required />
+          </div>
+      
+          <div class="form-group">
+            <label>PDF File <span class="required" *ngIf="!editingId">*</span></label>
+            <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" class="raw-input" />
+            <small *ngIf="editingId" style="display: block; margin-top: 5px; color: #666;">Leave blank to keep existing file</small>
+          </div>
+      
+          <div class="form-group">
+            <label>Status</label>
+            <select name="status" [(ngModel)]="status" class="raw-input">
+              <option [ngValue]="1">Enable</option>
+              <option [ngValue]="2">Disable</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>What's New Display <span class="required">*</span></label>
+            <select name="whatsnew" [(ngModel)]="whatsnew" class="raw-input" required>
+              <option *ngFor="let option of whatsNewOptions" [value]="option.id">{{ option.name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Open Date <span class="required">*</span></label>
+            <input type="date" name="openDate" [(ngModel)]="openDate" class="raw-input" required />
+          </div>
+
+          <div class="form-group">
+            <label>Close Date <span class="required">*</span></label>
+            <input type="date" name="closeDate" [(ngModel)]="closeDate" class="raw-input" required />
+          </div>
+      
+          <div class="form-actions">
+            <button type="submit" [disabled]="loading" class="btn-primary">
+              <span *ngIf="!loading">{{ editingId ? 'Update' : 'Upload' }}</span>
+              <span *ngIf="loading">Loading...</span>
+            </button>
+            <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="alert success" *ngIf="message">{{ message }}</div>
+
+  <div class="table-card">
+    <h3>Document List</h3>
+    <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; flex: 1;">
+        <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="currentPage = 1" placeholder="Search..." class="raw-input" style="width: 100%; max-width: 250px; margin-bottom: 0;" />
+        <button type="button" *ngIf="searchTerm" (click)="searchTerm = ''; currentPage = 1" class="btn-clear" style="cursor: pointer; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 5px 10px; font-family: Arial, sans-serif; font-weight: bold; height: 32px; display: inline-flex; align-items: center; justify-content: center;">✕</button>
+
+        <!-- Document Type Dropdown Filter -->
+        <select [(ngModel)]="selectedTypeFilter" (change)="currentPage = 1" class="raw-input" style="width: 220px; height: 32px; padding: 4px 8px; margin-bottom: 0; font-size: 13.5px; font-weight: 600; color: var(--ink); outline: none !important; box-shadow: none !important; border-color: var(--line) !important;">
+          <option value="">All Document Types</option>
+          <option *ngFor="let type of docTypes" [value]="type.id">{{ type.name }}</option>
+        </select>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: bold; color: var(--ink);">
+        <span>Show:</span>
+        <select [(ngModel)]="pageSize" (change)="currentPage = 1" class="raw-input" style="width: 80px; padding: 4px; height: 32px; margin-bottom: 0;">
+          <option [value]="30">30</option>
+          <option [value]="60">60</option>
+          <option [value]="100">100</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Description</th>
+            <th>File</th>
+            <th>Open Date</th>
+            <th>Close Date</th>
+            <th>Last Update</th>
+            <th>Document Type</th>
+            <th>What's New</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of (filteredItems | tableSearch:searchTerm | slice:(currentPage-1)*pageSize : currentPage*pageSize); let i = index">
+            <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td>{{ item.des }}</td>
+            <td>
+              <a *ngIf="item.file" [href]="item.file_url" target="_blank" class="text-link">View File</a>
+            </td>
+            <td>{{ getFormattedDate(item.openDate) }}</td>
+            <td>{{ getFormattedDate(item.closeDate) }}</td>
+            <td>{{ item.updateDate ? (item.updateDate | date:'dd-MM-yyyy HH:mm:ss') : '-' }}</td>
+            <td><span class="badge">{{ getDocTypeName(item.doctype) }}</span></td>
+            <td>
+              <span class="badge" [class.active]="item.whatsnew == 1" [class.inactive]="item.whatsnew == 0">
+                {{ item.whatsnew == 1 ? 'Yes' : 'No' }}
+              </span>
+            </td>
+            <td>
+              <span class="badge" [class.active]="item.status == 1" [class.inactive]="item.status == 0">
+                {{ item.status == 1 ? 'Enable' : 'Disable' }}
+              </span>
+            </td>
+            <td class="action-cell">
+              <button class="btn-icon" title="Edit" (click)="editItem(item)">Edit</button>
+              <button class="btn-icon" title="Delete" (click)="deleteItem(item.docid)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="(filteredItems | tableSearch:searchTerm).length === 0">
+            <td colspan="10" class="text-center">No documents found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;" *ngIf="(filteredItems | tableSearch:searchTerm).length > pageSize">
+      <button type="button" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1" class="btn-icon" style="padding: 5px 10px;">Previous</button>
+      <span style="font-size: 14px;">Page {{ currentPage }} of {{ Math.ceil((filteredItems | tableSearch:searchTerm).length / pageSize) }}</span>
+      <button type="button" [disabled]="currentPage * pageSize >= (filteredItems | tableSearch:searchTerm).length" (click)="currentPage = currentPage + 1" class="btn-icon" style="padding: 5px 10px;">Next</button>
+    </div>
+  </div>

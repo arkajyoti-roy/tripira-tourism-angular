@@ -1,0 +1,155 @@
+<div class="admin-theme admin-wrapper">
+  <div class="sidebar-backdrop" *ngIf="isSidebarOpen" (click)="toggleSidebar()"></div>
+
+  <aside class="sidebar" [class.open]="isSidebarOpen">
+    <div class="sidebar-header">
+      <img src="/admin-assets/tourism_new_logo5.png" alt="Tripura Tourism" class="header-logo">
+      <div class="brand-copy">
+        <h2>Tourism Admin</h2>
+        <span>Tripura Tourism</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/dashboard')"
+            (click)="navigateTo('/admin/dashboard')">
+            <span class="nav-icon icon-dashboard" aria-hidden="true"></span>
+            <span>Dashboard</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/tourist-category')"
+            (click)="navigateTo('/admin/tourist-category')">
+            <span class="nav-icon icon-destination" aria-hidden="true"></span>
+            <span>Tourist Category</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/directorate')"
+            (click)="navigateTo('/admin/directorate')">
+            <span class="nav-icon icon-office" aria-hidden="true"></span>
+            <span>Directorate</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/development-corporation')"
+            (click)="navigateTo('/admin/development-corporation')">
+            <span class="nav-icon icon-corporation" aria-hidden="true"></span>
+            <span>Development Corp.</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/tour')"
+            (click)="navigateTo('/admin/tour')">
+            <span class="nav-icon icon-tour" aria-hidden="true"></span>
+            <span>Tour</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/adventures')"
+            (click)="navigateTo('/admin/adventures')">
+            <span class="nav-icon icon-adventure" aria-hidden="true"></span>
+            <span>Adventures</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/accommodation')"
+            (click)="navigateTo('/admin/accommodation')">
+            <span class="nav-icon icon-stay" aria-hidden="true"></span>
+            <span>Accommodation</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/agents')"
+            (click)="navigateTo('/admin/agents')">
+            <span class="nav-icon icon-agent" aria-hidden="true"></span>
+            <span>Agents</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/guides')"
+            (click)="navigateTo('/admin/guides')">
+            <span class="nav-icon icon-guide" aria-hidden="true"></span>
+            <span>Guides</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/video-galleries')"
+            (click)="navigateTo('/admin/video-galleries')">
+            <span class="nav-icon icon-video" aria-hidden="true"></span>
+            <span>Video Galleries</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/photo-galleries')"
+            (click)="navigateTo('/admin/photo-galleries')">
+            <span class="nav-icon icon-photo" aria-hidden="true"></span>
+            <span>Photo Galleries</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/contact')"
+            (click)="navigateTo('/admin/contact')">
+            <span class="nav-icon icon-contact" aria-hidden="true"></span>
+            <span>Contact</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/communication-media')"
+            (click)="navigateTo('/admin/communication-media')">
+            <span class="nav-icon icon-media" aria-hidden="true"></span>
+            <span>Communication Media</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/documents')"
+            (click)="navigateTo('/admin/documents')">
+            <span class="nav-icon icon-document" aria-hidden="true"></span>
+            <span>Documents</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/testimonials')"
+            (click)="navigateTo('/admin/testimonials')">
+            <span class="nav-icon icon-testimonials" aria-hidden="true"></span>
+            <span>Testimonials</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" [class.active]="isActive('/admin/settings')"
+            (click)="navigateTo('/admin/settings')">
+            <span class="nav-icon icon-settings" aria-hidden="true"></span>
+            <span>Settings</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="toggle-btn" (click)="toggleSidebar()" aria-label="Toggle sidebar"></button>
+        <div>
+          <div class="breadcrumb">Tripura Tourism / Admin</div>
+          <div class="header-subtitle">Manage portal content and records</div>
+        </div>
+      </div>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </header>
+
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<!-- Global Image Zoom Overlay -->
+<div class="image-zoom-backdrop" *ngIf="previewImageUrl" (click)="closePreview()">
+  <div class="image-zoom-container" (click)="$event.stopPropagation()">
+    <button class="image-zoom-close" (click)="closePreview()" aria-label="Close zoom preview">&times;</button>
+    <img [src]="previewImageUrl" alt="Zoomed image preview" class="image-zoom-content">
+  </div>
+</div>

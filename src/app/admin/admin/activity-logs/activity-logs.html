@@ -1,0 +1,94 @@
+<div class="category-container">
+  <div class="header-section">
+    <h2>System Activity Logs</h2>
+    <p>Audit trail of all administrative updates, creations, and deletions.</p>
+  </div>
+
+  <div class="alert error" *ngIf="error">{{ error }}</div>
+
+  <div class="table-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 15px; flex-wrap: wrap;">
+      <h3>Action History</h3>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          (ngModelChange)="currentPage = 1"
+          placeholder="Search logs (email, action, resource...)" 
+          class="raw-input" 
+          style="max-width: 300px; margin-bottom: 0;"
+        />
+        <div style="display: flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: bold; color: var(--ink);">
+          <span>Show:</span>
+          <select [(ngModel)]="pageSize" (change)="currentPage = 1" class="raw-input" style="width: 80px; padding: 4px; height: 32px; margin-bottom: 0;">
+            <option [value]="30">30</option>
+            <option [value]="60">60</option>
+            <option [value]="100">100</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="raw-table">
+        <thead>
+          <tr>
+            <th style="width: 60px;">ID</th>
+            <th style="width: 160px;">Timestamp</th>
+            <th style="width: 200px;">Administrator</th>
+            <th style="width: 110px;">Section</th>
+            <th style="width: 180px;">Action Type</th>
+            <th style="width: 110px;">IP Address</th>
+            <th style="min-width: 260px;">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of getPaginatedLogs()">
+            <td>{{ log.id }}</td>
+            <td style="white-space: nowrap;"><small>{{ log.created_at | date:'medium' }}</small></td>
+            <td>
+              <strong>{{ log.admin_name || 'N/A' }}</strong><br>
+              <small style="color: #6c5e5c; word-break: break-all;">{{ log.admin_email || 'N/A' }}</small>
+            </td>
+            <td>
+              <span style="font-weight: bold; text-transform: uppercase; font-size: 11.5px; color: var(--primary);">
+                {{ log.section || 'system' }}
+              </span>
+            </td>
+            <td>
+              <span class="badge" [ngStyle]="{
+                'background-color': log.action_type === 'login' ? '#e8f5e9' : (log.action_type === 'logout' ? '#f3e5f5' : (log.action_type.includes('create') ? '#e1f5fe' : (log.action_type.includes('delete') ? '#ffebee' : (log.action_type.includes('change') ? '#fff8e1' : '#f5f5f5')))),
+                'color': log.action_type === 'login' ? '#2e7d32' : (log.action_type === 'logout' ? '#7b1fa2' : (log.action_type.includes('create') ? '#0288d1' : (log.action_type.includes('delete') ? '#c62828' : (log.action_type.includes('change') ? '#f57f17' : '#616161'))))
+              }">
+                {{ log.action_type }}
+              </span>
+            </td>
+            <td><small>{{ log.ip_address }}</small></td>
+            <td class="details-cell">
+              <div *ngFor="let line of formatDetailsLines(log.details)" class="detail-line">{{ line }}</div>
+            </td>
+          </tr>
+          <tr *ngIf="getFilteredLogs().length === 0 && !loading">
+            <td colspan="7" class="empty-state">No matching activity logs found.</td>
+          </tr>
+          <tr *ngIf="loading">
+            <td colspan="7" class="empty-state">Loading logs...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;" *ngIf="getFilteredLogs().length > 0">
+      <div style="font-size: 14px;">
+        Showing page <strong>{{ currentPage }}</strong> of <strong>{{ totalPages() }}</strong> (Total: {{ getFilteredLogs().length }} logs)
+      </div>
+      <div style="display: flex; gap: 5px;">
+        <button class="btn-icon" [disabled]="currentPage === 1" (click)="changePage(1)">« First</button>
+        <button class="btn-icon" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">‹ Prev</button>
+        <button class="btn-icon" [disabled]="currentPage === totalPages()" (click)="changePage(currentPage + 1)">Next ›</button>
+        <button class="btn-icon" [disabled]="currentPage === totalPages()" (click)="changePage(totalPages())">Last »</button>
+      </div>
+    </div>
+  </div>
+</div>

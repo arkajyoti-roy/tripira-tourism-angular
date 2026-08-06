@@ -1,0 +1,4 @@
+/* Make component visible once Angular has rendered it (prevents FOUC) */
+:host {
+  visibility: visible;
+}

@@ -1,0 +1,142 @@
+<div class="w-full min-h-screen relative">
+  
+  <!-- Fixed Hero Background -->
+  <!-- User will provide image -->
+  <img loading="lazy" src="/Banner-whoiswho.jpg" class="fixed inset-0 w-full h-screen object-cover z-0">
+  <div class="fixed inset-0 bg-black/40 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+    <div class="text-center mt-16 pointer-events-auto">
+      <h1 class="text-white text-[2rem] sm:text-[2.5rem] md:text-[4rem] font-normal tracking-wide drop-shadow-lg leading-tight px-4" style="font-family: 'Impact', 'Arial Black', sans-serif;">
+        Who is Who
+      </h1>
+      <p class="text-white text-sm md:text-base font-medium mt-4 flex items-center gap-2 justify-center drop-shadow-md">
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
+        <span class="text-xs">&gt;</span> 
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors">Dept Info</span> 
+        <span class="text-xs">&gt;</span> 
+        <span>Who is Who</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="relative z-20 w-full bg-[#e6e8e8] py-[60px] md:py-[80px] overflow-hidden min-h-[40vh]">
+    
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    
+    <div class="w-full max-w-[1000px] mx-auto px-4 relative z-10 flex flex-col items-center">
+      
+      <!-- Loading State -->
+      @if (isLoading()) {
+      <div class="w-full bg-white rounded-md shadow-sm border border-gray-200 p-8 flex justify-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      </div>
+      }
+      
+      <!-- Error State -->
+      @if (error()) {
+      <div class="w-full bg-white rounded-md shadow-sm border border-gray-200 p-8 text-center text-red-500 font-medium">
+        {{ error() }}
+      </div>
+      }
+      
+      <!-- Content Container -->
+      @if (!isLoading() && !error()) {
+      <div class="w-full flex flex-col gap-10">
+        
+        <!-- Directorate of Tourism Section -->
+        @if (directorate().length > 0) {
+        <div class="w-full flex flex-col">
+          <h2 class="text-center md:text-left text-[#333] text-[1.4rem] md:text-[1.8rem] font-bold tracking-tight mb-6" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+            Directorate of Tourism
+          </h2>
+          <div class="flex flex-col gap-4">
+            @for (person of directorate(); track person.id) {
+            <div class="bg-white rounded-md shadow-sm border border-gray-100 p-4 md:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 hover:shadow-md transition-shadow">
+              <!-- Avatar -->
+              <div class="w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-full overflow-hidden border-2 border-gray-200 mx-auto sm:mx-0">
+                <img loading="lazy" [src]="person.image_url" [alt]="person.name" onerror="this.src='https://ui-avatars.com/api/?name=User&background=random'" class="w-full h-full object-cover rounded-md">
+              </div>
+              
+              <!-- Info -->
+              <div class="flex flex-col gap-1 text-center sm:text-left w-full">
+                <h3 class="text-[#20b2aa] font-bold text-[1.1rem] md:text-[1.2rem] m-0" [innerHTML]="person.name"></h3>
+                <p class="text-[#d68523] font-medium text-[0.95rem] md:text-[1rem] m-0" [innerHTML]="person.designation"></p>
+                
+                <div class="mt-2 text-gray-500 text-[0.85rem] md:text-[0.9rem] flex flex-col gap-1">
+                  @if (person.address) {
+                  <p class="m-0 flex items-start gap-2 justify-center sm:justify-start">
+                    <span class="material-symbols-outlined text-[1rem] mt-[2px]">location_on</span>
+                    <span [innerHTML]="person.address"></span>
+                  </p>
+                  }
+                  @if (person.phone || person.email) {
+                  <p class="m-0 flex items-start gap-2 justify-center sm:justify-start">
+                    <span class="material-symbols-outlined text-[1rem] mt-[2px]">call</span>
+                    <span>
+                      @if (person.phone) { <span [innerHTML]="person.phone"></span><br> }
+                      @if (person.email) { <a href="mailto:{{person.email}}" class="text-blue-500 hover:underline">{{person.email}}</a> }
+                    </span>
+                  </p>
+                  }
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+        }
+
+        <!-- TTDCL Section -->
+        @if (ttdcl().length > 0) {
+        <div class="w-full flex flex-col">
+          <h2 class="text-center md:text-left text-[#333] text-[1.4rem] md:text-[1.8rem] font-bold tracking-tight mb-6" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+            Tripura Tourism Development Corporation Limited
+          </h2>
+          <div class="flex flex-col gap-4">
+            @for (person of ttdcl(); track person.id) {
+            <div class="bg-white rounded-md shadow-sm border border-gray-100 p-4 md:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 hover:shadow-md transition-shadow">
+              <!-- Avatar -->
+              <div class="w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-full overflow-hidden border-2 border-gray-200 mx-auto sm:mx-0">
+                <img loading="lazy" [src]="person.image_url" [alt]="person.name" onerror="this.src='https://ui-avatars.com/api/?name=User&background=random'" class="w-full h-full object-cover rounded-md">
+              </div>
+              
+              <!-- Info -->
+              <div class="flex flex-col gap-1 text-center sm:text-left w-full">
+                <h3 class="text-[#20b2aa] font-bold text-[1.1rem] md:text-[1.2rem] m-0" [innerHTML]="person.name"></h3>
+                <p class="text-[#d68523] font-medium text-[0.95rem] md:text-[1rem] m-0" [innerHTML]="person.designation"></p>
+                
+                <div class="mt-2 text-gray-500 text-[0.85rem] md:text-[0.9rem] flex flex-col gap-1">
+                  @if (person.address) {
+                  <p class="m-0 flex items-start gap-2 justify-center sm:justify-start">
+                    <span class="material-symbols-outlined text-[1rem] mt-[2px]">location_on</span>
+                    <span [innerHTML]="person.address"></span>
+                  </p>
+                  }
+                  @if (person.phone || person.email) {
+                  <p class="m-0 flex items-start gap-2 justify-center sm:justify-start">
+                    <span class="material-symbols-outlined text-[1rem] mt-[2px]">call</span>
+                    <span>
+                      @if (person.phone) { <span [innerHTML]="person.phone"></span><br> }
+                      @if (person.email) { <a href="mailto:{{person.email}}" class="text-blue-500 hover:underline">{{person.email}}</a> }
+                    </span>
+                  </p>
+                  }
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+        }
+
+      </div>
+      }
+
+    </div>
+  </div>
+</div>

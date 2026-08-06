@@ -1,0 +1,87 @@
+<div class="w-full min-h-screen relative">
+
+  <!-- Fixed Hero Background -->
+  <img loading="lazy" src="/accommodation/private hotel/private.png" onerror="this.src='/dream-destination/natural-beauty.jpg'"
+    class="fixed inset-0 w-full h-screen object-cover z-0">
+  <div class="fixed inset-0 bg-black/40 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div
+    class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+
+    <div class="text-center mt-16 pointer-events-auto">
+      <h1
+        class="text-white text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] font-normal tracking-wide leading-tight px-4"
+        style="font-family: 'Impact', 'Arial Black', sans-serif; ">
+        Private Accommodation
+      </h1>
+      <p class="text-white text-sm md:text-base font-medium mt-4 flex items-center gap-2 justify-center drop-shadow-md">
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span>
+        <span class="text-xs">&gt;</span>
+        <span>Private Accommodation</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="relative z-20 w-full page-bg-gray-medium py-[60px] md:py-[80px] overflow-hidden">
+
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'"
+      class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'"
+      class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+
+    <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <!-- Table Container -->
+      <div class="bg-white shadow-sm ring-1 ring-gray-300 rounded-lg overflow-x-auto mb-10">
+        <table class="min-w-full w-full divide-y divide-gray-300 text-left">
+          <thead class="bg-gray-100">
+            <tr>
+              <th scope="col" class="py-4 pl-4 pr-3 text-left text-sm font-semibold text-gray-800 sm:pl-6">Sl. No.</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Title</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Address</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Contact No.</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Email</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Website</th>
+              <th scope="col" class="px-3 py-4 text-center text-sm font-semibold text-gray-800">Photo</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Valid upto</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-300 bg-white">
+            @for (hotel of hotels(); track $index) {
+            <tr class="hover:bg-gray-50 transition-colors cursor-pointer"
+              [routerLink]="['/tour', hotel.aid]" [queryParams]="{type: 'accommodations/private'}">
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6">{{ hotel.slNo || hotel.id || ($index
+                + 1) }}</td>
+              <td class="px-3 py-4 text-sm text-gray-800 font-medium">{{ hotel.title ||
+                hotel.name }}</td>
+              <td class="px-3 py-4 text-sm text-gray-700 min-w-[200px]">{{ hotel.address || hotel.location }}
+              </td>
+              <td class="px-3 py-4 text-sm text-gray-700">{{ hotel.contact || hotel.phone ||
+                hotel.contact_no }}</td>
+              <td class="px-3 py-4 text-sm text-gray-700 break-all">{{ hotel.email }}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm font-medium">
+                @if (hotel.website) {
+                <a href="{{ hotel.website }}" target="_blank" class="text-[#8C593B] font-semibold hover:text-[#70462f]  transition-colors" (click)="$event.stopPropagation()">
+                  Visit website
+                </a>
+                }
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm">
+                @if (hotel.photo || hotel.image || hotel.image_url) {
+                <img [src]="hotel.photo || hotel.image_url || hotel.image" onerror="this.src=''" loading="lazy"
+                  decoding="async" class="w-[72px] h-[48px] object-cover mx-auto rounded border border-gray-300 shadow-sm">
+                }
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">{{ hotel.validUpto || hotel.valid_upto }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

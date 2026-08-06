@@ -1,0 +1,789 @@
+@import 'tailwindcss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+/* Prevent Flash of Unstyled Content (FOUC) on slow networks */
+app-nav-bar,
+app-footer {
+  visibility: hidden;
+}
+
+@theme {
+  --font-sans: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  
+  --color-primary: #00897B;
+  --color-primary-dark: #00695C;
+  --color-secondary: #29B6F6;
+  --color-secondary-light: #4FC3F7;
+  --color-accent: #F9A825;
+  --color-accent-light: #FBC02D;
+  
+  --color-bg-white: #FFFFFF;
+  --color-bg-alternate: #F7F9FB;
+  --color-bg-dark: #121212;
+  
+  --color-text-primary: #222222;
+  --color-text-secondary: #555555;
+  --color-text-light: #F5F5F5;
+  
+  --color-border-light: #EAEAEA;
+  --color-border-medium: #CCCCCC;
+}
+
+/* Base Styles that Tailwind preflight doesn't cover for our specific needs */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body.public-body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
+}
+
+body.admin-body {
+  background-color: #e9dfd8;
+  margin: 0;
+  padding: 0;
+}
+
+.empty-cage {
+  @apply bg-gray-200 border-2 border-dashed border-gray-400 flex items-center justify-center text-gray-500 font-medium;
+}
+
+/* Scroll snap utilities */
+.snap-x-mandatory {
+  scroll-snap-type: x mandatory;
+}
+.snap-start {
+  scroll-snap-align: start;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Marquee Slider Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* --- ADMIN THEME STYLES --- */
+.admin-theme {
+  --primary: #b4212c;
+  --primary-dark: #8f1821;
+  --primary-soft: #fff7f4;
+  --green: #417346;
+  --gold: #F4C95D;
+  --ink: #282322;
+  --muted: #756b67;
+  --line: #cfbdaf;
+  --panel: #fcf9f6;
+  --panel-soft: #fdf7f3;
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e9dfd8;
+  color: var(--ink);
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background-color: #ffffff;
+  color: var(--ink);
+  padding: 7px 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: var(--panel-soft);
+}
+
+input, textarea, select {
+  border: 1px solid var(--line);
+  background-color: #ffffff;
+  color: var(--ink);
+  padding: 9px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 6px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(180, 33, 44, 0.1);
+  outline: none;
+}
+
+/* Compact action cell layout — apply .action-cell class explicitly on action columns */
+.action-cell {
+  width: 1%;
+  white-space: nowrap;
+  text-align: center;
+  padding: 4px 6px !important;
+}
+
+/* Ensure tables scroll horizontally instead of overflowing the page */
+.table-responsive {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+/* Modal Popup Layout Classes */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(40, 35, 34, 0.42);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-container {
+  background-color: #ffffff;
+  border: 1px solid var(--line);
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 24px 70px rgba(88, 36, 25, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 40px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-soft);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ink);
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.modal-header .close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #f2eeec;
+  border: 1.5px solid #e0d8d4;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b5e59;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.modal-header .close-btn:hover {
+  background: #fdf2f2;
+  border-color: #e8b5b9;
+  color: #b4212c;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Confirmation dialog */
+.confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(40, 35, 34, 0.42);
+}
+
+.confirm-dialog {
+  width: min(420px, 100%);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(88, 36, 25, 0.22);
+  padding: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.confirm-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.confirm-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(180, 33, 44, 0.1);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-icon::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V8h2v5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V8h2v5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.confirm-header h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.confirm-message {
+  margin: 14px 0 18px;
+  color: #3b3431;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.confirm-btn {
+  min-width: 88px;
+  border-radius: 7px;
+  padding: 8px 13px;
+  font-weight: bold;
+}
+
+.confirm-cancel {
+  background: #ffffff;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.confirm-cancel:hover {
+  border-color: #d8c2ba;
+  background: #fff8f5;
+}
+
+.confirm-submit {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.confirm-submit:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* Page action layout header */
+.page-action-header,
+.page-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+.page-action-header h2,
+.page-title {
+  margin: 0;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  letter-spacing: -0.4px !important;
+}
+
+.page-action-header p,
+.page-subtitle {
+  margin: 4px 0 0 0 !important;
+  font-size: 13.5px !important;
+  color: #7c6e67 !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  letter-spacing: 0.1px !important;
+  line-height: 1.4 !important;
+}
+
+.btn-add-new {
+  background-color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 7px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--ink);
+  box-shadow: 0 8px 18px rgba(244, 201, 93, 0.25);
+}
+
+.btn-add-new:hover {
+  background-color: #e5b847;
+  border-color: #e5b847;
+}
+
+/* Form Image Preview Classes */
+.image-preview-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.image-preview-container label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-image-preview {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+.category-container,
+.form-card,
+.table-card {
+  background-color: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.category-container {
+  padding: 20px;
+  box-shadow: 0 14px 36px rgba(88, 36, 25, 0.12);
+}
+
+.form-card,
+.table-card {
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.table-card h3,
+h3 {
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.raw-input {
+  border: 1px solid var(--line) !important;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+  border-radius: 6px;
+  font-weight: bold;
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* Form action row — always keeps buttons side by side */
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Cancel button — same size as primary, always pushed to the right */
+.btn-cancel {
+  background-color: #fcf9f6 !important;
+  border: 1.5px solid #cfbdaf !important;
+  color: #4a4240 !important;
+  border-radius: 6px;
+  font-weight: bold;
+  width: auto;
+  flex-shrink: 0;
+  margin-left: auto !important;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #ebdcd3 !important;
+  border-color: #bfa99b !important;
+  color: #282322 !important;
+}
+
+.btn-primary:hover:not([disabled]) {
+  background-color: var(--primary-dark) !important;
+}
+
+.btn-primary:disabled {
+  background-color: #d9c9c2 !important;
+  border-color: #d9c9c2 !important;
+  color: #8e817c !important;
+}
+
+/* ── Action Buttons (Edit / Delete) ───────────────────────── */
+.btn-icon,
+.btn-edit,
+.btn-delete,
+.btn-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0.3px;
+  border-radius: 5px !important;
+  border: 1px solid transparent !important;
+  cursor: pointer;
+  line-height: 1.4;
+  margin-right: 6px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Edit Button */
+.btn-icon[title="Edit"],
+.btn-edit {
+  background-color: #d97706 !important; /* Premium Solid Gold/Amber */
+  color: #ffffff !important;
+}
+
+.btn-icon[title="Edit"]:hover,
+.btn-edit:hover {
+  background-color: #b45309 !important;
+  box-shadow: 0 4px 12px rgba(180, 83, 9, 0.2) !important;
+  transform: translateY(-1px);
+}
+
+/* Delete Button */
+.btn-icon[title="Delete"],
+.btn-delete {
+  background-color: #dc2626 !important; /* Premium Vibrant Red */
+  color: #ffffff !important;
+}
+
+.btn-icon[title="Delete"]:hover,
+.btn-delete:hover {
+  background-color: #b91c1c !important;
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.2) !important;
+  transform: translateY(-1px);
+}
+
+.alert {
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--line) !important;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  box-shadow: 0 2px 4px rgba(88, 36, 25, 0.02);
+}
+
+.alert.success {
+  background-color: #f6fbf7 !important;
+  border-color: #e6f4ea !important;
+  color: var(--green) !important;
+}
+
+.alert.error {
+  background-color: #fdf2f2 !important;
+  border-color: #f8d7da !important;
+  color: var(--primary) !important;
+}
+
+.raw-table,
+.data-table {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.raw-table th,
+.raw-table td,
+.data-table th,
+.data-table td {
+  border: 0 !important;
+  border-bottom: 1px solid #f1e5df !important;
+  color: var(--ink) !important;
+  font-size: 13px !important;
+  padding: 7px 10px !important;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.raw-table th,
+.data-table th,
+.data-table thead tr {
+  background-color: #ebdcd3 !important;
+  color: #5c4e48 !important;
+  font-size: 12px !important;
+  font-weight: bold;
+}
+
+.raw-table tbody tr:hover,
+.data-table tbody tr:hover {
+  background-color: #fffaf7;
+}
+
+.table-img {
+  border: 1px solid var(--line) !important;
+  border-radius: 6px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 2px 8px;
+  border: none;
+  border-radius: 4px;
+  color: var(--muted);
+  background-color: #fffaf7;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge.active {
+  border: none;
+  color: var(--green);
+  background-color: rgba(65, 115, 70, 0.1);
+}
+
+.badge.inactive {
+  border: none;
+  color: var(--primary);
+  background-color: rgba(180, 33, 44, 0.08);
+}
+
+.text-link {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.empty-state,
+.text-center {
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .page-action-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .btn-add-new {
+    width: 100%;
+  }
+}
+
+}
+
+/* ── Search Input Customization ───────────────────────── */
+input[placeholder="Search..."] {
+  border: 1.5px solid #dcd3ce !important; /* Subtle warm border matching theme */
+  border-radius: 6px !important;
+  padding: 4px 10px !important;
+  font-size: 13px !important;
+  color: var(--ink) !important;
+  background-color: #ffffff !important;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+  height: 30px !important;
+  box-sizing: border-box;
+}
+
+input[placeholder="Search..."]:focus {
+  outline: none !important;
+  border-color: #dcd3ce !important; /* No active border change on focus */
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* ── Clear/Cross Button Customization ─────────────────── */
+.btn-clear {
+  border: 1.5px solid #dcd3ce !important;
+  background-color: #f7f1ee !important;
+  color: #8e817c !important;
+  border-radius: 6px !important;
+  padding: 0 10px !important;
+  height: 30px !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+}
+
+.btn-clear:hover {
+  background-color: #ebdcd3 !important;
+  color: #5c4e48 !important;
+  border-color: #c8c0bc !important;
+}
+
+/* ── Accessibility Themes ───────────────────────── */
+/* Smart selectors to target main page backgrounds across the ENTIRE public site 
+   without touching cards, tables, or the admin dashboard. */
+
+/* Base classes for pages that we updated manually (Restores default colors for Reset button) */
+.page-bg-white { background-color: #ffffff; }
+.page-bg-gray-50 { background-color: #f9fafb; }
+.page-bg-gray-light { background-color: #F8F9FA; }
+.page-bg-gray-medium { background-color: #e6e8e8; }
+
+/* Base overrides for the body itself */
+body.theme-dark { background-color: #121212 !important; color: #ffffff !important; }
+body.theme-blue { background-color: #0B192C !important; color: #ffffff !important; }
+body.theme-yellow { background-color: #fef08a !important; color: #000000 !important; }
+body.theme-white { background-color: #ffffff !important; color: #000000 !important; }
+
+/* Target layout wrappers that are exactly 1 or 2 levels deep inside the routed component.
+   This safely grabs <section> or <div> page backgrounds without accidentally coloring 
+   deeply nested cards. We exclude 'rounded' to further protect any top-level cards.
+   We NO LONGER exclude 'shadow' because many page wrappers (like About Tripura) use large custom layout shadows! */
+
+body:has(app-nav-bar).theme-dark main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-dark main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-dark main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-dark main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+  background-color: #121212 !important;
+}
+
+body:has(app-nav-bar).theme-blue main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-blue main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-blue main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-blue main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+  background-color: #0B192C !important;
+}
+
+body:has(app-nav-bar).theme-yellow main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-yellow main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-yellow main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-yellow main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+  background-color: #fef08a !important;
+}
+
+body:has(app-nav-bar).theme-white main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-white main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-white main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-white main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+  background-color: #ffffff !important;
+}
+
+/* --- Smart Text Contrast Engine --- */
+/* Invert dark text (gray-600 to black) to white when sitting directly on dark backgrounds */
+body.theme-dark main :is(.text-gray-900, .text-gray-800, .text-gray-700, .text-gray-600, .text-gray-500, .text-black, .text-\[\#333\], .text-\[\#333333\], .text-\[\#8C1C13\], .text-\[\#8C593B\]),
+body.theme-blue main :is(.text-gray-900, .text-gray-800, .text-gray-700, .text-gray-600, .text-gray-500, .text-black, .text-\[\#333\], .text-\[\#333333\], .text-\[\#8C1C13\], .text-\[\#8C593B\]) {
+  color: #ffffff !important;
+}
+
+/* BUT: Restore the original dark colors if the text is inside a white/light card! */
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-900,
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-900 { color: #111827 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-800,
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-800 { color: #1f2937 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-700,
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-700 { color: #374151 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-600,
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-600 { color: #4b5563 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-500,
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-500 { color: #6b7280 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-black,
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-black { color: #000000 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333\],
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333\] { color: #333333 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333333\],
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333333\] { color: #333333 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C1C13\],
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C1C13\] { color: #8C1C13 !important; }
+
+body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C593B\],
+body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C593B\] { color: #8C593B !important; }

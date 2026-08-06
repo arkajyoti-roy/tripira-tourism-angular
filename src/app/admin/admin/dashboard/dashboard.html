@@ -1,0 +1,114 @@
+<div class="dashboard-page">
+  <!-- Welcome / Header Section -->
+  <div class="dashboard-header">
+    <div class="welcome-box">
+      <h2>Welcome to the Tourism Admin Portal</h2>
+      <p>Here is an overview of your website records and administrative activities.</p>
+    </div>
+    <div class="refresh-box" *ngIf="!loading">
+      <button (click)="loadStats()" class="btn-refresh">
+        Refresh Stats
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading dashboard metrics...</p>
+  </div>
+
+  <div *ngIf="!loading" class="dashboard-content animate-fade-in">
+    <!-- Quick Analytics Grid -->
+    <div class="metrics-grid">
+      <div class="metric-card metric-visitors">
+        <div class="metric-icon visitors-icon"></div>
+        <div class="metric-details">
+          <h3>Total Unique Visitors</h3>
+          <p class="metric-value">{{ stats.visitors }}</p>
+          <span class="metric-sub">{{ stats.today_visitors }} today</span>
+        </div>
+      </div>
+
+      <div class="metric-card metric-tours">
+        <div class="metric-icon tours-icon"></div>
+        <div class="metric-details">
+          <h3>Active Tours / Spots</h3>
+          <p class="metric-value">{{ stats.tours }}</p>
+          <span class="metric-sub">Across categories</span>
+        </div>
+      </div>
+
+      <div class="metric-card metric-hotels">
+        <div class="metric-icon hotels-icon"></div>
+        <div class="metric-details">
+          <h3>Accommodations</h3>
+          <p class="metric-value">{{ stats.accommodations }}</p>
+          <span class="metric-sub">Hotels & Homestays</span>
+        </div>
+      </div>
+
+      <div class="metric-card metric-guides">
+        <div class="metric-icon guides-icon"></div>
+        <div class="metric-details">
+          <h3>Registered Guides</h3>
+          <p class="metric-value">{{ stats.guides }}</p>
+          <span class="metric-sub">Verified profiles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Stats / Resources Grid -->
+    <div class="dashboard-grid">
+      <!-- Left Column: Resource Counts -->
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h3>Quick Access Metrics</h3>
+        </div>
+        <div class="resources-list">
+          <a routerLink="/admin/photo-galleries" class="resource-item">
+            <span class="resource-name">Photo Gallery Items</span>
+            <span class="resource-count">{{ stats.photos }}</span>
+          </a>
+          <a routerLink="/admin/adventures" class="resource-item">
+            <span class="resource-name">Adventure Activities</span>
+            <span class="resource-count">{{ stats.adventures }}</span>
+          </a>
+          <a routerLink="/admin/agents" class="resource-item">
+            <span class="resource-name">Registered Agents</span>
+            <span class="resource-count">{{ stats.agents }}</span>
+          </a>
+          <a routerLink="/admin/documents" class="resource-item">
+            <span class="resource-name">Documents / Notices</span>
+            <span class="resource-count">{{ stats.documents }}</span>
+          </a>
+          <a routerLink="/admin/testimonials" class="resource-item">
+            <span class="resource-name">Client Testimonials</span>
+            <span class="resource-count">{{ stats.testimonials }}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Recent Admin Activity Logs -->
+      <div class="dashboard-card">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+          <h3>Recent Operations Log</h3>
+          <a routerLink="/admin/logs" class="view-all-logs-btn">View All Logs →</a>
+        </div>
+        <div class="activity-timeline">
+          <div *ngFor="let log of stats.recent_logs" class="timeline-item">
+            <div class="log-info">
+              <span class="log-badge" [ngClass]="getLogBadgeClass(log.action_type)">
+                {{ formatLogAction(log.action_type) }}
+              </span>
+              <p class="log-desc">{{ log.details }}</p>
+              <span class="log-time">{{ log.created_at | date:'short' }}</span>
+            </div>
+          </div>
+          <div *ngIf="stats.recent_logs?.length === 0" class="empty-timeline">
+            No recent activity logged.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

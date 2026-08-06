@@ -1,0 +1,134 @@
+<div class="category-container">
+  <div class="page-action-header">
+    <div>
+      <h2>Manage Adventures</h2>
+      <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Manage all your adventure packages.</p>
+    </div>
+    <button type="button" class="btn-add-new" (click)="openAddForm()">+ Add New Adventure</button>
+  </div>
+
+  <!-- Modal Popup Form -->
+  <div class="modal-backdrop" *ngIf="showForm">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>{{ editingId ? 'Update Adventure' : 'Insert New Adventure' }}</h3>
+        <button type="button" class="close-btn" (click)="closeForm()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="alert error" *ngIf="error">{{ error }}</div>
+
+        <form (ngSubmit)="onSubmit()" #advForm="ngForm">
+          <div class="form-group">
+            <label>Adventure Type <span class="required">*</span></label>
+            <select name="adventure_type" [(ngModel)]="adventure_type" required class="raw-input">
+              <option value="">Select Adventure Type</option>
+              <option value="Trekking">Trekking</option>
+              <option value="JetSki">JetSki</option>
+              <option value="Paragliding">Paragliding</option>
+              <option value="HouseBoat">HouseBoat</option>
+              <option value="Camping">Camping</option>
+              <option value="ParaMotoring">ParaMotoring</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Adventure Name</label>
+            <input type="text" name="name" [(ngModel)]="name" required placeholder="Enter Adventure Name" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Description <span class="required">*</span></label>
+            <textarea name="description" [(ngModel)]="description" required placeholder="Enter Description" rows="4" class="raw-input"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" [(ngModel)]="location" placeholder="Enter Location" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text" name="price" [(ngModel)]="price" placeholder="Enter Price (e.g. ₹500/head)" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Contact Phone</label>
+            <input type="text" name="contact_phone" [(ngModel)]="contact_phone" placeholder="Enter Contact Phone" class="raw-input" />
+          </div>
+          <div class="form-group">
+            <label>Main Photo <span class="required" *ngIf="!editingId">*</span></label>
+            <input type="file" (change)="onFileChange($event)" accept="image/*" class="raw-input" />
+            <div class="image-preview-container" *ngIf="imagePreviewUrl || existingImageUrl">
+              <label>Preview:</label>
+              <img [src]="imagePreviewUrl || existingImageUrl" class="form-image-preview" />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" [disabled]="loading" class="btn-primary">
+              <span *ngIf="!loading">{{ editingId ? 'Update' : 'Create' }}</span>
+              <span *ngIf="loading">Loading...</span>
+            </button>
+            <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="alert success" *ngIf="message">{{ message }}</div>
+
+  <div class="table-card">
+    <h3>Adventure List</h3>
+    <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <div style="display: flex; gap: 5px; align-items: center;">
+        <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="currentPage = 1" placeholder="Search..." class="raw-input" style="width: 100%; max-width: 300px; margin-bottom: 0;" />
+        <button type="button" *ngIf="searchTerm" (click)="searchTerm = ''; currentPage = 1" class="btn-clear" style="cursor: pointer; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 5px 10px; font-family: Arial, sans-serif; font-weight: bold; height: 32px; display: inline-flex; align-items: center; justify-content: center;">✕</button>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: bold; color: var(--ink);">
+        <span>Show:</span>
+        <select [(ngModel)]="pageSize" (change)="currentPage = 1" class="raw-input" style="width: 80px; padding: 4px; height: 32px; margin-bottom: 0;">
+          <option [value]="30">30</option>
+          <option [value]="60">60</option>
+          <option [value]="100">100</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="raw-table">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Image</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of (items | tableSearch:searchTerm | slice:(currentPage-1)*pageSize : currentPage*pageSize); let i = index">
+            <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td>
+              <img *ngIf="item.image_url" [src]="item.image_url" alt="adventure image" style="width: 60px; height: 50px; object-fit: cover; border-radius: 4px;" />
+              <span *ngIf="!item.image_url" style="color: #aaa;">No image</span>
+            </td>
+            <td>{{ item.adventure_type }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.location }}</td>
+            <td>{{ item.price }}</td>
+            <td class="action-cell">
+              <button class="btn-icon" title="Edit" (click)="editItem(item)">Edit</button>
+              <button class="btn-icon" title="Delete" (click)="deleteItem(item.id)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="(items | tableSearch:searchTerm).length === 0">
+            <td colspan="7" class="empty-state">No adventures found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;" *ngIf="(items | tableSearch:searchTerm).length > pageSize">
+      <button type="button" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1" class="btn-icon" style="padding: 5px 10px;">Previous</button>
+      <span style="font-size: 14px;">Page {{ currentPage }} of {{ Math.ceil((items | tableSearch:searchTerm).length / pageSize) }}</span>
+      <button type="button" [disabled]="currentPage * pageSize >= (items | tableSearch:searchTerm).length" (click)="currentPage = currentPage + 1" class="btn-icon" style="padding: 5px 10px;">Next</button>
+    </div>
+  </div>
+</div>

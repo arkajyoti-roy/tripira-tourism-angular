@@ -1,0 +1,68 @@
+<section class=" py-[60px] md:py-[80px] relative overflow-hidden">
+  
+  <!-- Faint Watermark Background Images (Placeholders for real assets) -->
+  <img loading="lazy" src="map-watermark.png" alt="" class="absolute left-0 top-0 h-full object-contain opacity-20 pointer-events-none" onerror="this.style.display='none'">
+  <img loading="lazy" src="paper-plane.png" alt="" class="absolute right-[5%] top-[-20px] h-[180px] object-contain drop-shadow-xl pointer-events-none z-10" onerror="this.style.display='none'">
+
+  <div class="max-w-[1300px] mx-auto px-4 text-center relative z-20">
+    
+    <!-- Headers -->
+    <div class="mb-[40px]">
+      <p class="text-[#8C1C13] text-[1.4rem] md:text-[1.6rem] mb-1 tracking-wide" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Dream Destinations</p>
+      <h2 class="text-gray-800 text-[2.2rem] md:text-[2.6rem] font-bold tracking-tight" style="font-family: 'Arial Narrow', Arial, sans-serif;">To Plan Your Trip</h2>
+    </div>
+
+    <!-- Cards Grid (Slider) -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-5 text-left hide-scrollbar pb-4" #scrollContainer (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()">
+       
+      @for (dest of destinations(); track dest.id; let i = $index) {
+        <a [routerLink]="['/category', dest.id]" class="block bg-gradient-to-br from-[#FBF4EC] via-[#F2C14E]/15 to-[#8C1C13]/10 rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-lg transition-shadow duration-300 w-[85vw] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0 snap-start cursor-pointer group">
+          <!-- IMAGE -->
+          <div class="relative overflow-hidden rounded-xl">
+            <img [src]="dest.image_url" [alt]="dest.name || 'Destination ' + dest.id" 
+                 loading="lazy" decoding="async" width="800" height="400"
+                 class="w-full h-[320px] object-cover transition-transform duration-700 group-hover:scale-110" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            
+            <!-- Fallback when image is missing -->
+            <div class="w-full h-[320px] bg-gray-300 flex-col items-center justify-center text-gray-500 text-xs hidden">
+              <span>[Image: {{dest.image}}]</span>
+            </div>
+          </div>
+        
+          <!-- Text Content -->
+          <div class="pt-6 pb-2 px-1 text-left">
+            <h3 class="text-[1.35rem] text-gray-800 font-extrabold mb-3 truncate transition-colors group-hover:text-[#8C593B]" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+              {{ dest.name }}
+            </h3>
+            <p class="text-gray-600 text-[1rem] leading-relaxed line-clamp-3">
+              {{ dest.description }}
+            </p>
+          </div>
+        </a>
+      }
+    </div>
+    
+    <!-- Controls (Maroon Circles + Dashes) -->
+    <div class="flex flex-col items-center gap-4 mt-[40px]">
+      <div class="flex justify-center gap-3">
+        <button class="w-[35px] h-[35px] bg-[#8C1C13] hover:bg-[#68130E] text-white flex items-center cursor-pointer justify-center rounded-full transition-colors shadow-md" (click)="scrollLeft(scrollContainer)">
+          <span class="material-symbols-outlined text-[1.2rem]">chevron_left</span>
+        </button>
+        <button class="w-[35px] h-[35px] bg-[#8C1C13] hover:bg-[#68130E] text-white flex items-center justify-center rounded-full transition-colors shadow-md cursor-pointer" (click)="scrollRight(scrollContainer)">
+          <span class="material-symbols-outlined text-[1.2rem]">chevron_right</span>
+        </button>
+      </div>
+      <!-- Decorative Pagination Dashes -->
+      <div class="flex gap-2 items-center h-4">
+        @for (dest of destinations(); track dest.id; let i = $index) {
+          <button (click)="scrollToIndex(scrollContainer, i)"
+                  class="w-1.5 rounded-full transition-all duration-300 cursor-pointer"
+                  [ngClass]="activeIndex() === i ? 'h-4 bg-[#8C1C13]' : 'h-2.5 bg-gray-400 hover:bg-gray-500'"
+                  [attr.aria-label]="'Go to slide ' + (i + 1)"></button>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>

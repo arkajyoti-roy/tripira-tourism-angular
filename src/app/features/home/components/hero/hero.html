@@ -1,0 +1,47 @@
+<section
+  class="relative h-[calc(100vh-64px)] min-h-[500px] flex flex-col justify-end items-center overflow-hidden pb-[8vh]">
+
+  <!-- Video Background -->
+  <video fetchpriority="high" preload="none" autoplay loop muted [muted]="true" playsinline
+    class="absolute inset-0 w-full h-full object-cover z-0">
+    <source src="https://res.cloudinary.com/drtvxt1v3/video/upload/ac_none/v1784272058/Untitled_design_6_wzg0xu.mp4" type="">
+    
+    <!-- <source src="Untitled design(3).mp4"> -->
+
+    <!-- <source
+      src="https://res.cloudinary.com/drtvxt1v3/video/upload/f_auto,q_auto/v1783924804/landing_page_video_qygqah.mp4"
+      type="video/mp4"> -->
+  </video>
+
+  <!-- Subtle Gradient Overlay -->
+  <div class="absolute inset-0 w-full h-full bg-black/20 z-[1]"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 w-full px-4 flex flex-col items-center gap-1">
+
+    <!-- Explore Button -->
+    <!-- <a routerLink="/best-packages"
+      class="bg-[#8C593B] text-white font-medium px-8 py-3 rounded-sm hover:bg-[#69422A] transition-colors text-[0.95rem] flex items-center justify-center tracking-wide">
+      <button>
+        Explore Tour &rarr;
+      </button>
+    </a> -->
+    <!-- Campaign Graphic -->
+    <div class="w-[55%] sm:w-[40%] md:w-[28%] max-w-[350px] flex justify-center items-center relative mb-[-80px]">
+      <!-- Blurred Semi-circle Background -->
+      <div
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180%] h-[130%] aspect-[2/1] bg-white/5 backdrop-blur-md rounded-t-full -z-10"
+        style="-webkit-mask-image: radial-gradient(ellipse at bottom, black 50%, transparent 80%); mask-image: radial-gradient(ellipse at bottom, black 50%, transparent 80%);">
+      </div>
+
+      <img src="trourism_new_ab.png" alt="Tripura, where Culture meets Nature"
+        class="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105 relative z-10">
+    </div>
+
+  </div>
+  <!-- <div>
+      <img fetchpriority="high" decoding="async" src="trourism_new_ab.png" alt="Tripura Tourism Logo" width="150"
+        height="150"
+        class="h-[80px] sm:h-[100px] md:h-[120px] xl:h-[150px] min-w-[60px] sm:min-w-[80px] md:min-w-[100px] xl:min-w-[120px] object-contain transition-transform duration-300 hover:scale-105">
+    </div> -->
+</section>

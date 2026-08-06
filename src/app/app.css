@@ -1,0 +1,9 @@
+/* Cleared */
+.grid-router-container {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.grid-router-container > :not(router-outlet) {
+  grid-column: 1;
+  grid-row: 1;
+}

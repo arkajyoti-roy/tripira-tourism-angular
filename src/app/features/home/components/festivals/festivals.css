@@ -1,0 +1,32 @@
+.card-marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+}
+
+.card-marquee-content {
+  display: flex;
+  gap: 8px; /* Extremely small gap between cards like screenshot */
+  width: max-content;
+  animation: card-marquee 40s linear infinite;
+}
+
+/* Duplicate the track to make it seamless */
+@keyframes card-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Scroll exactly half of the duplicated track */
+  }
+}
+
+.card-marquee-content:hover {
+  animation-play-state: paused;
+}
+
+/* Fallback background for missing images */
+.placeholder-bg {
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+}

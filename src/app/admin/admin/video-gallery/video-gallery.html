@@ -1,0 +1,114 @@
+<div class="category-container">
+  <div class="page-action-header">
+    <div>
+      <h2>Manage Video Galleries</h2>
+      <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Upload and manage video embed links.</p>
+    </div>
+    <button type="button" class="btn-add-new" (click)="openAddForm()">+ Add New Video</button>
+  </div>
+
+  <!-- Modal Popup Form -->
+  <div class="modal-backdrop" *ngIf="showForm">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>{{ editingItem ? 'Edit Video' : 'Insert New Video Embed' }}</h3>
+        <button type="button" class="close-btn" (click)="closeForm()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="alert error" *ngIf="error">{{ error }}</div>
+
+        <form (ngSubmit)="onSubmit()" #videoForm="ngForm">
+          <div class="form-group">
+            <label>Video Title <span class="required">*</span></label>
+            <input type="text" name="name" [(ngModel)]="name" required placeholder="Enter Video Title" class="raw-input" />
+          </div>
+
+          <div class="form-group">
+            <label>YouTube Link or Video ID <span class="required">*</span></label>
+            <input type="text" name="link" [(ngModel)]="link" required placeholder="e.g. https://www.youtube.com/watch?v=eUo3ybC4uOk" class="raw-input" />
+            <small style="color:#7c6e67; margin-top:4px; display:block;">You can paste either the full YouTube URL or just the 11-character Video ID.</small>
+          </div>
+
+          <div *ngIf="editingItem" style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Current Video Preview:</label>
+            <iframe width="220" height="130" [src]="getSafeUrl(editingItem.link)" frameborder="0" allowfullscreen style="display:block;"></iframe>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" [disabled]="loading" class="btn-primary">
+              <span *ngIf="!loading">{{ editingItem ? 'Save Changes' : 'Add Video' }}</span>
+              <span *ngIf="loading">Processing...</span>
+            </button>
+            <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LIST TABLE ── -->
+  <div class="alert success" *ngIf="message">{{ message }}</div>
+
+  <div class="table-card">
+    <h3>Video Embed List</h3>
+    <div style="margin-bottom: 12px; display: flex; gap: 5px; align-items: center;">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search..." class="raw-input" style="width: 100%; max-width: 300px;" />
+      <button type="button" *ngIf="searchTerm" (click)="searchTerm = ''" class="btn-clear" style="cursor: pointer; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 5px 10px; font-family: Arial, sans-serif; font-weight: bold; height: 32px; display: inline-flex; align-items: center; justify-content: center;">✕</button>
+    </div>
+    <div class="table-responsive">
+      <table class="raw-table">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Preview (Click to play)</th>
+            <th>Title</th>
+            <th>YouTube Link</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items | tableSearch:searchTerm; let i = index" [class.row-highlight]="editingItem?.id === item.id">
+            <td>{{ i + 1 }}</td>
+            <td style="width: 160px; min-width: 160px; vertical-align: middle;">
+              <div (click)="openVideoPopup(item)" class="video-preview-thumbnail" style="cursor: pointer; position: relative; width: 140px; height: 80px; overflow: hidden; border: 1.5px solid #dcd3ce; border-radius: 6px; background: #000000; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <img [src]="'https://img.youtube.com/vi/' + getYouTubeId(item.link) + '/hqdefault.jpg'" class="no-zoom" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.85;" />
+                <div style="position: absolute; width: 36px; height: 26px; background: rgba(220, 38, 38, 0.95); border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease;">
+                  <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: white;"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </td>
+            <td style="vertical-align: middle;">{{ item.name }}</td>
+            <td style="vertical-align: middle; max-width: 300px; word-break: break-all;">
+              <a [href]="item.link.startsWith('http') ? item.link : 'https://www.youtube.com/watch?v=' + item.link" target="_blank" class="text-link">
+                {{ item.link }}
+              </a>
+            </td>
+            <td class="action-cell" style="width: 150px; min-width: 150px; vertical-align: middle; white-space: nowrap;">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <button class="btn-icon btn-edit" title="Edit" (click)="startEdit(item)">Edit</button>
+                <button class="btn-icon btn-delete" title="Delete" (click)="deleteItem(item.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="(items | tableSearch:searchTerm).length === 0">
+            <td colspan="5" class="empty-state">No videos found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Video Player Popup Modal -->
+  <div class="modal-backdrop" *ngIf="selectedVideo" (click)="closeVideoPopup()">
+    <div class="modal-container" style="max-width: 680px; width: 92%; background: #000000; padding: 0; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" (click)="$event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #1a1513; border-bottom: 1px solid #2c2421; color: #ffffff;">
+        <h3 style="margin: 0; border: none; font-size: 15px; color: #ffffff; font-weight: bold; letter-spacing: 0.2px;">{{ selectedVideo.name }}</h3>
+        <button type="button" class="close-btn" (click)="closeVideoPopup()" style="color: #ffffff; background: transparent; border: none; font-size: 18px; cursor: pointer; padding: 0;">✕</button>
+      </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000000;">
+        <iframe [src]="getSafeUrl(selectedVideo.link)" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>

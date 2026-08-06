@@ -1,0 +1,84 @@
+<div class="w-full min-h-screen relative">
+  
+  <!-- Fixed Hero Background -->
+  <img loading="lazy" src="/about/rabindranath/10.jpg" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="fixed inset-0 w-full h-screen object-cover z-0" >
+  <div class="fixed inset-0 bg-black/30 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section Content -->
+  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+    
+    <div class="text-center mt-16 pointer-events-auto">
+      <h1 class="text-white text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] font-normal tracking-wide leading-tight px-4" style="font-family: 'Impact', 'Arial Black', sans-serif;">
+        Rabindranath and <br> Tripura
+      </h1>
+      <p class="text-white/90 text-sm md:text-base font-medium mt-6 flex items-center gap-2 justify-center drop-shadow-md">
+        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
+        <span class="text-xs">&gt;</span> 
+        <span>RabindraNath And Tripura</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="relative z-20 w-full bg-[#e6e8e8] py-[80px] overflow-hidden">
+    
+    <!-- Faint Map Watermark -->
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    
+    <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+      
+      <!-- Cyan Sub-heading -->
+      <div class="w-full max-w-4xl mx-auto text-center mb-16">
+        <p class="text-[#8C593B] font-medium text-lg md:text-xl lg:text-2xl leading-relaxed">
+          Nobel-laureate poet Rabindranath Tagore's close relation with the princely state of Tripura and its four successive rulers forms an important chapter in the state's history.
+        </p>
+      </div>
+
+      <!-- Main Content Grid (Text Left, Slider Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start">
+        
+        <!-- Text Column -->
+        <div class="text-gray-700 text-[0.95rem] md:text-base leading-relaxed text-justify space-y-6">
+          <p>
+            This was of course a natural corollary to the liberal patronage extended to Bengali language and culture by the Manikya dynasty rulers of Tripura since the days of king Ratna Manikya (1464-68). It was in the course of a political crisis that Tripura's ruling monarch Krishna Kishore Manikya (1830-1849) got in touch with prince Dwarkanath Tagore, fabled grand father of Rabindranath, and obtained timely assistance.
+          </p>
+          <p>
+            In his maiden letter to king Bir Chandra Manikya (1862-1896) dated may 6 1886 poet Rabindranath Tagore referred to this familial relation while seeking ingredients of Tripura's history on which he later based his celebrated novel 'Rajarshi' and dramas 'Visarjan' and 'Mukut'. Even before that, young Rabindranath had occasion to have a feel of king Bir Chandra Manikya's magnanimity in 1882. The king was in a state of shock following the untimely death of his dear wife and queen Ms Bhanumati in the year 1881 and during that period of bereavement he studied young Rabindranath's celebrated love-poem 'Bhagna Hriday'.
+          </p>
+          <p>
+            A highly refined and sensitive man – practically a poet in the core of his heart-king Birochandra sent his emissary Mr Radharaman Ghosh to the family home of the Tagores at Jorasanko near Calcutta to congratulate the poet on his behalf. Rabindranath's relation with Tripura's royal family did not however snap-as he himself had feared-with the demise of king Bir Chandra Manikya in 1896.
+          </p>
+        </div>
+
+        <!-- Image Slider Column -->
+        <div class="flex flex-col items-center justify-center w-full">
+          <div class="bg-white  shadow-lg rounded-md w-full relative">
+            
+            <div class="relative w-full aspect-[4/3] rounded overflow-hidden">
+              <img loading="lazy" [src]="images[currentIndex]" class="w-full h-full object-cover rounded-md">
+            </div>
+            
+            <!-- Controls below the image -->
+            <div class="flex items-center justify-center gap-2 mt-4 pb-2">
+              <button (click)="prevImage()" class="bg-[#8C593B] hover:bg-[#69422A] text-white w-8 h-8 flex items-center justify-center rounded-md transition-colors shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              
+              <button (click)="nextImage()" class="bg-[#8C593B] hover:bg-[#69422A] text-white w-8 h-8 flex items-center justify-center rounded-md transition-colors shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
