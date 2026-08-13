@@ -13,6 +13,8 @@ import { environment } from '../../../../environments/environment';
 })
 export class RegisteredPrivateHotels implements OnInit {
   hotels = signal<any[]>([]);
+  loading = signal<boolean>(true);
+  viewMode = signal<'grid' | 'list'>('grid');
 
   constructor(private http: HttpClient) {}
 
@@ -20,9 +22,11 @@ export class RegisteredPrivateHotels implements OnInit {
     this.http.get<any[]>(`${environment.apiUrl}/accommodations/private`).subscribe({
       next: (data) => {
         this.hotels.set(data.sort((a:any, b:any)=> a.displayorder - b.displayorder));
+        this.loading.set(false);
       },
       error: (err) => {
         console.error('Failed to fetch private accommodations', err);
+        this.loading.set(false);
       }
     });
   }

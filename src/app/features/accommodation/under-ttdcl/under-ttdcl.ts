@@ -12,14 +12,18 @@ import { environment } from '../../../../environments/environment';
 })
 export class UnderTtdcl implements OnInit {
   lodges = signal<any>([]);
+  loading = signal<boolean>(true);
+  viewMode = signal<'grid' | 'list'>('grid');
   constructor(private http: HttpClient){}
   ngOnInit(){
     this.http.get<any[]>(`${environment.apiUrl}/accommodations/govt`).subscribe({
       next: (data) => {
         this.lodges.set(data.sort((a:any, b:any)=> a.displayorder - b.displayorder));
+        this.loading.set(false);
       },
       error: (err) => {
         console.error("Failed to fetch lodges");
+        this.loading.set(false);
       }
     });
   }
