@@ -1,120 +1,159 @@
-<div class="w-full min-h-screen relative">
+<div class="w-full min-h-screen relative bg-[#fdfbf7]">
   
   <!-- Fixed Hero Background -->
-  <img loading="lazy" src="/about/culture & tribe/cul.png" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="fixed inset-0 w-full h-screen object-cover z-0">
-  <div class="fixed inset-0 bg-black/20 z-0 pointer-events-none"></div>
+  <div class="fixed inset-0 w-full h-screen z-0 bg-black">
+    <img loading="lazy" src="/about/culture & tribe/cul.png" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70 pointer-events-none"></div>
+  </div>
 
   <!-- Hero Section Content -->
-  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none px-4">
     
-    <div class="text-center mt-16 pointer-events-auto">
-      <h1 class="text-white text-[2rem] sm:text-[2.5rem] md:text-[4rem] font-normal uppercase tracking-wide  leading-tight px-4" style="font-family: 'Impact', 'Arial Black', sans-serif;">
-        Tribes & Cultural<br>Heritage of Tripura
+    <div class="text-center mt-16 pointer-events-auto backdrop-blur-[2px] bg-black/10 p-6 md:p-8 lg:px-12 rounded-3xl border border-white/10 shadow-2xl transform transition-transform hover:scale-105 duration-500 w-full max-w-[95%] sm:max-w-[80%] md:max-w-fit">
+      <h1 class="text-white text-[1.8rem] sm:text-[2.5rem] md:text-[3.5rem] font-extrabold uppercase tracking-widest drop-shadow-2xl leading-[1.1] px-2 md:px-4" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+        Tribes & Cultural<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F2C14E] to-[#fff] text-[2.2rem] sm:text-[3rem] md:text-[4.5rem]">Heritage</span>
       </h1>
-      <p class="text-white/90 text-sm md:text-base font-medium mt-4 flex items-center gap-2 justify-center drop-shadow-md">
-        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
-        <span class="text-xs">&gt;</span> 
-        <span>Tribes & Cultural Heritage</span>
+      <div class="w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-[#F2C14E] to-transparent mx-auto mt-4 md:mt-6 mb-4 md:mb-6"></div>
+      <p class="text-white/90 text-xs sm:text-sm md:text-[1.1rem] font-medium flex items-center gap-2 md:gap-3 justify-center drop-shadow-md tracking-wider uppercase">
+        <span class="hover:text-[#F2C14E] cursor-pointer transition-colors duration-300" routerLink="/">Home</span> 
+        <span class="text-[#F2C14E]">&bull;</span> 
+        <span class="text-white/70 text-center">Tribes & Cultural Heritage</span>
       </p>
     </div>
   </div>
 
   <!-- Content Section -->
-  <div class="relative z-20 w-full bg-[#e6e8e8] shadow-[0_-10px_25px_rgba(0,0,0,0.1)] py-[80px] overflow-hidden">
+  <div class="relative z-20 w-full bg-gradient-to-b from-[#fdfbf7] to-[#f4eee6] shadow-[0_-10px_25px_rgba(0,0,0,0.1)] py-16 md:py-24 lg:py-[100px] overflow-hidden">
     
-    <!-- Faint Map Watermark -->
-    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[5%] left-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
-    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[40%] right-[5%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
-    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[80%] left-[10%] w-[80%] md:w-[50%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#F2C14E] rounded-full blur-[80px] md:blur-[150px] opacity-10 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute top-1/3 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#8C1C13] rounded-full blur-[80px] md:blur-[150px] opacity-[0.08] pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
+    <div class="absolute bottom-1/4 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#F2C14E] rounded-full blur-[80px] md:blur-[150px] opacity-10 pointer-events-none transform translate-x-1/3 translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#8C1C13] rounded-full blur-[80px] md:blur-[150px] opacity-[0.08] pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
 
-    <div class="w-full px-4 md:px-8 lg:px-12 flex flex-col gap-16 relative z-10">
+    <div class="w-full max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-8 md:px-16 lg:px-24 flex flex-col gap-16 md:gap-24 lg:gap-[120px] relative z-10">
       
       <!-- CULTURE SECTION -->
-      <section>
-        <div class="flex justify-center mb-10">
-          <div class="bg-[#8C593B] text-white px-10 py-2 rounded-md font-bold text-lg shadow-md uppercase tracking-wide">
-            Cultural Heritage of Tripura
-          </div>
+      <section class="relative group">
+        <div class="text-center mb-10 md:mb-16">
+          <p class="text-[#8C1C13] text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Traditions & Customs</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">Cultural Heritage</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#8C1C13] to-[#F2C14E] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
 
-        <div class="flex flex-col gap-10">
-          <!-- Block 1 (Full Width Text) -->
-          <div class="w-full">
-            <div class="text-gray-800 text-[0.85rem] md:text-[0.95rem] leading-relaxed text-justify font-medium">
-              <p>
+        <div class="flex flex-col gap-16 md:gap-24">
+          
+          <!-- Block 1 (Intro Text) -->
+          <div class="relative p-6 md:p-8 lg:px-12 bg-white/70 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+            <div class="absolute -top-4 -left-2 md:-top-6 md:-left-4 text-[6rem] md:text-[8rem] text-[#8C1C13]/5 font-serif leading-none select-none pointer-events-none">"</div>
+            <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify font-medium">
+              <p class="first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-bold first-letter:text-[#8C1C13] first-letter:mr-2 first-letter:float-left first-letter:leading-[0.9] first-line:tracking-wide">
                 With communities across the globe searching for roots, expressions such as 'Cultural Identity', 'Cultural Relativism' and 'Cultural Mosaic' dominate scholarly discourse all around. But in the context of Tripura, it is the cultural cross-currents which unite the people in a spirit of amity and harmony. The undulating hillscape of the state-sixty percent of the Tripura's territory is still covered with lush greenery of forest-resonate with the traditional tribal music and dances on ceremonial occasions.
               </p>
             </div>
           </div>
           
           <!-- Block 2 (Image Left, Text Right) -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-transparent">
-            <div class="md:col-span-4 w-full flex justify-center">
-              <img loading="lazy" src="/about/culture & tribe/hozagiri.png" class="w-full h-auto object-cover rounded-md shadow-sm aspect-square md:aspect-[4/3]">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-6 relative order-2 lg:order-1">
+              <div class="absolute inset-0 bg-gradient-to-bl from-[#F2C14E]/30 to-[#8C1C13]/30 transform -translate-x-3 translate-y-3 md:-translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:-translate-x-5 group-hover:translate-y-5 md:group-hover:-translate-x-6 md:group-hover:translate-y-6"></div>
+              <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+                <img loading="lazy" src="/about/culture & tribe/hozagiri.png" class="w-full h-auto object-cover rounded-[1.2rem] aspect-square md:aspect-[4/3] transform transition-transform duration-700 hover:scale-105">
+              </div>
             </div>
-            <div class="md:col-span-8 text-gray-800 text-[0.85rem] md:text-[0.95rem] leading-relaxed text-justify font-medium">
-              <p>
-                On the plains dotted with paddy fields, lakes, rivers and green-capped habitations the sombre notes of 'Rabindra Sangeet' (Musical compositions of Rabindra Nath Tagore), 'Nazrul Geeti' (Songs composed and tined by poet Kazi Nazrul Islam) and lilting melodies of maestro Sachin Debbarman add to the colour of life and society. The 'Jari' and 'Sari' dances of the Muslim community, joyous celebrations of Christmas and the quiet ambience of the 'Buddha Purnima' enrich the cultural diversity of the state. But the essential unity underlying Tripura's cultural diversity finds eloquent expression in adaptations across the barrier of language and heritage. The non-tribal Bengalis have appropriated the annual weeklong worship in the temple of 'Chaturdash Debta', a traditional festival of the indigenous tribals, in the month of July while tribals–and for that matter-the entire population enthusiastically participate in and enjoy the festivities associated with the five day 'Durga Puja'.
-              </p>
+            
+            <div class="lg:col-span-6 order-1 lg:order-2 relative p-6 md:p-8 lg:px-10 bg-gradient-to-br from-[#8C1C13]/[0.03] to-transparent rounded-[2rem] border-l-[6px] border-[#8C1C13] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:bg-[#8C1C13]/[0.05] transition-colors duration-500">
+              <div class="absolute -top-6 -right-2 md:-top-8 md:-right-4 text-[#8C1C13]/5 pointer-events-none select-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" class="md:w-[80px] md:h-[80px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11 4H4C2.9 4 2 4.9 2 6V13C2 14.1 2.9 15 4 15H7.5C7.5 17.5 5.5 19.5 3 19.5V22C7.1 22 10.5 18.6 10.5 14.5V4ZM22 4H15C13.9 4 13 4.9 13 6V13C13 14.1 13.9 15 15 15H18.5C18.5 17.5 16.5 19.5 14 19.5V22C18.1 22 21.5 18.6 21.5 14.5V4Z"/></svg>
+              </div>
+              <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify font-medium">
+                <p>
+                  On the plains dotted with paddy fields, lakes, rivers and green-capped habitations the sombre notes of 'Rabindra Sangeet' (Musical compositions of Rabindra Nath Tagore), 'Nazrul Geeti' (Songs composed and tined by poet Kazi Nazrul Islam) and lilting melodies of maestro Sachin Debbarman add to the colour of life and society. The 'Jari' and 'Sari' dances of the Muslim community, joyous celebrations of Christmas and the quiet ambience of the 'Buddha Purnima' enrich the cultural diversity of the state. But the essential unity underlying Tripura's cultural diversity finds eloquent expression in adaptations across the barrier of language and heritage. The non-tribal Bengalis have appropriated the annual weeklong worship in the temple of 'Chaturdash Debta', a traditional festival of the indigenous tribals, in the month of July while tribals–and for that matter-the entire population enthusiastically participate in and enjoy the festivities associated with the five day 'Durga Puja'.
+                </p>
+              </div>
             </div>
           </div>
 
           <!-- Block 3 (Text Left, Image Right) -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-transparent">
-            <div class="md:col-span-8 text-gray-800 text-[0.85rem] md:text-[0.95rem] leading-relaxed text-justify font-medium order-2 md:order-1">
-              <p>
-                This process has gained in momentum by the catholicity of culture practised by the kings of Manikya dynasty who ruled the state for more than five centuries and their magnanimous espousal of cultural cross-currents. The inevitable fall-out of this was the domination of Indian film and popular music spanning five decades by maestro Sachin Debbarman, a scion of Tripura's royal family and the overwhelming appreciation showered on a troupe of Reang tribal girls who enthralled a Japanese audience with delicately rhythmic performance of their traditional 'Hozagiri' dance in an auditorium of Tokyo.
-              </p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-6 relative p-6 md:p-8 lg:px-10 bg-white/70 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+              <div class="absolute -top-4 -left-2 md:-top-6 md:-left-4 text-[6rem] md:text-[8rem] text-[#F2C14E]/20 font-serif leading-none select-none pointer-events-none">"</div>
+              <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify font-medium">
+                <p>
+                  This process has gained in momentum by the catholicity of culture practised by the kings of Manikya dynasty who ruled the state for more than five centuries and their magnanimous espousal of cultural cross-currents. The inevitable fall-out of this was the domination of Indian film and popular music spanning five decades by maestro Sachin Debbarman, a scion of Tripura's royal family and the overwhelming appreciation showered on a troupe of Reang tribal girls who enthralled a Japanese audience with delicately rhythmic performance of their traditional 'Hozagiri' dance in an auditorium of Tokyo.
+                </p>
+              </div>
             </div>
-            <div class="md:col-span-4 w-full flex justify-center order-1 md:order-2">
-              <img loading="lazy" src="/about/culture & tribe/durga.png" class="w-full h-auto object-cover rounded-md shadow-sm aspect-square md:aspect-[4/3]">
+            
+            <div class="lg:col-span-6 relative">
+              <div class="absolute inset-0 bg-gradient-to-tr from-[#8C1C13]/30 to-[#F2C14E]/30 transform translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5 md:group-hover:translate-x-6 md:group-hover:translate-y-6"></div>
+              <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+                <img loading="lazy" src="/about/culture & tribe/durga.png" class="w-full h-auto object-cover rounded-[1.2rem] aspect-square md:aspect-[4/3] transform transition-transform duration-700 hover:scale-105">
+              </div>
             </div>
           </div>
+          
         </div>
       </section>
 
       <!-- TRIBES SECTION -->
-      <section>
-        <div class="flex justify-center mb-10">
-          <div class="bg-[#8C593B] text-white px-10 py-2 rounded-md font-bold text-lg shadow-md uppercase tracking-wide">
-            Tribes of Tripura
-          </div>
+      <section class="mt-8 md:mt-16">
+        <div class="text-center mb-16 md:mb-24">
+          <p class="text-[#F2C14E] drop-shadow-sm text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Indigenous Roots</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">Tribes of Tripura</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#F2C14E] to-[#8C1C13] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
 
-        <div class="flex flex-col gap-12">
+        <div class="flex flex-col gap-16 md:gap-24">
           
           <!-- Dynamic Loop for 19 Tribes -->
-          <div *ngFor="let tribe of tribes; let i = index" class="w-full">
+          <div *ngFor="let tribe of tribes; let i = index" class="w-full relative group">
             
-            <!-- Left-aligned Title Above the Grid -->
-            <div class="text-left mb-6">
-              <small class="text-[#8C593B] font-medium" style="font-size: 2rem;">{{ tribe.name }}</small>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              
               <!-- Even index: 0, 2, 4... (Text Left, Image Right) -->
               <ng-container *ngIf="i % 2 === 0">
-                <div class="md:col-span-8 flex flex-col gap-3 order-2 md:order-1">
-                  <p class="text-gray-800 text-[0.85rem] md:text-[0.95rem] leading-relaxed text-justify font-medium">
-                    {{ tribe.description }}
-                  </p>
+                <div class="lg:col-span-6 relative p-6 md:p-8 lg:px-10 bg-white/70 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 order-2 lg:order-1">
+                  <div class="absolute -top-4 -left-2 md:-top-6 md:-left-4 text-[6rem] md:text-[8rem] text-[#8C1C13]/5 font-serif leading-none select-none pointer-events-none">"</div>
+                  <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify space-y-4 font-medium">
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#8C1C13] mb-4" style="font-family: 'Arial Narrow', Arial, sans-serif;">{{ tribe.name }}</h3>
+                    <p class="first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-bold first-letter:text-[#8C1C13] first-letter:mr-2 first-letter:float-left first-letter:leading-[0.9] first-line:tracking-wide">
+                      {{ tribe.description }}
+                    </p>
+                  </div>
                 </div>
-                <div class="md:col-span-4 w-full flex justify-center order-1 md:order-2">
-                  <img loading="lazy" [src]="tribe.image" class="w-full object-cover rounded-md shadow-sm aspect-square md:aspect-[4/3]">
+                
+                <div class="lg:col-span-6 relative order-1 lg:order-2">
+                  <div class="absolute inset-0 bg-gradient-to-tr from-[#8C1C13]/30 to-[#F2C14E]/30 transform translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5 md:group-hover:translate-x-6 md:group-hover:translate-y-6"></div>
+                  <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+                    <img loading="lazy" [src]="tribe.image" class="w-full h-auto object-cover rounded-[1.2rem] aspect-square md:aspect-[4/3] transform transition-transform duration-700 hover:scale-105">
+                  </div>
                 </div>
               </ng-container>
 
               <!-- Odd index: 1, 3, 5... (Image Left, Text Right) -->
               <ng-container *ngIf="i % 2 !== 0">
-                <div class="md:col-span-4 w-full flex justify-center order-1 md:order-1">
-                  <img loading="lazy" [src]="tribe.image" class="w-full h-auto object-cover rounded-md shadow-sm aspect-square md:aspect-[4/3]">
+                <div class="lg:col-span-6 relative order-2 lg:order-1">
+                  <div class="absolute inset-0 bg-gradient-to-bl from-[#F2C14E]/30 to-[#8C1C13]/30 transform -translate-x-3 translate-y-3 md:-translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:-translate-x-5 group-hover:translate-y-5 md:group-hover:-translate-x-6 md:group-hover:translate-y-6"></div>
+                  <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+                    <img loading="lazy" [src]="tribe.image" class="w-full h-auto object-cover rounded-[1.2rem] aspect-square md:aspect-[4/3] transform transition-transform duration-700 hover:scale-105">
+                  </div>
                 </div>
-                <div class="md:col-span-8 flex flex-col gap-3 order-2 md:order-2">
-                  <p class="text-gray-800 text-[0.85rem] md:text-[0.95rem] leading-relaxed text-justify font-medium">
-                    {{ tribe.description }}
-                  </p>
+                
+                <div class="lg:col-span-6 order-1 lg:order-2 relative p-6 md:p-8 lg:px-10 bg-gradient-to-br from-[#8C1C13]/[0.03] to-transparent rounded-[2rem] border-l-[6px] border-[#8C1C13] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:bg-[#8C1C13]/[0.05] transition-colors duration-500">
+                  <div class="absolute -top-6 -right-2 md:-top-8 md:-right-4 text-[#8C1C13]/5 pointer-events-none select-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" class="md:w-[80px] md:h-[80px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11 4H4C2.9 4 2 4.9 2 6V13C2 14.1 2.9 15 4 15H7.5C7.5 17.5 5.5 19.5 3 19.5V22C7.1 22 10.5 18.6 10.5 14.5V4ZM22 4H15C13.9 4 13 4.9 13 6V13C13 14.1 13.9 15 15 15H18.5C18.5 17.5 16.5 19.5 14 19.5V22C18.1 22 21.5 18.6 21.5 14.5V4Z"/></svg>
+                  </div>
+                  <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify space-y-4 font-medium">
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#8C1C13] mb-4" style="font-family: 'Arial Narrow', Arial, sans-serif;">{{ tribe.name }}</h3>
+                    <p>
+                      {{ tribe.description }}
+                    </p>
+                  </div>
                 </div>
               </ng-container>
+              
             </div>
             
           </div>

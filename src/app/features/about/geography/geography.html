@@ -1,249 +1,325 @@
-<div class="w-full min-h-screen relative">
+<div class="w-full min-h-screen relative bg-[#fdfbf7]">
   
   <!-- Fixed Hero Background -->
-  <img loading="lazy" src="about/geographical/geo.png" onerror="this.src=''" class="fixed inset-0 w-full h-screen object-cover z-0">
-  <div class="fixed inset-0 bg-black/30 z-0 pointer-events-none"></div>
+  <div class="fixed inset-0 w-full h-screen z-0 bg-black">
+    <img loading="lazy" src="about/geographical/geo.png" onerror="this.src=''" class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70 pointer-events-none"></div>
+  </div>
 
   <!-- Hero Section Content -->
-  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none">
+  <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none px-4">
     
-    <div class="text-center mt-16 pointer-events-auto">
-      <h1 class="text-white text-[2rem] sm:text-[2.5rem] md:text-[4rem] font-normal uppercase tracking-wide leading-tight px-4" style="font-family: 'Impact', 'Arial Black', sans-serif;">
-        Geographical<br>Profile of Tripura
+    <div class="text-center mt-16 pointer-events-auto backdrop-blur-[2px] bg-black/10 p-6 md:p-8 lg:px-12 rounded-3xl border border-white/10 shadow-2xl transform transition-transform hover:scale-105 duration-500 w-full max-w-[95%] sm:max-w-[80%] md:max-w-fit">
+      <h1 class="text-white text-[1.8rem] sm:text-[2.5rem] md:text-[3.5rem] font-extrabold uppercase tracking-widest drop-shadow-2xl leading-[1.1] px-2 md:px-4" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+        Geographical Profile<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F2C14E] to-[#fff] text-[2.2rem] sm:text-[3rem] md:text-[4.5rem]">of Tripura</span>
       </h1>
-      <p class="text-white/90 text-sm md:text-base font-medium mt-4 flex items-center gap-2 justify-center">
-        <span class="hover:text-[#8C593B] cursor-pointer transition-colors" routerLink="/">Home</span> 
-        <span class="text-xs">&gt;</span> 
-        <span>Geographical Profile</span>
+      <div class="w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-[#F2C14E] to-transparent mx-auto mt-4 md:mt-6 mb-4 md:mb-6"></div>
+      <p class="text-white/90 text-xs sm:text-sm md:text-[1.1rem] font-medium flex items-center gap-2 md:gap-3 justify-center drop-shadow-md tracking-wider uppercase">
+        <span class="hover:text-[#F2C14E] cursor-pointer transition-colors duration-300" routerLink="/">Home</span> 
+        <span class="text-[#F2C14E]">&bull;</span> 
+        <span class="text-white/70 text-center">Geographical Profile</span>
       </p>
     </div>
   </div>
 
   <!-- Content Section -->
-  <div class="relative z-20 w-full bg-[#e6e8e8] shadow-[0_-10px_25px_rgba(0,0,0,0.1)] py-[80px] overflow-hidden">
+  <div class="relative z-20 w-full bg-gradient-to-b from-[#fdfbf7] to-[#f4eee6] shadow-[0_-10px_25px_rgba(0,0,0,0.1)] py-16 md:py-24 lg:py-[100px] overflow-hidden">
     
-    <!-- Faint Map Watermark -->
-    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[10%] left-[10%] w-[80%] md:w-[60%] object-contain opacity-[0.05] pointer-events-none z-0">
-    <img loading="lazy" src="about/tripura-map-watermark.png" onerror="this.style.display='none'" class="absolute top-[60%] right-[10%] w-[80%] md:w-[60%] object-contain opacity-[0.05] pointer-events-none z-0">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#F2C14E] rounded-full blur-[80px] md:blur-[150px] opacity-10 pointer-events-none transform -translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute top-1/3 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#8C1C13] rounded-full blur-[80px] md:blur-[150px] opacity-[0.08] pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-10 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#F2C14E] rounded-full blur-[80px] md:blur-[150px] opacity-10 pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
 
-    <div class="max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col gap-[60px] relative z-10">
+    <div class="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-12 flex flex-col gap-16 md:gap-24 lg:gap-[120px] relative z-10">
       
       <!-- Section: Hill Ranges -->
-      <section>
-        <div class="text-center mb-8">
-          <style>
-            @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
-          </style>
-          <h2 class="text-[#8C593B] text-[1.8rem] md:text-[2.2rem] font-bold tracking-wider" style="font-family: 'Kaushan Script', cursive;">Hill Ranges</h2>
+      <section class="relative group">
+        <div class="text-center mb-10 md:mb-16">
+          <p class="text-[#8C1C13] text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Topography</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">Hill Ranges</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#8C1C13] to-[#F2C14E] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div class="text-gray-700 text-[0.9rem] md:text-base leading-relaxed text-justify">
-            <p>
-              Tripura is a land of high hills, hillocks and valleys. Five major hill ranges traverse the state from North-West to South-East direction. These are Boromura, Atharamura, Longtharai, Shakhan and Jampui Hills. The highest peak of the state is Betling Shib (939 meters) situated in the Jampui Hill range. The topography is undulating and the terrain is mostly hilly. The state is completely landlocked, bounded by the international border with Bangladesh on three sides.
-            </p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Text -->
+          <div class="lg:col-span-7 relative p-6 md:p-8 lg:px-10 bg-white/70 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+            <div class="absolute -top-4 -left-2 md:-top-6 md:-left-4 text-[6rem] md:text-[8rem] text-[#8C1C13]/5 font-serif leading-none select-none pointer-events-none">"</div>
+            <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify space-y-4 font-medium">
+              <p class="first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-bold first-letter:text-[#8C1C13] first-letter:mr-2 first-letter:float-left first-letter:leading-[0.9] first-line:tracking-wide">
+                Tripura is a land of high hills, hillocks and valleys. Five major hill ranges traverse the state from North-West to South-East direction. These are Boromura, Atharamura, Longtharai, Shakhan and Jampui Hills. 
+              </p>
+              <p>
+                The highest peak of the state is Betling Shib (939 meters) situated in the Jampui Hill range. The topography is undulating and the terrain is mostly hilly. The state is completely landlocked, bounded by the international border with Bangladesh on three sides.
+              </p>
+            </div>
           </div>
-          <div class="bg-white  rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img loading="lazy" src="about/geographical/hillrange2.jpg" onerror="this.src='/dream-destination/jampui.jpg'" class="w-full h-auto rounded-md object-cover aspect-[4/3]">
+          <!-- Image -->
+          <div class="lg:col-span-5 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#8C1C13]/30 to-[#F2C14E]/30 transform translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5 md:group-hover:translate-x-6 md:group-hover:translate-y-6"></div>
+            <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+              <img loading="lazy" src="about/geographical/hillrange2.jpg" onerror="this.src='/dream-destination/jampui.jpg'" class="w-full h-auto rounded-[1.2rem] object-cover aspect-square transform transition-transform duration-700 hover:scale-105">
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Section: Climate -->
-      <section>
-        <div class="text-center mb-8">
-          <h2 class="text-[#8C593B] text-[1.8rem] md:text-[2.2rem] font-bold tracking-wider" style="font-family: 'Kaushan Script', cursive;">Climate</h2>
+      <section class="relative group mt-8 md:mt-10">
+        <div class="text-center mb-10 md:mb-16">
+          <p class="text-[#F2C14E] drop-shadow-sm text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Weather Patterns</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">Climate</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#F2C14E] to-[#8C1C13] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div class="bg-white  rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 order-2 md:order-1">
-            <img loading="lazy" src="about/geographical/climate.jpg" onerror="this.src='/dream-destination/eco.jpg'" class="w-full h-auto rounded-md object-cover aspect-[4/3]">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Image -->
+          <div class="lg:col-span-5 relative order-2 lg:order-1">
+            <div class="absolute inset-0 bg-gradient-to-bl from-[#F2C14E]/30 to-[#8C1C13]/30 transform -translate-x-3 translate-y-3 md:-translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:-translate-x-5 group-hover:translate-y-5 md:group-hover:-translate-x-6 md:group-hover:translate-y-6"></div>
+            <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+              <img loading="lazy" src="about/geographical/climate.jpg" onerror="this.src='/dream-destination/eco.jpg'" class="w-full h-auto rounded-[1.2rem] object-cover aspect-square transform transition-transform duration-700 hover:scale-105">
+            </div>
           </div>
-          <div class="text-gray-700 text-[0.9rem] md:text-base leading-relaxed text-justify order-1 md:order-2">
-            <p class="mb-4">
-              The climate of Tripura is typically tropical monsoon type. The state experiences a warm and humid summer followed by a moderate winter. The main seasons are Summer (March to May), Monsoon (June to September), Autumn (October to November) and Winter (December to February). Summer temperatures range from 24°C to 36°C, while winter temperatures range from 13°C to 27°C. The highest temperature is generally recorded in the month of May and the lowest in the month of January.
-            </p>
-            <p>
-              The state receives an average annual rainfall of about 2500 mm, mostly concentrated during the monsoon season. The high humidity and rainfall contribute to the rich flora and fauna of the state.
-            </p>
+          <!-- Text -->
+          <div class="lg:col-span-7 order-1 lg:order-2 relative p-6 md:p-8 lg:px-10 bg-gradient-to-br from-[#8C1C13]/[0.03] to-transparent rounded-[2rem] border-l-[6px] border-[#8C1C13] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:bg-[#8C1C13]/[0.05] transition-colors duration-500">
+            <div class="absolute -top-6 -right-2 md:-top-8 md:-right-4 text-[#8C1C13]/5 pointer-events-none select-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" class="md:w-[80px] md:h-[80px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11 4H4C2.9 4 2 4.9 2 6V13C2 14.1 2.9 15 4 15H7.5C7.5 17.5 5.5 19.5 3 19.5V22C7.1 22 10.5 18.6 10.5 14.5V4ZM22 4H15C13.9 4 13 4.9 13 6V13C13 14.1 13.9 15 15 15H18.5C18.5 17.5 16.5 19.5 14 19.5V22C18.1 22 21.5 18.6 21.5 14.5V4Z"/></svg>
+            </div>
+            <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify space-y-4 font-medium">
+              <p>
+                The climate of Tripura is typically tropical monsoon type. The state experiences a warm and humid summer followed by a moderate winter. The main seasons are Summer (March to May), Monsoon (June to September), Autumn (October to November) and Winter (December to February). Summer temperatures range from 24°C to 36°C, while winter temperatures range from 13°C to 27°C.
+              </p>
+              <p>
+                The highest temperature is generally recorded in the month of May and the lowest in the month of January. The high humidity and rainfall contribute to the rich flora and fauna of the state.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Section: Rainfall -->
-      <section>
-        <div class="text-center mb-8">
-          <h2 class="text-[#8C593B] text-[1.8rem] md:text-[2.2rem] font-bold tracking-wider" style="font-family: 'Kaushan Script', cursive;">Rainfall</h2>
+      <section class="relative group mt-8 md:mt-10">
+        <div class="text-center mb-10 md:mb-16">
+          <p class="text-[#8C1C13] text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Monsoon Magic</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">Rainfall</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#8C1C13] to-[#F2C14E] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div class="text-gray-700 text-[0.9rem] md:text-base leading-relaxed text-justify">
-            <p class="mb-4">
-              Tripura receives heavy rainfall from the south-west monsoons. The rainy season generally starts from June and continues up to September. The state receives an average rainfall of over 2000 mm.
-            </p>
-            <p>
-              The average annual rainfall in the state is 2500 mm. The maximum rainfall is received during the monsoon period from June to September. The rainfall is generally higher in the northern and eastern parts of the state compared to the western and southern parts.
-            </p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Text -->
+          <div class="lg:col-span-7 relative p-6 md:p-8 lg:px-10 bg-white/70 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+            <div class="absolute -top-4 -left-2 md:-top-6 md:-left-4 text-[6rem] md:text-[8rem] text-[#8C1C13]/5 font-serif leading-none select-none pointer-events-none">"</div>
+            <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify space-y-4 font-medium">
+              <p>
+                Tripura receives heavy rainfall from the south-west monsoons. The rainy season generally starts from June and continues up to September. The state receives an average rainfall of over 2000 mm.
+              </p>
+              <p>
+                The average annual rainfall in the state is 2500 mm. The maximum rainfall is received during the monsoon period from June to September. The rainfall is generally higher in the northern and eastern parts of the state compared to the western and southern parts.
+              </p>
+            </div>
           </div>
-          <div class="bg-white  rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img loading="lazy" src="about/geographical/rainfall.jpg" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="w-full h-auto rounded-md object-cover aspect-[4/3]">
+          <!-- Image -->
+          <div class="lg:col-span-5 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#8C1C13]/30 to-[#F2C14E]/30 transform translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5 md:group-hover:translate-x-6 md:group-hover:translate-y-6"></div>
+            <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+              <img loading="lazy" src="about/geographical/rainfall.jpg" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="w-full h-auto rounded-[1.2rem] object-cover aspect-square transform transition-transform duration-700 hover:scale-105">
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Section: Major Rivers -->
-      <section>
-        <div class="text-center mb-8">
-          <h2 class="text-[#8C593B] text-[1.8rem] md:text-[2.2rem] font-bold tracking-wider" style="font-family: 'Kaushan Script', cursive;">Major Rivers in Tripura</h2>
+      <section class="relative group mt-8 md:mt-10">
+        <div class="text-center mb-10 md:mb-16">
+          <p class="text-[#F2C14E] drop-shadow-sm text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Water Bodies</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">Major Rivers</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#F2C14E] to-[#8C1C13] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div class="bg-white  rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 order-2 md:order-1">
-            <img loading="lazy" src="about/geographical/majorrivers.jpg" onerror="this.src='/explore-tripura/dhalai.png'" class="w-full h-auto rounded-md object-cover aspect-[4/3]">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Image -->
+          <div class="lg:col-span-5 relative order-2 lg:order-1">
+            <div class="absolute inset-0 bg-gradient-to-bl from-[#F2C14E]/30 to-[#8C1C13]/30 transform -translate-x-3 translate-y-3 md:-translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:-translate-x-5 group-hover:translate-y-5 md:group-hover:-translate-x-6 md:group-hover:translate-y-6"></div>
+            <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+              <img loading="lazy" src="about/geographical/majorrivers.jpg" onerror="this.src='/explore-tripura/dhalai.png'" class="w-full h-auto rounded-[1.2rem] object-cover aspect-square transform transition-transform duration-700 hover:scale-105">
+            </div>
           </div>
-          <div class="text-gray-700 text-[0.9rem] md:text-base leading-relaxed text-justify order-1 md:order-2">
-            <p>
-              A number of rivers flow through the state of Tripura. The major rivers are Gomati, Khowai, Manu, Haora, Muhuri, Feni, and Juri. All these rivers are rain-fed and ephemeral in nature. They flow into Bangladesh. The Gomati is the largest river in the state.
-            </p>
+          <!-- Text -->
+          <div class="lg:col-span-7 order-1 lg:order-2 relative p-6 md:p-8 lg:px-10 bg-gradient-to-br from-[#8C1C13]/[0.03] to-transparent rounded-[2rem] border-l-[6px] border-[#8C1C13] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:bg-[#8C1C13]/[0.05] transition-colors duration-500">
+            <div class="absolute -top-6 -right-2 md:-top-8 md:-right-4 text-[#8C1C13]/5 pointer-events-none select-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" class="md:w-[80px] md:h-[80px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11 4H4C2.9 4 2 4.9 2 6V13C2 14.1 2.9 15 4 15H7.5C7.5 17.5 5.5 19.5 3 19.5V22C7.1 22 10.5 18.6 10.5 14.5V4ZM22 4H15C13.9 4 13 4.9 13 6V13C13 14.1 13.9 15 15 15H18.5C18.5 17.5 16.5 19.5 14 19.5V22C18.1 22 21.5 18.6 21.5 14.5V4Z"/></svg>
+            </div>
+            <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify space-y-4 font-medium">
+              <p>
+                A number of rivers flow through the state of Tripura. The major rivers are Gomati, Khowai, Manu, Haora, Muhuri, Feni, and Juri. All these rivers are rain-fed and ephemeral in nature. They flow into Bangladesh. The Gomati is the largest river in the state.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Section: Population -->
-      <section class="mt-10">
-        <div class="flex justify-center mb-8">
-          <div class="bg-[#8C593B] text-white px-10 py-2 rounded-md font-bold text-lg md:text-xl shadow-md">
-            Population
-          </div>
+      <section class="relative group mt-8 md:mt-10">
+        <div class="text-center mb-10 md:mb-16">
+          <p class="text-[#8C1C13] text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Demographics</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">Population</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#8C1C13] to-[#F2C14E] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-10">
-          <div class="text-gray-700 text-[0.9rem] md:text-base leading-relaxed text-justify">
-            <p class="mb-4">
-              Tripura is the second most populous state in the North Eastern Region after Assam. According to the 2011 census, the total population of the state is 3,673,917. The density of population is 350 persons per sq. km.
-            </p>
-            <p>
-              The state has a diverse population comprising various ethnic groups. The tribal population constitutes about 31.8% of the total population. There are 19 notified Scheduled Tribes in the state. The literacy rate of Tripura is 87.22%, which is significantly higher than the national average.
-            </p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12 md:mb-20">
+          <!-- Text -->
+          <div class="lg:col-span-7 relative p-6 md:p-8 lg:px-10 bg-white/70 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
+            <div class="absolute -top-4 -left-2 md:-top-6 md:-left-4 text-[6rem] md:text-[8rem] text-[#8C1C13]/5 font-serif leading-none select-none pointer-events-none">"</div>
+            <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-left md:text-justify space-y-4 font-medium">
+              <p>
+                Tripura is the second most populous state in the North Eastern Region after Assam. According to the 2011 census, the total population of the state is 3,673,917. The density of population is 350 persons per sq. km.
+              </p>
+              <p>
+                The state has a diverse population comprising various ethnic groups. The tribal population constitutes about 31.8% of the total population. There are 19 notified Scheduled Tribes in the state. The literacy rate of Tripura is 87.22%, which is significantly higher than the national average.
+              </p>
+            </div>
           </div>
-          <div class="bg-white  rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img loading="lazy" src="about/geographical/population.jpg" onerror="this.src='/dream-destination/art.jpg'" class="w-full h-auto rounded-md object-cover aspect-[4/3]">
+          <!-- Image -->
+          <div class="lg:col-span-5 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#8C1C13]/30 to-[#F2C14E]/30 transform translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5 md:group-hover:translate-x-6 md:group-hover:translate-y-6"></div>
+            <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+              <img loading="lazy" src="about/geographical/population.jpg" onerror="this.src='/dream-destination/art.jpg'" class="w-full h-auto rounded-[1.2rem] object-cover aspect-square transform transition-transform duration-700 hover:scale-105">
+            </div>
           </div>
         </div>
         
-        <div class="text-center mb-6">
-          <p class="text-[#8C593B] text-[1.1rem] md:text-[1.3rem] font-medium max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <p class="text-gray-700 text-sm md:text-base lg:text-lg font-medium max-w-4xl mx-auto italic opacity-80">
             The state has 8 (eight) districts, out of which summary of population of all 8 districts during census 2011 are as follows:
           </p>
         </div>
 
-        <!-- Data Table -->
-        <div class="overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200 mb-10">
-          <table class="w-full text-center border-collapse text-sm">
-            <thead>
-              <tr class="bg-[#2c3e50] text-white text-[0.8rem] md:text-[0.9rem] uppercase tracking-wide">
-                <th class="py-3 px-4 border-r border-gray-600">District Name</th>
-                <th class="py-3 px-4 border-r border-gray-600">Location</th>
-                <th class="py-3 px-4 border-r border-gray-600">Total Population 2011</th>
-                <th class="py-3 px-4 border-r border-gray-600">% of Total Population 2011</th>
-                <th class="py-3 px-4 border-r border-gray-600">Density (Per Sq. Km)</th>
-                <th class="py-3 px-4">Rank</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700 font-medium text-[0.85rem]">
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">West Tripura</td><td class="py-3 px-4 border-r">Agartala</td><td class="py-3 px-4 border-r">918,200</td><td class="py-3 px-4 border-r">25.00</td><td class="py-3 px-4 border-r">973</td><td class="py-3 px-4">1</td>
-              </tr>
-              <tr class="border-b bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">South Tripura</td><td class="py-3 px-4 border-r">Belonia</td><td class="py-3 px-4 border-r">430,751</td><td class="py-3 px-4 border-r">11.73</td><td class="py-3 px-4 border-r">283</td><td class="py-3 px-4">5</td>
-              </tr>
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">Gomati</td><td class="py-3 px-4 border-r">Udaipur</td><td class="py-3 px-4 border-r">441,538</td><td class="py-3 px-4 border-r">12.02</td><td class="py-3 px-4 border-r">147</td><td class="py-3 px-4">8</td>
-              </tr>
-              <tr class="border-b bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">Sepahijala</td><td class="py-3 px-4 border-r">Bishramganj</td><td class="py-3 px-4 border-r">479,975</td><td class="py-3 px-4 border-r">13.06</td><td class="py-3 px-4 border-r">455</td><td class="py-3 px-4">3</td>
-              </tr>
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">Khowai</td><td class="py-3 px-4 border-r">Khowai</td><td class="py-3 px-4 border-r">327,564</td><td class="py-3 px-4 border-r">8.92</td><td class="py-3 px-4 border-r">238</td><td class="py-3 px-4">7</td>
-              </tr>
-              <tr class="border-b bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">Dhalai</td><td class="py-3 px-4 border-r">Ambassa</td><td class="py-3 px-4 border-r">378,230</td><td class="py-3 px-4 border-r">10.30</td><td class="py-3 px-4 border-r">157</td><td class="py-3 px-4">6</td>
-              </tr>
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">Unakoti</td><td class="py-3 px-4 border-r">Kailashahar</td><td class="py-3 px-4 border-r">276,506</td><td class="py-3 px-4 border-r">7.53</td><td class="py-3 px-4 border-r">469</td><td class="py-3 px-4">2</td>
-              </tr>
-              <tr class="bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-3 px-4 border-r">North Tripura</td><td class="py-3 px-4 border-r">Dharmanagar</td><td class="py-3 px-4 border-r">417,441</td><td class="py-3 px-4 border-r">11.36</td><td class="py-3 px-4 border-r">289</td><td class="py-3 px-4">4</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6">
-          <div class="text-gray-700 text-[0.9rem] md:text-base leading-relaxed text-justify">
-            <p class="mb-4">
-              Tripura comprises mostly of tribal and Bengali population. The Bengalis constitute the majority of the population. The state has a rich cultural heritage and is known for its exquisite handicrafts, handlooms, music, and dance. The indigenous tribes have their own distinct culture, traditions, and language, which adds to the diversity of the state.
-            </p>
-            <p>
-              The state government has taken several initiatives to improve the living standards of the people by providing better healthcare, education, and employment opportunities. The focus is on sustainable development and inclusive growth, ensuring that the benefits reach every corner of the state.
-            </p>
-          </div>
-          <div class="bg-white  rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img loading="lazy" src="about/geographical/population2.jpg" onerror="this.src='/dream-destination/rural.png'" class="w-full h-auto rounded-md object-cover aspect-[4/3]">
+        <!-- Data Table 1 -->
+        <div class="w-full relative bg-white/70 backdrop-blur-xl rounded-[2rem] p-4 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white mb-16 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-center border-collapse">
+              <thead>
+                <tr class="bg-gradient-to-r from-[#8C1C13] to-[#F2C14E] text-white text-xs md:text-sm uppercase tracking-wider">
+                  <th class="py-4 px-4 rounded-tl-xl font-bold">District Name</th>
+                  <th class="py-4 px-4 font-bold">Location</th>
+                  <th class="py-4 px-4 font-bold">Total Population 2011</th>
+                  <th class="py-4 px-4 font-bold">% of Total Population</th>
+                  <th class="py-4 px-4 font-bold">Density (Per Sq. Km)</th>
+                  <th class="py-4 px-4 rounded-tr-xl font-bold">Rank</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-700 font-medium text-xs md:text-sm bg-white/50">
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4">West Tripura</td><td class="py-4 px-4">Agartala</td><td class="py-4 px-4">918,200</td><td class="py-4 px-4">25.00</td><td class="py-4 px-4">973</td><td class="py-4 px-4 font-bold text-[#8C1C13]">1</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4">South Tripura</td><td class="py-4 px-4">Belonia</td><td class="py-4 px-4">430,751</td><td class="py-4 px-4">11.73</td><td class="py-4 px-4">283</td><td class="py-4 px-4 font-bold text-[#8C1C13]">5</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4">Gomati</td><td class="py-4 px-4">Udaipur</td><td class="py-4 px-4">441,538</td><td class="py-4 px-4">12.02</td><td class="py-4 px-4">147</td><td class="py-4 px-4 font-bold text-[#8C1C13]">8</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4">Sepahijala</td><td class="py-4 px-4">Bishramganj</td><td class="py-4 px-4">479,975</td><td class="py-4 px-4">13.06</td><td class="py-4 px-4">455</td><td class="py-4 px-4 font-bold text-[#8C1C13]">3</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4">Khowai</td><td class="py-4 px-4">Khowai</td><td class="py-4 px-4">327,564</td><td class="py-4 px-4">8.92</td><td class="py-4 px-4">238</td><td class="py-4 px-4 font-bold text-[#8C1C13]">7</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4">Dhalai</td><td class="py-4 px-4">Ambassa</td><td class="py-4 px-4">378,230</td><td class="py-4 px-4">10.30</td><td class="py-4 px-4">157</td><td class="py-4 px-4 font-bold text-[#8C1C13]">6</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4">Unakoti</td><td class="py-4 px-4">Kailashahar</td><td class="py-4 px-4">276,506</td><td class="py-4 px-4">7.53</td><td class="py-4 px-4">469</td><td class="py-4 px-4 font-bold text-[#8C1C13]">2</td>
+                </tr>
+                <tr class="hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-4 rounded-bl-xl">North Tripura</td><td class="py-4 px-4">Dharmanagar</td><td class="py-4 px-4">417,441</td><td class="py-4 px-4">11.36</td><td class="py-4 px-4">289</td><td class="py-4 px-4 font-bold text-[#8C1C13] rounded-br-xl">4</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-6">
+          <!-- Image Card -->
+          <div class="lg:col-span-5 relative order-2 lg:order-1">
+            <div class="absolute inset-0 bg-gradient-to-bl from-[#F2C14E]/30 to-[#8C1C13]/30 transform -translate-x-3 translate-y-3 md:-translate-x-4 md:translate-y-4 rounded-[2rem] -z-10 transition-transform duration-500 group-hover:-translate-x-5 group-hover:translate-y-5 md:group-hover:-translate-x-6 md:group-hover:translate-y-6"></div>
+            <div class="bg-white p-2 md:p-3 rounded-[2rem] shadow-2xl border border-gray-100/50 overflow-hidden">
+              <img loading="lazy" src="about/geographical/population2.jpg" onerror="this.src='/dream-destination/rural.png'" class="w-full h-auto rounded-[1.2rem] object-cover aspect-square transform transition-transform duration-700 hover:scale-105">
+            </div>
+          </div>
+          
+          <!-- Text -->
+          <div class="lg:col-span-7 order-1 lg:order-2 relative p-6 md:p-8 lg:px-10 bg-gradient-to-br from-[#8C1C13]/[0.03] to-transparent rounded-[2rem] border-l-[6px] border-[#8C1C13] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:bg-[#8C1C13]/[0.05] transition-colors duration-500">
+            <div class="absolute -top-6 -right-2 md:-top-8 md:-right-4 text-[#8C1C13]/5 pointer-events-none select-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" class="md:w-[80px] md:h-[80px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11 4H4C2.9 4 2 4.9 2 6V13C2 14.1 2.9 15 4 15H7.5C7.5 17.5 5.5 19.5 3 19.5V22C7.1 22 10.5 18.6 10.5 14.5V4ZM22 4H15C13.9 4 13 4.9 13 6V13C13 14.1 13.9 15 15 15H18.5C18.5 17.5 16.5 19.5 14 19.5V22C18.1 22 21.5 18.6 21.5 14.5V4Z"/></svg>
+            </div>
+            <div class="relative z-10 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-justify space-y-4 font-medium">
+              <p>
+                Tripura comprises mostly of tribal and Bengali population. The Bengalis constitute the majority of the population. The state has a rich cultural heritage and is known for its exquisite handicrafts, handlooms, music, and dance. The indigenous tribes have their own distinct culture, traditions, and language, which adds to the diversity of the state.
+              </p>
+              <p>
+                The state government has taken several initiatives to improve the living standards of the people by providing better healthcare, education, and employment opportunities. The focus is on sustainable development and inclusive growth, ensuring that the benefits reach every corner of the state.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Section: General Information On Tripura -->
-      <section class="mt-10 mb-8">
-        <div class="flex justify-center mb-8">
-          <div class="bg-[#8C593B] text-white px-10 py-2 rounded-md font-bold text-lg md:text-xl shadow-md">
-            General Information On Tripura
-          </div>
+      <section class="relative group mt-8 md:mt-10 mb-12">
+        <div class="text-center mb-10 md:mb-16">
+          <p class="text-[#F2C14E] drop-shadow-sm text-[1rem] md:text-[1.4rem] mb-2 tracking-wide font-medium" style="font-family: 'Comic Sans MS', cursive, sans-serif;">State Facts</p>
+          <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-extrabold tracking-tight uppercase" style="font-family: 'Arial Narrow', Arial, sans-serif;">General Information</h2>
+          <div class="w-16 md:w-24 h-1.5 bg-gradient-to-r from-[#F2C14E] to-[#8C1C13] mx-auto mt-4 md:mt-6 rounded-full"></div>
         </div>
 
-        <!-- Two Column Key-Value Table -->
-        <div class="overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200">
-          <table class="w-full text-center border-collapse text-sm">
-            <tbody class="text-gray-700 font-medium text-[0.9rem]">
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Capital</td>
-                <td class="py-4 px-6 w-1/2">Agartala</td>
-              </tr>
-              <tr class="border-b bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Area</td>
-                <td class="py-4 px-6 w-1/2">10,491.69 sq. km</td>
-              </tr>
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Population</td>
-                <td class="py-4 px-6 w-1/2">3,673,917 (2011 Census)</td>
-              </tr>
-              <tr class="border-b bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Districts</td>
-                <td class="py-4 px-6 w-1/2">8</td>
-              </tr>
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Sub-Divisions</td>
-                <td class="py-4 px-6 w-1/2">23</td>
-              </tr>
-              <tr class="border-b bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Blocks</td>
-                <td class="py-4 px-6 w-1/2">58</td>
-              </tr>
-              <tr class="border-b bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Literacy Rate</td>
-                <td class="py-4 px-6 w-1/2">87.22%</td>
-              </tr>
-              <tr class="border-b bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">Official Languages</td>
-                <td class="py-4 px-6 w-1/2">Bengali, Kokborok, English</td>
-              </tr>
-              <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">State Animal</td>
-                <td class="py-4 px-6 w-1/2">Phayre's Leaf Monkey</td>
-              </tr>
-              <tr class="border-t bg-white hover:bg-gray-100 transition-colors">
-                <td class="py-4 px-6 border-r border-gray-200 font-bold w-1/2">State Bird</td>
-                <td class="py-4 px-6 w-1/2">Green Imperial Pigeon</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Data Table 2 -->
+        <div class="w-full max-w-4xl mx-auto relative bg-white/70 backdrop-blur-xl rounded-[2rem] p-4 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <tbody class="text-gray-700 font-medium text-[0.9rem] md:text-base bg-white/50">
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 rounded-tl-xl text-[#8C1C13]">Capital</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2 rounded-tr-xl">Agartala</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">Area</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">10,491.69 sq. km</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">Population</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">3,673,917 (2011 Census)</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">Districts</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">8</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">Sub-Divisions</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">23</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">Blocks</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">58</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">Literacy Rate</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">87.22%</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">Official Languages</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">Bengali, Kokborok, English</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 text-[#8C1C13]">State Animal</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2">Phayre's Leaf Monkey</td>
+                </tr>
+                <tr class="hover:bg-[#F2C14E]/10 transition-colors">
+                  <td class="py-4 px-6 md:px-10 border-r border-gray-100 font-bold w-1/2 rounded-bl-xl text-[#8C1C13]">State Bird</td>
+                  <td class="py-4 px-6 md:px-10 w-1/2 rounded-br-xl">Green Imperial Pigeon</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </section>
