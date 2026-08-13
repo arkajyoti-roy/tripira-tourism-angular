@@ -1,11 +1,11 @@
 <section class=" py-12 w-full overflow-hidden border-t border-[#E9C35A]">
-  <div class="w-full relative px-2 md:px-4">
+  <div class="w-full relative">
     
     <!-- Snap Scroll Container -->
-    <div #slider class="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6 scroll-smooth" (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()">
+    <div #slider class="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6 scroll-smooth px-4 w-full" (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()">
       @for (fest of festivals(); track fest.id) {
         <a [routerLink]="['/tour', fest.id]" [queryParams]="{type: 'featured'}" 
-           class="snap-start shrink-0 w-[90vw] sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-10.67px)] relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl bg-gray-200">
+           class="snap-center shrink-0 w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-10.67px)] relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl bg-gray-200">
           
           <!-- Image -->
           <img [src]="fest.image_url" [alt]="fest.name || 'Festival ' + fest.id" 

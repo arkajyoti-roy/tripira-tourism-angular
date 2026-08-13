@@ -1,12 +1,12 @@
 <section class="w-full bg-[#FBF4EC] py-16 flex flex-col items-center">
   <!-- Headers -->
-  <span class="text-[#8C1C13] text-[1.2rem] italic font-bold mb-2">Cuisines to Explore</span>
-  <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] font-black tracking-tight mb-12" style="font-family: 'Arial Narrow', Arial, sans-serif;">
+  <span class="text-[#8C1C13] text-[1.2rem] italic font-bold mb-2 text-center px-4">Cuisines to Explore</span>
+  <h2 class="text-gray-800 text-[2rem] md:text-[2.5rem] font-black tracking-tight mb-12 text-center px-4" style="font-family: 'Arial Narrow', Arial, sans-serif;">
     Discover Exquisite Local Cuisines!
   </h2>
 
   <!-- Cuisines Grid -->
-  <div class="flex flex-col md:flex-row justify-between gap-6 w-full px-[50px]">
+  <div class="flex flex-col md:flex-row justify-between gap-6 w-full px-4 md:px-[50px]">
     <!-- Loop through cuisines -->
     <a *ngFor="let item of cuisines"
        routerLink="/about/food"
