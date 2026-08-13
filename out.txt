@@ -1,0 +1,36 @@
+<section class="w-full bg-[#FEFAF5] py-2 relative z-20">
+  
+  <!-- Dashed borders wrapper -->
+  <div class="border-y border-dashed border-gray-600 py-1">
+    
+    <!-- The Yellow Marquee Bar -->
+    <div class="bg-[#FCD858] w-full flex items-stretch h-[38px] relative overflow-hidden">
+      
+      <!-- Cyan Badge (Absolute on left to cover scrolling text as it exits) -->
+      <div class="bg-[#8C593B] text-[#1f2937] px-4 flex items-center h-full absolute left-0 top-0 z-10 whitespace-nowrap shadow-[2px_0_5px_rgba(0,0,0,0.1)] ">
+        <span class="font-black text-[0.95rem] mr-1">What's</span> 
+        <span class="font-bold text-[0.95rem]">New</span>
+      </div>
+      
+      <!-- Scrolling Text Container -->
+      <div class="marquee-container h-full flex items-center w-full">
+        <!-- Main content wrapper to ensure exact layout for duplication -->
+        <div class="marquee-content flex items-center shrink-0">
+          <!-- Set 1 -->
+          <div class="flex items-center shrink-0 min-w-max text-gray-800 font-bold text-[0.95rem] pr-10">
+            @for (item of items(); track $index) {
+              <a [href]="item.url" target="_blank" class="hover:text-blue-600 transition-colors cursor-pointer mr-2 ml-2">{{ item.title }}</a>
+              @if (item.isNew) {
+                <img loading="lazy" src="new.gif" alt="NEW" class="inline-block mr-4 h-[28px] object-contain">
+              }
+              <span class="font-black mx-4 text-gray-500">||</span> 
+            }
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</section>
