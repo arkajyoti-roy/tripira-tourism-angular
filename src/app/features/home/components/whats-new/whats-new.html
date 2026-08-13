@@ -21,7 +21,7 @@
             @for (item of items(); track $index) {
               <a [href]="item.url" target="_blank" class="hover:text-blue-600 transition-colors cursor-pointer mr-2 ml-2">{{ item.title }}</a>
               @if (item.isNew) {
-                <img loading="lazy" src="./new.gif" alt="NEW" class="inline-block mr-4 h-[28px] object-contain">
+                <img loading="lazy" src="new.gif" alt="NEW" class="inline-block mr-4 h-[28px] object-contain">
               }
               <span class="font-black mx-4 text-gray-500">||</span> 
             }
