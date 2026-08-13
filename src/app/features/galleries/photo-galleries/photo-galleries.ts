@@ -12,6 +12,8 @@ import {environment} from '../../../../environments/environment'
 })
 export class PhotoGalleries implements OnInit {
   photos = signal<any>([]);
+  loading = signal<boolean>(true);
+  selectedPhoto = signal<any>(null);
   constructor(private http: HttpClient){}
  
     ngOnInit() {
@@ -19,12 +21,22 @@ export class PhotoGalleries implements OnInit {
       }/photos`).subscribe({
         next: (data) => {
           this.photos.set(data.sort((a:any, b:any)=>a.displayorder - b.displayorder));
+          this.loading.set(false);
         },
         error: (err) => {
           console.error("Failed to fetch photos", err);
+          this.loading.set(false);
         }
       });
   }
+
+  openPhotoPopup(photo: any) {
+    this.selectedPhoto.set(photo);
   }
+
+  closePhotoPopup() {
+    this.selectedPhoto.set(null);
+  }
+}
 
 

@@ -16,6 +16,7 @@ export class VideoGalleries implements OnInit {
 
   videos = signal<any>([]);
   selectedVideo = signal<any>(null);
+  loading = signal<boolean>(true);
 
   private http = inject(HttpClient);
   private sanitizer = inject(DomSanitizer);
@@ -34,9 +35,11 @@ export class VideoGalleries implements OnInit {
           videoId: this.extractVideoId(video.link)
         }));
         this.videos.set(processedData);
+        this.loading.set(false);
       },
       error: (err) => {
         console.error(err);
+        this.loading.set(false);
       }
     });
   }
