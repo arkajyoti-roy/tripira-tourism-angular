@@ -95,35 +95,47 @@
           </div>
         </div>
 
-        <div class="w-full max-w-[500px] flex flex-col">
-          <!-- Feed Tabs -->
-          <div class="flex items-center gap-2 mb-3 border-b border-white/10 pb-2 max-w-[360px] w-full">
+        <div class="w-full max-w-[400px] flex flex-col bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 shadow-2xl">
+          <!-- Premium Pill Toggle -->
+          <div class="flex items-center gap-1 p-1 bg-black/40 rounded-xl mb-4 relative">
             <button 
               (click)="switchTab('facebook')"
+              [class.bg-gradient-to-r]="activeTab === 'facebook'"
+              [class.from-blue-600]="activeTab === 'facebook'"
+              [class.to-blue-500]="activeTab === 'facebook'"
               [class.text-white]="activeTab === 'facebook'"
-              [class.border-b-2]="activeTab === 'facebook'"
-              [class.border-[#1877F2]]="activeTab === 'facebook'"
-              class="pb-1 px-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-1.5 focus:outline-none"
+              [class.shadow-md]="activeTab === 'facebook'"
+              [class.text-gray-400]="activeTab !== 'facebook'"
+              [class.hover:text-gray-200]="activeTab !== 'facebook'"
+              [class.hover:bg-white/5]="activeTab !== 'facebook'"
+              class="flex-1 py-2 text-xs sm:text-[0.8rem] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 rounded-lg focus:outline-none z-10"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24" class="text-[#1877F2]"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2.5V2H13c-2.8 0-5 2.2-5 5v1z"/></svg>
-              Facebook Feed
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" [class.text-white]="activeTab === 'facebook'" [class.text-[#1877F2]]="activeTab !== 'facebook'"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2.5V2H13c-2.8 0-5 2.2-5 5v1z"/></svg>
+              Facebook
             </button>
             <button 
               (click)="switchTab('instagram')"
+              [class.bg-gradient-to-r]="activeTab === 'instagram'"
+              [class.from-[#833ab4]]="activeTab === 'instagram'"
+              [class.via-[#fd1d1d]]="activeTab === 'instagram'"
+              [class.to-[#fcb045]]="activeTab === 'instagram'"
               [class.text-white]="activeTab === 'instagram'"
-              [class.border-b-2]="activeTab === 'instagram'"
-              [class.border-[#d62976]]="activeTab === 'instagram'"
-              class="pb-1 px-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-1.5 focus:outline-none"
+              [class.shadow-md]="activeTab === 'instagram'"
+              [class.text-gray-400]="activeTab !== 'instagram'"
+              [class.hover:text-gray-200]="activeTab !== 'instagram'"
+              [class.hover:bg-white/5]="activeTab !== 'instagram'"
+              class="flex-1 py-2 text-xs sm:text-[0.8rem] font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 rounded-lg focus:outline-none z-10"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24" class="text-[#d62976]"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-              Instagram Feed
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" [class.text-white]="activeTab === 'instagram'" [class.text-[#d62976]]="activeTab !== 'instagram'"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              Instagram
             </button>
           </div>
 
-          <!-- Facebook Feed Container -->
-          <div [class.hidden]="activeTab !== 'facebook'" class="bg-white/5 rounded-lg border border-white/10 h-[380px] flex flex-col relative group overflow-hidden w-full max-w-[360px]">
-            <div class="absolute inset-0 bg-[#0b1120]/40 z-0 pointer-events-none group-hover:opacity-0 transition-opacity duration-300"></div>
-            <div class="z-10 w-full h-full rounded flex justify-center overflow-hidden shadow-inner bg-transparent p-2">
+          <!-- Feed Content Area -->
+          <div class="relative w-full h-[380px] rounded-xl overflow-hidden bg-white shadow-inner">
+            
+            <!-- Facebook Feed Container -->
+            <div [class.hidden]="activeTab !== 'facebook'" class="w-full h-full flex flex-col relative group">
               <iframe
                 [src]="fbIframeUrl"
                 width="340"
@@ -136,20 +148,18 @@
                 title="Tripura Tourism Official Facebook Page Feed"
               ></iframe>
             </div>
-          </div>
 
-          <!-- Instagram Feed Container -->
-          <div [class.hidden]="activeTab !== 'instagram'" class="bg-white/5 rounded-lg border border-white/10 p-2 flex flex-col h-[380px] relative text-white overflow-hidden w-full max-w-[360px]">
-            <!-- Scrollable container that hides the scrollbar -->
-            <div class="w-full h-full overflow-y-auto hide-scrollbar rounded-lg">
-              <!-- Original Live Instagram Feed Embed set to height 950px to load 12 posts -->
-              <iframe 
-                src="https://www.instagram.com/tourism.tripura/embed" 
-                class="w-full border-0 rounded-lg bg-white h-[950px]" 
-                scrolling="no" 
-                allowtransparency="true"
-                allow="encrypted-media">
-              </iframe>
+            <!-- Instagram Feed Container -->
+            <div [class.hidden]="activeTab !== 'instagram'" class="w-full h-full flex flex-col relative group">
+              <div class="w-full h-full overflow-y-auto hide-scrollbar">
+                <iframe 
+                  src="https://www.instagram.com/tourism.tripura/embed" 
+                  class="w-full border-0 bg-white h-[950px]" 
+                  scrolling="no" 
+                  allowtransparency="true"
+                  allow="encrypted-media">
+                </iframe>
+              </div>
             </div>
           </div>
         </div>

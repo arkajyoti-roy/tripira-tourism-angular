@@ -15,7 +15,7 @@ export class AccommodationsComponent {
       rating: 5,
       reviews: 1,
       price: '2,464',
-      image: '/accomodation/getanjali.png',
+      image: '/accomodation/getanjali.jpeg',
       link: 'https://tourism.tripura.gov.in/hotel?location_id=4'
     },
     {
