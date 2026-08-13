@@ -15,7 +15,7 @@
       <div class="w-full md:w-[45%] lg:w-[45%] relative min-h-[350px] md:min-h-full group bg-gray-100 shrink-0">
         
         @if (images().length > 0) {
-        <img loading="lazy" [src]="images()[currentImageIndex()]" onerror="this.src='/destination/destination.png'" [alt]="tour().name"
+        <img fetchpriority="high" [src]="images()[currentImageIndex()]" onerror="this.src='/destination/destination.png'" [alt]="tour().name"
           class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500">
         }
         

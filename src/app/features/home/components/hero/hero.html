@@ -2,9 +2,9 @@
   class="relative h-[calc(100vh-64px)] min-h-[500px] flex flex-col justify-end items-center overflow-hidden pb-[8vh]">
 
   <!-- Video Background -->
-  <video fetchpriority="high" preload="none" autoplay loop muted [muted]="true" playsinline
+  <video fetchpriority="high" preload="auto" autoplay loop muted [muted]="true" playsinline
     class="absolute inset-0 w-full h-full object-cover z-0">
-    <source src="https://res.cloudinary.com/drtvxt1v3/video/upload/ac_none/v1784272058/Untitled_design_6_wzg0xu.mp4" type="">
+    <source src="https://res.cloudinary.com/drtvxt1v3/video/upload/ac_none/v1784272058/Untitled_design_6_wzg0xu.mp4" type="video/mp4">
     
     <!-- <source src="Untitled design(3).mp4"> -->
 
@@ -34,7 +34,7 @@
         style="-webkit-mask-image: radial-gradient(ellipse at bottom, black 50%, transparent 80%); mask-image: radial-gradient(ellipse at bottom, black 50%, transparent 80%);">
       </div>
 
-      <img src="trourism_new_ab.png" alt="Tripura, where Culture meets Nature"
+      <img fetchpriority="high" src="trourism_new_ab.png" alt="Tripura, where Culture meets Nature"
         class="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105 relative z-10">
     </div>
 
