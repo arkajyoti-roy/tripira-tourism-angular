@@ -14,6 +14,7 @@ import { environment } from '../../../environments/environment';
 export class CategoryPageComponent implements OnInit {
   categoryName = signal<string>('Category');
   destinations = signal<any[]>([]);
+  loading = signal<boolean>(true);
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
@@ -27,6 +28,8 @@ export class CategoryPageComponent implements OnInit {
   }
 
   fetchCategoryData(categoryId: string) {
+    this.loading.set(true);
+    
     // 1. Fetch the category name
     this.http.get<any[]>(`${environment.apiUrl}/categories`).subscribe({
       next: (categories) => {
@@ -35,7 +38,9 @@ export class CategoryPageComponent implements OnInit {
           this.categoryName.set(cat.name);
         }
       },
-      error: (err) => console.error('Failed to fetch categories', err)
+      error: (err) => {
+        console.error('Failed to fetch categories', err);
+      }
     });
 
     // 2. Fetch all destinations and filter by this category
@@ -43,8 +48,12 @@ export class CategoryPageComponent implements OnInit {
       next: (data) => {
         const filtered = data.filter(item => item.category === categoryId);
         this.destinations.set(filtered);
+        this.loading.set(false);
       },
-      error: (err) => console.error('Failed to fetch destinations', err)
+      error: (err) => {
+        console.error('Failed to fetch destinations', err);
+        this.loading.set(false);
+      }
     });
   }
 }
