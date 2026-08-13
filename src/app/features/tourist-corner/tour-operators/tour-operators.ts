@@ -32,7 +32,29 @@ export class TourOperators implements OnInit {
     this.http.get<any>(`${environment.apiUrl}/agents`).subscribe({
       next: (response) => {
         const data = Array.isArray(response) ? response : (response.data || []);
-        this.operators.set(data.sort((a:any, b:any)=> a.displayorder - b.displayorder));
+        
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const validData = data.filter((item: any) => {
+          if (!item.validDate) return true;
+          
+          let dateStr = item.validDate.toString().trim();
+          const parts = dateStr.split(/[-/]/);
+          let parsedDate = new Date(dateStr);
+          
+          // Handle DD-MM-YYYY or DD/MM/YYYY
+          if (parts.length === 3 && parts[0].length === 2 && parts[2].length === 4) {
+            parsedDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+          }
+          
+          // If we can't parse it (e.g., "Lifetime" or similar text), assume it's valid
+          if (isNaN(parsedDate.getTime())) return true; 
+          
+          return parsedDate >= today;
+        });
+
+        this.operators.set(validData.sort((a:any, b:any)=> a.displayorder - b.displayorder));
         this.isLoading.set(false);
       },
       error: (err) => {
