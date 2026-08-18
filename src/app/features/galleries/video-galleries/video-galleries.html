@@ -9,7 +9,7 @@
   <!-- Hero Section Content -->
   <div class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 bg-transparent pointer-events-none px-4">
     
-    <div class="text-center mt-16 pointer-events-auto backdrop-blur-[2px] bg-black/10 p-6 md:p-8 lg:px-12 rounded-3xl border border-white/10 shadow-2xl transform transition-transform hover:scale-105 duration-500 w-full max-w-[95%] sm:max-w-[80%] md:max-w-fit">
+    <div class="text-center mt-16 pointer-events-auto backdrop-blur-[2px] bg-black/10 p-6 md:p-8 lg:px-12 rounded-3xl border border-white/10 shadow-2xl transform transition-transform hover:scale-[1.02] duration-500 w-full max-w-[95%] sm:max-w-[80%] md:max-w-fit">
       <h1 class="text-white text-[1.8rem] sm:text-[2.5rem] md:text-[3.5rem] font-extrabold uppercase tracking-widest drop-shadow-2xl leading-[1.1] px-2 md:px-4" style="font-family: 'Arial Narrow', Arial, sans-serif;">
         <br>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F2C14E] to-[#fff] text-[2.2rem] sm:text-[3rem] md:text-[4.5rem]">Video Galleries</span>
@@ -64,10 +64,10 @@
               <!-- Video Preview Wrapper -->
               <div class="relative w-full aspect-video bg-black cursor-pointer overflow-hidden">
                 @if(video.videoId) {
-                  <img [src]="'https://img.youtube.com/vi/' + video.videoId + '/hqdefault.jpg'" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-transform duration-700" alt="{{ video.name }}" />
+                  <img [src]="'https://img.youtube.com/vi/' + video.videoId + '/hqdefault.jpg'" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-transform duration-700" alt="{{ video.name }}" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-500 pointer-events-none group-hover:opacity-40"></div>
                   <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div class="w-14 h-14 md:w-16 md:h-16 bg-white/20 backdrop-blur-md group-hover:bg-[#E62117] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 border border-white/40 group-hover:border-transparent">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-white/20 backdrop-blur-md group-hover:bg-[#E62117] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-[1.03] border border-white/40 group-hover:border-transparent">
                       <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8 fill-white translate-x-[2px]"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                   </div>
