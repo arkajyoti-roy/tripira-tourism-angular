@@ -40,6 +40,12 @@ html {
   overflow-x: hidden;
 }
 
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+}
+
 body.public-body {
   font-family: var(--font-sans);
   background-color: var(--color-bg-white);
