@@ -11,7 +11,7 @@
           <img [src]="fest.image_url" [alt]="fest.name || 'Festival ' + fest.id" 
                loading="lazy" decoding="async" width="800" height="430"
                class="w-full h-[430px] object-cover transition-transform duration-700 group-hover:scale-[1.03]" 
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+              >
                
           <!-- Fallback when image is missing -->
           <div class="w-full h-[300px] flex-col items-center justify-center text-gray-500 text-xs hidden">
@@ -51,3 +51,4 @@
     scrollbar-width: none;
   }
 </style>
+

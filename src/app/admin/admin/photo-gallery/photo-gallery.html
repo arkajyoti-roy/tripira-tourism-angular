@@ -84,7 +84,7 @@
           <tr *ngFor="let item of (items | tableSearch:searchTerm | slice:(currentPage-1)*pageSize : currentPage*pageSize); let i = index" [class.row-highlight]="editingItem?.id === item.id">
             <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
             <td>
-              <img [src]="item.image_url" onerror="this.src='/admin-assets/placeholder.jpg'" style="height:50px;width:70px;object-fit:cover;border-radius:4px;border:1px solid #000;" />
+              <img [src]="item.image_url" style="height:50px;width:70px;object-fit:cover;border-radius:4px;border:1px solid #000;" />
             </td>
             <td>{{ item.displayorder }}</td>
             <td>{{ item.name }}</td>

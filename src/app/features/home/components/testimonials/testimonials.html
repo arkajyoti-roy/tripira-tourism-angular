@@ -40,7 +40,7 @@
                <!-- Author Info -->
                <div class="flex items-center gap-4 z-10 mt-auto">
                  @if (t.image) {
-                    <img [src]="t.image" [alt]="t.name" class="w-12 h-12 rounded-full object-cover shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <img [src]="t.image" [alt]="t.name" class="w-12 h-12 rounded-full object-cover shadow-md">
                     <div style="display: none;" class="w-12 h-12 rounded-full bg-[#8C593B] shadow-md items-center justify-center text-white">
                       <span class="material-symbols-outlined text-[1.5rem]">person</span>
                     </div>
@@ -72,3 +72,4 @@
 
   </div>
 </section>
+
