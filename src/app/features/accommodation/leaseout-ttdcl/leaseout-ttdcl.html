@@ -1,7 +1,7 @@
 <div class="w-full min-h-screen relative bg-[#fdfbf7]">
   
   <!-- Fixed Hero Background -->
-  <img loading="lazy" src="/accommodation/lease/lease.jpg" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="fixed inset-0 w-full h-screen object-cover z-0">
+  <img loading="lazy" src="/accommodation/lease/lease.jpg"  class="fixed inset-0 w-full h-screen object-cover z-0">
   <div class="fixed inset-0 bg-black/40 z-0 pointer-events-none"></div>
 
   <!-- Hero Section Content -->
@@ -74,7 +74,7 @@
                   <img [src]="lodge.image_url" [alt]="lodge.name" 
                        loading="lazy" decoding="async"
                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] rounded-[1.2rem]"
-                       onerror="this.src='/dream-destination/natural-beauty.jpg'">
+                       >
                        
                   <!-- Dark Gradient Overlay (Default state) -->
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 pointer-events-none group-hover:opacity-0 rounded-[1.2rem]"></div>
@@ -141,7 +141,7 @@
                   <td class="whitespace-nowrap px-4 py-4 text-sm">
                     @if (lodge.photo || lodge.image || lodge.image_url) {
                     <div class="w-[80px] h-[55px] mx-auto rounded-md shadow-sm overflow-hidden">
-                      <img [src]="lodge.photo || lodge.image_url || lodge.image" onerror="this.src='/dream-destination/natural-beauty.jpg'" loading="lazy"
+                      <img [src]="lodge.photo || lodge.image_url || lodge.image"  loading="lazy"
                         decoding="async" class="w-full h-full object-cover group-hover/row:scale-110 transition-transform duration-300">
                     </div>
                     }

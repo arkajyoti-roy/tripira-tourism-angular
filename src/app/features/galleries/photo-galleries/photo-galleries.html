@@ -2,7 +2,7 @@
   
   <!-- Fixed Hero Background -->
   <div class="fixed inset-0 w-full h-screen z-0 bg-black">
-    <img loading="lazy" src="/gallery2/BeautiesofTripura.png" onerror="this.src='/dream-destination/natural-beauty.jpg'" class="w-full h-full object-cover object-center">
+    <img loading="lazy" src="/gallery2/BeautiesofTripura.png"  class="w-full h-full object-cover object-center">
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70 pointer-events-none"></div>
   </div>
 
@@ -65,7 +65,7 @@
                 @if(photo.image_url) {
                   <img loading="lazy" [src]="photo.image_url" [alt]="photo.name" 
                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] rounded-[1.2rem]"
-                       onerror="this.src='/dream-destination/natural-beauty.jpg'">
+                       >
                 }
                      
                 <!-- Dark Gradient Overlay -->
@@ -115,7 +115,7 @@
     <div (click)="$event.stopPropagation()" class="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center justify-center transform scale-100 animate-in zoom-in-95 duration-300">
       <img [src]="selectedPhoto().image_url" [alt]="selectedPhoto().name" 
            class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
-           onerror="this.src='/dream-destination/natural-beauty.jpg'">
+           >
            
       <div class="mt-6 text-center">
         <h3 class="text-white text-[1.5rem] md:text-[2rem] font-bold uppercase tracking-widest drop-shadow-lg" style="font-family: 'Arial Narrow', Arial, sans-serif;">
