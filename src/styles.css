@@ -721,42 +721,50 @@ input[placeholder="Search..."]:focus {
 .page-bg-gray-medium { background-color: #e6e8e8; }
 
 /* Base overrides for the body itself */
-body.theme-dark { background-color: #121212 !important; color: #ffffff !important; }
-body.theme-blue { background-color: #0B192C !important; color: #ffffff !important; }
-body.theme-yellow { background-color: #fef08a !important; color: #000000 !important; }
-body.theme-white { background-color: #ffffff !important; color: #000000 !important; }
+body.theme-dark { background-color: #121212 !important;
+  background-image: none !important; color: #ffffff !important; }
+body.theme-blue { background-color: #0B192C !important;
+  background-image: none !important; color: #ffffff !important; }
+body.theme-yellow { background-color: #fef08a !important;
+  background-image: none !important; color: #000000 !important; }
+body.theme-white { background-color: #ffffff !important;
+  background-image: none !important; color: #000000 !important; }
 
 /* Target layout wrappers that are exactly 1 or 2 levels deep inside the routed component.
    This safely grabs <section> or <div> page backgrounds without accidentally coloring 
    deeply nested cards. We exclude 'rounded' to further protect any top-level cards.
    We NO LONGER exclude 'shadow' because many page wrappers (like About Tripura) use large custom layout shadows! */
 
-body:has(app-nav-bar).theme-dark main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-dark main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-dark main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-dark main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+body:has(app-nav-bar).theme-dark main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-dark main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-dark main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-dark main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
   background-color: #121212 !important;
+  background-image: none !important;
 }
 
-body:has(app-nav-bar).theme-blue main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-blue main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-blue main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-blue main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+body:has(app-nav-bar).theme-blue main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-blue main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-blue main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-blue main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
   background-color: #0B192C !important;
+  background-image: none !important;
 }
 
-body:has(app-nav-bar).theme-yellow main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-yellow main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-yellow main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-yellow main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+body:has(app-nav-bar).theme-yellow main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-yellow main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-yellow main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-yellow main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
   background-color: #fef08a !important;
+  background-image: none !important;
 }
 
-body:has(app-nav-bar).theme-white main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-white main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-white main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
-body:has(app-nav-bar).theme-white main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
+body:has(app-nav-bar).theme-white main > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-white main > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-white main > app-home > div > * > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]),
+body:has(app-nav-bar).theme-white main > app-home > div > * > :is(div, section, article) > :is(div, section, article):is(.bg-white, .bg-\[\#e6e8e8\], .bg-\[\#F8F9FA\], .bg-\[\#f8f9fa\], .bg-gray-50, .bg-gray-100, .bg-\[\#FBF4EC\], .bg-\[\#FEFAF5\], .bg-\[\#fdfbf7\], .from-\[\#fdfbf7\], .bg-gradient-to-b, .page-bg-white, .page-bg-gray-50, .page-bg-gray-light, .page-bg-gray-medium):not([class*="rounded"]) {
   background-color: #ffffff !important;
+  background-image: none !important;
 }
 
 /* --- Smart Text Contrast Engine --- */
@@ -766,33 +774,44 @@ body.theme-blue main :is(.text-gray-900, .text-gray-800, .text-gray-700, .text-g
   color: #ffffff !important;
 }
 
-/* BUT: Restore the original dark colors if the text is inside a white/light card! */
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-900,
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-900 { color: #111827 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-800,
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-800 { color: #1f2937 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-700,
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-700 { color: #374151 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-600,
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-600 { color: #4b5563 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-500,
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-gray-500 { color: #6b7280 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-black,
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-black { color: #000000 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333\],
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333\] { color: #333333 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333333\],
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#333333\] { color: #333333 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C1C13\],
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C1C13\] { color: #8C1C13 !important; }
-
-body.theme-dark main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C593B\],
-body.theme-blue main :is(.bg-white, .bg-gray-50, .bg-gray-100) .text-\[\#8C593B\] { color: #8C593B !important; }
+/* BUT: Restore the original dark colors if the text is inside a white/light card, OR if the light card itself has the text class! */
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-900,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-900,
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-900,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-900 { color: #111827 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-800,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-800,
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-800,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-800 { color: #1f2937 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-700,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-700,
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-700,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-700 { color: #374151 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-600,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-600,
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-600,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-600 { color: #4b5563 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-500,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-gray-500,
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-500,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-gray-500 { color: #6b7280 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-black,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-black,
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-black,
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-black { color: #000000 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#333\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#333\],
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#333\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#333\] { color: #333333 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#333333\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#333333\],
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#333333\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#333333\] { color: #333333 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#8C1C13\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#8C1C13\],
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#8C1C13\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#8C1C13\] { color: #8C1C13 !important; }
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#8C593B\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100) .text-\[\#8C593B\],
+body.theme-dark main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#8C593B\],
+body.theme-blue main :is(.bg-white, .bg-white\/50, .bg-white\/70, .bg-white\/80, .bg-white\/90, .bg-white\/95, .bg-gray-50, .bg-gray-100).text-\[\#8C593B\] { color: #8C593B !important; }
