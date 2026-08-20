@@ -28,7 +28,7 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Preload LCP Hero Image -->
-  <link rel="preload" as="image" href="https://res.cloudinary.com/drtvxt1v3/video/upload/so_0,f_auto,q_auto/v1783924804/landing_page_video_qygqah.jpg" fetchpriority="high">
+  <!-- <link rel="preload" as="image" href="https://res.cloudinary.com/drtvxt1v3/video/upload/so_0,f_auto,q_auto/v1783924804/landing_page_video_qygqah.jpg" fetchpriority="high"> -->
 
   <!-- Preload logo (above-the-fold in loader + navbar) -->
   <link rel="preload" as="image" href="tourism_new_logo5.png">
@@ -98,6 +98,171 @@
     <img src="tourism_new_logo5.png" alt="Tripura Tourism" style="height: 140px; width: auto;" class="pulse-logo">
     <div class="spinner"></div>
   </div>
+
+  <style>
+    /* Google Translate Widget Styling */
+    #google_translate_element {
+      position: fixed;
+      top: 10px; 
+      right: 20px;
+      z-index: 10005;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+    
+    /* Hide Google Translate in Admin Panel */
+    body.admin-body #google_translate_element {
+      display: none !important;
+    }
+
+    /* Main gadget container */
+    .goog-te-gadget {
+      font-family: Arial, sans-serif !important;
+      color: #999 !important;
+      font-size: 10px !important; 
+      white-space: nowrap !important;
+      line-height: 1.4 !important;
+      padding: 0 !important;
+    }
+
+    /* The div wrapping the select dropdown */
+    .goog-te-gadget > div:first-child {
+      margin-bottom: 2px !important;
+    }
+
+    /* The select dropdown */
+    .goog-te-gadget .goog-te-combo {
+      display: block !important;
+      margin: 0 !important;
+      padding: 4px 24px 4px 8px !important;
+      border: 1px solid #555 !important;
+      background-color: #333 !important;
+      color: #fff !important;
+      font-size: 12px !important;
+      font-family: Arial, sans-serif !important;
+      outline: none;
+      cursor: pointer;
+      min-width: 140px;
+      border-radius: 0 !important;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 8px center !important;
+      background-size: 10px auto !important;
+      transition: all 0.3s ease;
+    }
+
+    /* "Powered by" text and the span containing the Google link — force single line */
+    .goog-te-gadget > span {
+      display: inline !important;
+      white-space: nowrap !important;
+    }
+
+    /* The actual Google Translate link (real class from DOM) */
+    .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+      display: inline !important;
+      white-space: nowrap !important;
+    }
+
+    /* Google logo image inside the link */
+    .VIpgJd-ZVi9od-l4eHX-hSRGPd img {
+      display: inline !important;
+      vertical-align: middle !important;
+      margin: 0 2px !important;
+    }
+    
+    /* Hide the top Google bar that shifts the page down */
+    .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+      display: none !important;
+    }
+    body {
+      top: 0px !important;
+    }
+
+    /* Responsive styling for the Google Translate widget */
+    @media (max-width: 1024px) {
+      .goog-te-gadget .goog-te-combo {
+        min-width: 120px;
+        padding: 3px 20px 3px 6px !important;
+        font-size: 11px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #google_translate_element {
+        top: 8px;
+        right: 60px; /* Move away from hamburger menu */
+      }
+      .goog-te-gadget .goog-te-combo {
+        min-width: 100px;
+        padding: 2px 18px 2px 4px !important;
+        font-size: 10px !important;
+        background-size: 8px auto !important;
+        background-position: right 5px center !important;
+      }
+      .goog-te-gadget {
+        font-size: 9px !important;
+      }
+      .VIpgJd-ZVi9od-l4eHX-hSRGPd img {
+        width: 32px !important;
+        height: 11px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      #google_translate_element {
+        top: 6px;
+        right: 55px;
+        transform: scale(0.85);
+        transform-origin: top right;
+      }
+    }
+  </style>
+
+  <div id="google_translate_element"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'en,hi,bn,te,mr,ta,ur,gu,kn,ml,pa,or,as,sa,es,fr,de,ja,ru,zh-CN,ar'
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Prevent Google Translate from translating Material Icons (ligature text) -->
+  <script>
+    (function() {
+      function protectIcons(root) {
+        var icons = (root || document).querySelectorAll('.material-symbols-outlined, .material-icons');
+        for (var i = 0; i < icons.length; i++) {
+          icons[i].classList.add('notranslate');
+          icons[i].setAttribute('translate', 'no');
+        }
+      }
+      // Run on page load
+      protectIcons();
+      // Watch for dynamically added icons (Angular lazy rendering)
+      var observer = new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          var added = mutations[i].addedNodes;
+          for (var j = 0; j < added.length; j++) {
+            if (added[j].nodeType === 1) {
+              if (added[j].classList && (added[j].classList.contains('material-symbols-outlined') || added[j].classList.contains('material-icons'))) {
+                added[j].classList.add('notranslate');
+                added[j].setAttribute('translate', 'no');
+              }
+              protectIcons(added[j]);
+            }
+          }
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+
 </body>
 
 </html>
