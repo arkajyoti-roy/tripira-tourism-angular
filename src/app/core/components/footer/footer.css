@@ -6,7 +6,7 @@
 :host ::ng-deep .footer-overlaid-content {
   text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.9), 0 3px 8px rgba(0, 0, 0, 0.8);
 }
-
+ 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
