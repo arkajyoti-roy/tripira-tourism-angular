@@ -21,7 +21,7 @@ export class AdventureService {
 
   updateAdventure(id: number, data: FormData): Observable<any> {
     // Laravel doesn't support PUT with multipart/form-data, so we use POST + _method
-    data.append('_method', 'PATCH');
+    data.append('_method', 'PUT');
     return this.http.post(`${this.apiUrl}/${id}`, data);
   }
 

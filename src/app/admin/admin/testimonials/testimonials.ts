@@ -143,7 +143,7 @@ export class TestimonialsComponent implements OnInit {
     }
 
     if (this.isEditing && this.editingId) {
-      formData.append('_method', 'PATCH'); // Spoof PUT request for Laravel multipart upload
+      formData.append('_method', 'PUT'); // Spoof PUT request for Laravel multipart upload
       this.service.updateTestimonial(this.editingId, formData).subscribe({
         next: (res: any) => {
           this.message = 'Testimonial updated successfully!';

@@ -21,7 +21,7 @@ export class DocumentService {
 
   updateDocument(id: number, data: FormData): Observable<any> {
     // We append _method=PUT to the FormData and send it as POST
-    data.append('_method', 'PATCH');
+    data.append('_method', 'PUT');
     return this.http.post<any>(`${this.apiUrl}/${id}`, data);
   }
 
