@@ -71,6 +71,10 @@ export class Tour implements OnInit {
     if (found.image_url) imgs.push(found.image_url);
     if (found.image2_url) imgs.push(found.image2_url);
     if (found.image3_url) imgs.push(found.image3_url);
+    if (found.image4_url) imgs.push(found.image4_url);
+    if (found.image5_url) imgs.push(found.image5_url);
+    if (found.image6_url) imgs.push(found.image6_url);
+    if (found.image7_url) imgs.push(found.image7_url);
     
     // Fallback if APIs don't have *_url but have image, image2, etc.
     if (imgs.length === 0 && found.image) {
@@ -78,6 +82,10 @@ export class Tour implements OnInit {
       imgs.push(`${storageBase}/${found.image}`);
       if (found.image2) imgs.push(`${storageBase}/${found.image2}`);
       if (found.image3) imgs.push(`${storageBase}/${found.image3}`);
+      if (found.image4) imgs.push(`${storageBase}/${found.image4}`);
+      if (found.image5) imgs.push(`${storageBase}/${found.image5}`);
+      if (found.image6) imgs.push(`${storageBase}/${found.image6}`);
+      if (found.image7) imgs.push(`${storageBase}/${found.image7}`);
     }
     
     this.images.set(imgs);

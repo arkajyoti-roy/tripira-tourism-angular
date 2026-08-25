@@ -33,12 +33,24 @@ export class Tour implements OnInit {
   imageFile: File | null = null;
   image2File: File | null = null;
   image3File: File | null = null;
+  image4File: File | null = null;
+  image5File: File | null = null;
+  image6File: File | null = null;
+  image7File: File | null = null;
   imagePreviewUrl: string | null = null;
   image2PreviewUrl: string | null = null;
   image3PreviewUrl: string | null = null;
+  image4PreviewUrl: string | null = null;
+  image5PreviewUrl: string | null = null;
+  image6PreviewUrl: string | null = null;
+  image7PreviewUrl: string | null = null;
   existingImageUrl: string | null = null;
   existingImage2Url: string | null = null;
   existingImage3Url: string | null = null;
+  existingImage4Url: string | null = null;
+  existingImage5Url: string | null = null;
+  existingImage6Url: string | null = null;
+  existingImage7Url: string | null = null;
 
   isEditing = false;
   editingId: number | null = null;
@@ -79,12 +91,24 @@ export class Tour implements OnInit {
     this.imageFile = null;
     this.image2File = null;
     this.image3File = null;
+    this.image4File = null;
+    this.image5File = null;
+    this.image6File = null;
+    this.image7File = null;
     this.imagePreviewUrl = null;
     this.image2PreviewUrl = null;
     this.image3PreviewUrl = null;
+    this.image4PreviewUrl = null;
+    this.image5PreviewUrl = null;
+    this.image6PreviewUrl = null;
+    this.image7PreviewUrl = null;
     this.existingImageUrl = null;
     this.existingImage2Url = null;
     this.existingImage3Url = null;
+    this.existingImage4Url = null;
+    this.existingImage5Url = null;
+    this.existingImage6Url = null;
+    this.existingImage7Url = null;
     this.message = '';
     this.error = '';
     this.showForm = true;
@@ -107,12 +131,24 @@ export class Tour implements OnInit {
     this.imageFile = null;
     this.image2File = null;
     this.image3File = null;
+    this.image4File = null;
+    this.image5File = null;
+    this.image6File = null;
+    this.image7File = null;
     this.imagePreviewUrl = null;
     this.image2PreviewUrl = null;
     this.image3PreviewUrl = null;
+    this.image4PreviewUrl = null;
+    this.image5PreviewUrl = null;
+    this.image6PreviewUrl = null;
+    this.image7PreviewUrl = null;
     this.existingImageUrl = null;
     this.existingImage2Url = null;
     this.existingImage3Url = null;
+    this.existingImage4Url = null;
+    this.existingImage5Url = null;
+    this.existingImage6Url = null;
+    this.existingImage7Url = null;
     this.message = '';
     this.error = '';
     this.cdr.detectChanges();
@@ -134,13 +170,25 @@ export class Tour implements OnInit {
     this.imageFile = null;
     this.image2File = null;
     this.image3File = null;
+    this.image4File = null;
+    this.image5File = null;
+    this.image6File = null;
+    this.image7File = null;
     this.imagePreviewUrl = null;
     this.image2PreviewUrl = null;
     this.image3PreviewUrl = null;
+    this.image4PreviewUrl = null;
+    this.image5PreviewUrl = null;
+    this.image6PreviewUrl = null;
+    this.image7PreviewUrl = null;
     const folderPath = item.folder ? `${item.folder}/` : '';
     this.existingImageUrl = item.image ? `${environment.baseUrl}/images/tour/${folderPath}${item.image}` : null;
     this.existingImage2Url = item.image2 ? `${environment.baseUrl}/images/tour/${folderPath}${item.image2}` : null;
     this.existingImage3Url = item.image3 ? `${environment.baseUrl}/images/tour/${folderPath}${item.image3}` : null;
+    this.existingImage4Url = item.image4 ? `${environment.baseUrl}/images/tour/${folderPath}${item.image4}` : null;
+    this.existingImage5Url = item.image5 ? `${environment.baseUrl}/images/tour/${folderPath}${item.image5}` : null;
+    this.existingImage6Url = item.image6 ? `${environment.baseUrl}/images/tour/${folderPath}${item.image6}` : null;
+    this.existingImage7Url = item.image7 ? `${environment.baseUrl}/images/tour/${folderPath}${item.image7}` : null;
     this.message = '';
     this.error = '';
     this.showForm = true;
@@ -216,6 +264,22 @@ export class Tour implements OnInit {
         this.image3File = file;
         this.image3PreviewUrl = URL.createObjectURL(file);
       }
+      if (num === 4) {
+        this.image4File = file;
+        this.image4PreviewUrl = URL.createObjectURL(file);
+      }
+      if (num === 5) {
+        this.image5File = file;
+        this.image5PreviewUrl = URL.createObjectURL(file);
+      }
+      if (num === 6) {
+        this.image6File = file;
+        this.image6PreviewUrl = URL.createObjectURL(file);
+      }
+      if (num === 7) {
+        this.image7File = file;
+        this.image7PreviewUrl = URL.createObjectURL(file);
+      }
     }
   }
 
@@ -244,6 +308,10 @@ export class Tour implements OnInit {
     if (this.imageFile) formData.append('image', this.imageFile);
     if (this.image2File) formData.append('image2', this.image2File);
     if (this.image3File) formData.append('image3', this.image3File);
+    if (this.image4File) formData.append('image4', this.image4File);
+    if (this.image5File) formData.append('image5', this.image5File);
+    if (this.image6File) formData.append('image6', this.image6File);
+    if (this.image7File) formData.append('image7', this.image7File);
 
     if (this.isEditing && this.editingId !== null) {
       this.tourService.updateTour(this.editingId, formData).subscribe({

@@ -107,6 +107,42 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <label>Photo 4 (575X595) <span *ngIf="isEditing" class="help-text" style="font-size: 12px; color: #666;">(Leave blank to keep existing)</span></label>
+            <input type="file" (change)="onFileChange($event, 4)" class="raw-input" />
+            <div class="image-preview-container" *ngIf="image4PreviewUrl || existingImage4Url">
+              <label>Preview Photo 4:</label>
+              <img [src]="image4PreviewUrl || existingImage4Url" class="form-image-preview" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Photo 5 (575X595) <span *ngIf="isEditing" class="help-text" style="font-size: 12px; color: #666;">(Leave blank to keep existing)</span></label>
+            <input type="file" (change)="onFileChange($event, 5)" class="raw-input" />
+            <div class="image-preview-container" *ngIf="image5PreviewUrl || existingImage5Url">
+              <label>Preview Photo 5:</label>
+              <img [src]="image5PreviewUrl || existingImage5Url" class="form-image-preview" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Photo 6 (575X595) <span *ngIf="isEditing" class="help-text" style="font-size: 12px; color: #666;">(Leave blank to keep existing)</span></label>
+            <input type="file" (change)="onFileChange($event, 6)" class="raw-input" />
+            <div class="image-preview-container" *ngIf="image6PreviewUrl || existingImage6Url">
+              <label>Preview Photo 6:</label>
+              <img [src]="image6PreviewUrl || existingImage6Url" class="form-image-preview" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Photo 7 (575X595) <span *ngIf="isEditing" class="help-text" style="font-size: 12px; color: #666;">(Leave blank to keep existing)</span></label>
+            <input type="file" (change)="onFileChange($event, 7)" class="raw-input" />
+            <div class="image-preview-container" *ngIf="image7PreviewUrl || existingImage7Url">
+              <label>Preview Photo 7:</label>
+              <img [src]="image7PreviewUrl || existingImage7Url" class="form-image-preview" />
+            </div>
+          </div>
+
           <div class="form-actions">
             <button type="submit" [disabled]="loading" class="btn-primary">
               <span *ngIf="!loading">{{ isEditing ? 'Update' : 'Create' }}</span>
@@ -178,7 +214,11 @@
                 <img *ngIf="item.image" [src]="environment.baseUrl + '/images/tour/' + (item.folder ? item.folder + '/' : '') + item.image" style="height: 35px; width: 35px; object-fit: cover; border: 1px solid #000;" />
                 <img *ngIf="item.image2" [src]="environment.baseUrl + '/images/tour/' + (item.folder ? item.folder + '/' : '') + item.image2" style="height: 35px; width: 35px; object-fit: cover; border: 1px solid #000;" />
                 <img *ngIf="item.image3" [src]="environment.baseUrl + '/images/tour/' + (item.folder ? item.folder + '/' : '') + item.image3" style="height: 35px; width: 35px; object-fit: cover; border: 1px solid #000;" />
-                <span *ngIf="!item.image && !item.image2 && !item.image3">No Images</span>
+                <img *ngIf="item.image4" [src]="environment.baseUrl + '/images/tour/' + (item.folder ? item.folder + '/' : '') + item.image4" style="height: 35px; width: 35px; object-fit: cover; border: 1px solid #000;" />
+                <img *ngIf="item.image5" [src]="environment.baseUrl + '/images/tour/' + (item.folder ? item.folder + '/' : '') + item.image5" style="height: 35px; width: 35px; object-fit: cover; border: 1px solid #000;" />
+                <img *ngIf="item.image6" [src]="environment.baseUrl + '/images/tour/' + (item.folder ? item.folder + '/' : '') + item.image6" style="height: 35px; width: 35px; object-fit: cover; border: 1px solid #000;" />
+                <img *ngIf="item.image7" [src]="environment.baseUrl + '/images/tour/' + (item.folder ? item.folder + '/' : '') + item.image7" style="height: 35px; width: 35px; object-fit: cover; border: 1px solid #000;" />
+                <span *ngIf="!item.image && !item.image2 && !item.image3 && !item.image4 && !item.image5 && !item.image6 && !item.image7">No Images</span>
               </div>
             </td>
             <td class="action-cell" style="width: 250px; min-width: 250px; vertical-align: middle; white-space: nowrap;">
