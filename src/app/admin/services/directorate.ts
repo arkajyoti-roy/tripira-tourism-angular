@@ -20,7 +20,7 @@ export class DirectorateService {
   }
 
   updateDirectorate(id: number, data: FormData): Observable<any> {
-    data.append('_method', 'PUT');
+    data.append('_method', 'PATCH');
     return this.http.post(`${this.apiUrl}/${id}`, data);
   }
 
