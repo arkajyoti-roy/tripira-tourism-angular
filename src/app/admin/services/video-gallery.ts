@@ -20,7 +20,7 @@ export class VideoGalleryService {
   }
 
   updateVideo(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+    return this.http.post(`${this.apiUrl}/${id}`, data);
   }
 
   deleteVideo(id: number): Observable<any> {

@@ -21,7 +21,6 @@ export class PhotoGalleryService {
 
   updatePhoto(id: number, formData: FormData): Observable<any> {
     // Laravel requires POST + _method=PUT for multipart form updates
-    formData.append('_method', 'PUT');
     return this.http.post(`${this.apiUrl}/${id}`, formData);
   }
 

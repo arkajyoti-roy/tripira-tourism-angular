@@ -20,7 +20,6 @@ export class GuideService {
   }
 
   updateGuide(id: number, data: FormData): Observable<any> {
-    data.append('_method', 'PUT');
     return this.http.post(`${this.apiUrl}/${id}`, data);
   }
 
