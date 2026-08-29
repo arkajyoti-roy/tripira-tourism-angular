@@ -43,7 +43,9 @@ export class WhoIsWho implements OnInit {
 
     const checkDone = () => {
       if (directorateDone && ttdclDone) {
-        this.isLoading.set(false);
+        if (this.directorate().length > 0 || this.ttdcl().length > 0) {
+          this.isLoading.set(false);
+        }
       }
     };
 
@@ -59,8 +61,8 @@ export class WhoIsWho implements OnInit {
         console.error('Error fetching directorate:', err);
         if (!hasError) {
           hasError = true;
-          this.error.set('Failed to load Who is Who details.');
-          this.isLoading.set(false);
+          // this.error.set('Failed to load Who is Who details.');
+          // Do not set isLoading to false; keep skeleton visible if no data/error
         }
       }
     });
@@ -77,8 +79,8 @@ export class WhoIsWho implements OnInit {
         console.error('Error fetching ttdcl:', err);
         if (!hasError) {
           hasError = true;
-          this.error.set('Failed to load Who is Who details.');
-          this.isLoading.set(false);
+          // this.error.set('Failed to load Who is Who details.');
+          // Do not set isLoading to false; keep skeleton visible if no data/error
         }
       }
     });

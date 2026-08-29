@@ -4,25 +4,28 @@
 <head>
   <meta charset="utf-8">
   <title>Tripura Tourism</title>
-  
+
   <!-- SEO Fallbacks (Will be overwritten dynamically by Angular SeoService) -->
-  <meta name="description" content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
+  <meta name="description"
+    content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
   <meta name="keywords" content="Tripura Tourism, Travel, North East India, Agartala, Tourism, Holiday, Vacation">
   <meta name="robots" content="index, follow">
-  
+
   <!-- Open Graph Fallbacks -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Tripura Tourism">
   <meta property="og:title" content="Tripura Tourism">
-  <meta property="og:description" content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
+  <meta property="og:description"
+    content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
   <meta property="og:image" content="https://tripuratourism.gov.in/tripuratourismlogo.png">
-  
+
   <!-- Twitter Card Fallbacks -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tripura Tourism">
-  <meta name="twitter:description" content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
+  <meta name="twitter:description"
+    content="Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.">
   <meta name="twitter:image" content="https://tripuratourism.gov.in/tripuratourismlogo.png">
-  
+
   <meta name="theme-color" content="#00897B">
   <link rel="icon" href="tripuratourismlogo.png" type="image/x-icon">
   <base href="/">
@@ -42,74 +45,293 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <!-- Material Symbols: pinned axes (opsz@24,wght@400,FILL variable) — ~50KB vs 3.8MB full variable -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=block"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=block"
     rel="stylesheet">
 </head>
 
 <body>
   <!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
-  
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+
   <app-root></app-root>
 
-  <!-- Global Premium Loader -->
+  <!-- Global Editorial Loader -->
   <div id="global-loader"
-    style="position: fixed; top: 0; left: 0; z-index: 9999; display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; background-color: #ffffff; flex-direction: column; font-family: sans-serif; transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99999; display: flex; justify-content: center; align-items: center; background-color: #E8E2D9; overflow: hidden; transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.8s cubic-bezier(0.86, 0, 0.07, 1), visibility 0.8s; color: #2C3E2D; font-family: 'Poppins', sans-serif;">
+
+    <!-- Background Video -->
+    <video autoplay loop muted playsinline
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0; animation: loaderFadeInVideo 1.5s ease 0.2s forwards;">
+      <source src="https://res.cloudinary.com/drtvxt1v3/video/upload/ac_none/v1784272058/Untitled_design_6_wzg0xu.mp4"
+        type="video/mp4">
+    </video>
+
+    <!-- Light Dark Blur Overlay -->
+    <div
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1; opacity: 0; animation: loaderFadeInVideo 1.5s ease 0.2s forwards;">
+    </div>
+
     <style>
-      .pulse-logo {
-        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-      }
-
-      @keyframes pulse {
-
-        0%,
-        100% {
+      @keyframes loaderFadeInVideo {
+        to {
           opacity: 1;
-          transform: scale(1);
-        }
-
-        50% {
-          opacity: 0.7;
-          transform: scale(1.05);
-        }
-      }
-
-      .spinner {
-        border: 3px solid rgba(0, 0, 0, 0.05);
-        border-left-color: #0b1120;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin-top: 30px;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
         }
       }
     </style>
-    <img src="tourism_new_logo5.png" alt="Tripura Tourism" style="height: 140px; width: auto;" class="pulse-logo">
-    <div class="spinner"></div>
+
+            <!-- Loader Wrapper -->
+            <div
+              style="position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 3vh 0; box-sizing: border-box;">
+
+              <!-- Top Logo (Subtle) -->
+              <div
+                style="opacity: 0; animation: loaderFadeDown 1s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards; margin-bottom: 2vh; display: flex; justify-content: center; width: 100%;">
+                <img src="tourism_new_logo5.png" alt="Tripura Tourism"
+                  style="height: clamp(120px, 15vh, 180px); width: auto; opacity: 1; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+              </div>
+
+              <!-- Center Stack: Image + Typography below it -->
+              <div
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2vh; flex-grow: 1;">
+
+                <!-- Masked Image Reveal Sequence (Responsive Frame) -->
+                <div
+                  style="position: relative; width: min(90vw, 68vh); max-width: 850px; aspect-ratio: 4/3; overflow: hidden; border-radius: 24px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1); opacity: 0; transform: scale(0.95); animation: loaderRevealImage 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s forwards, loaderShimmer 2s infinite linear; background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.02) 75%); background-size: 200% 100%; flex-shrink: 0; -webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);">
+
+                  <style>
+                    @keyframes loaderShimmer {
+                      0% { background-position: 200% 0; }
+                      100% { background-position: -200% 0; }
+                    }
+
+                    .cine-slide {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
+                      opacity: 0;
+                      transform: scale(1.3);
+                    }
+
+                    @keyframes slideFade {
+                      0% {
+                        opacity: 0;
+                        transform: scale(1.2) translateX(2%);
+                      }
+
+                      20% {
+                        opacity: 1;
+                        transform: scale(1.15) translateX(1%);
+                      }
+
+                      80% {
+                        opacity: 1;
+                        transform: scale(1.05) translateX(-1%);
+                      }
+
+                      100% {
+                        opacity: 0;
+                        transform: scale(1.0) translateX(-2%);
+                      }
+                    }
+                  </style>
+
+                  <img src="explore-tripura/a01037e8-78ab-4a13-a5e9-f344660d9151.png" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 0s forwards;">
+                  <img src="explore-tripura/a01037e8-78ab-4a13-a5e9-f344660d9151.png" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 1s forwards;">
+                  <img src="explore-tripura/8b3f757e-8284-4f78-8e52-f6e1c7c3d575.png" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 2s forwards;">
+                  <img src="explore-tripura/6733297.webp" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 3s forwards;">
+                  <img src="explore-tripura/khowai.png" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 4s forwards;">
+                  <img src="explore-tripura/sepahijala.jpg" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 5s forwards;">
+                  <!-- <img src="explore-tripura/dhalai.png" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 6s forwards;"> -->
+                  <img src="explore-tripura/a6f2b545-4591-41ae-855b-5b2d04c6acdf.png" alt="" class="cine-slide"
+                    style="animation: slideFade 2s ease-in-out 6s forwards;">
+
+                </div>
+
+                <!-- Typography -->
+                <div style="text-align: center; margin-top: 1vh; text-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+                  <h1
+                    style="margin: 0; font-size: clamp(2rem, 6vw, 4rem); font-weight: 300; letter-spacing: 1.5vw; text-transform: uppercase; color: #FFFFFF; opacity: 0; transform: translateY(20px); animation: loaderTextRise 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards; line-height: 1;">
+                    Tripura
+                  </h1>
+                  <div
+                    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2vw; margin-top: 15px; font-size: clamp(0.55rem, 1vw, 0.75rem); letter-spacing: 4px; font-weight: 500; text-transform: uppercase; color: #E8E2D9; opacity: 0; animation: loaderFadeUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards;">
+                    <span>01 &mdash; Heritage</span>
+                    <span>02 &mdash; Nature</span>
+                    <span>03 &mdash; Culture</span>
+                  </div>
+                </div>
+
+              </div>
+
+      <!-- Subtle Loader Line -->
+      <div style="width: 200px; display: flex; flex-direction: column; align-items: center; opacity: 0; animation: loaderFadeUp 1s ease 1.8s forwards; margin-top: 2vh;">
+        <span style="font-size: 10px; letter-spacing: 3px; color: #7A7A7A; margin-bottom: 10px; text-transform: uppercase;">Discovering Tripura</span>
+        <div style="width: 100%; height: 1px; background: rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #2C3E2D; transform: translateX(-100%); animation: loaderLineProgress 2s cubic-bezier(0.86, 0, 0.07, 1) 1.5s forwards;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <style>
+      @keyframes loaderFadeDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes loaderTextRise {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+          letter-spacing: 3vw;
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          letter-spacing: 1.2vw;
+        }
+      }
+
+      @keyframes loaderFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes loaderRevealImage {
+        0% {
+          opacity: 0;
+          transform: scale(0.9);
+          clip-path: inset(100% 0 0 0 round 24px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1);
+          clip-path: inset(0 0 0 0 round 24px);
+        }
+      }
+
+      @keyframes loaderScaleDownImage {
+        0% {
+          transform: scale(1.3);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes loaderLineProgress {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(0%);
+        }
+      }
+
+      @keyframes seqFadeIn {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes seqFadeOut {
+        0% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes seqPan1 {
+        0% {
+          transform: scale(1.3) translateX(0);
+        }
+
+        100% {
+          transform: scale(1.1) translateX(-5%);
+        }
+      }
+
+      @keyframes seqPan2 {
+        0% {
+          transform: scale(1.3) translateX(5%);
+        }
+
+        100% {
+          transform: scale(1.1) translateX(0);
+        }
+      }
+
+      @keyframes seqPan3 {
+        0% {
+          transform: scale(1.2) translateY(5%);
+        }
+
+        100% {
+          transform: scale(1.05) translateY(0);
+        }
+      }
+
+      /* Reduced motion fallback */
+      @media (prefers-reduced-motion: reduce) {
+        #global-loader * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          animation-delay: 0ms !important;
+        }
+      }
+    </style>
   </div>
 
   <style>
     /* Google Translate Widget Styling */
     #google_translate_element {
       position: fixed;
-      top: 10px; 
+      top: 10px;
       right: 20px;
       z-index: 10005;
       background: transparent;
       transition: all 0.3s ease;
     }
-    
+
     /* Hide Google Translate in Admin Panel */
     body.admin-body #google_translate_element {
       display: none !important;
@@ -119,14 +341,14 @@
     .goog-te-gadget {
       font-family: Arial, sans-serif !important;
       color: #999 !important;
-      font-size: 10px !important; 
+      font-size: 10px !important;
       white-space: nowrap !important;
       line-height: 1.4 !important;
       padding: 0 !important;
     }
 
     /* The div wrapping the select dropdown */
-    .goog-te-gadget > div:first-child {
+    .goog-te-gadget>div:first-child {
       margin-bottom: 2px !important;
     }
 
@@ -155,7 +377,7 @@
     }
 
     /* "Powered by" text and the span containing the Google link — force single line */
-    .goog-te-gadget > span {
+    .goog-te-gadget>span {
       display: inline !important;
       white-space: nowrap !important;
     }
@@ -172,11 +394,13 @@
       vertical-align: middle !important;
       margin: 0 2px !important;
     }
-    
+
     /* Hide the top Google bar that shifts the page down */
-    .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon {
       display: none !important;
     }
+
     body {
       top: 0px !important;
     }
@@ -193,8 +417,10 @@
     @media (max-width: 768px) {
       #google_translate_element {
         top: 8px;
-        right: 60px; /* Move away from hamburger menu */
+        right: 60px;
+        /* Move away from hamburger menu */
       }
+
       .goog-te-gadget .goog-te-combo {
         min-width: 100px;
         padding: 2px 18px 2px 4px !important;
@@ -202,15 +428,17 @@
         background-size: 8px auto !important;
         background-position: right 5px center !important;
       }
+
       .goog-te-gadget {
         font-size: 9px !important;
       }
+
       .VIpgJd-ZVi9od-l4eHX-hSRGPd img {
         width: 32px !important;
         height: 11px !important;
       }
     }
-    
+
     @media (max-width: 480px) {
       #google_translate_element {
         top: 6px;
@@ -225,16 +453,17 @@
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        pageLanguage: 'en', 
+        pageLanguage: 'en',
         includedLanguages: 'en,hi,bn,te,mr,ta,ur,gu,kn,ml,pa,or,as,sa,es,fr,de,ja,ru,zh-CN,ar'
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <!-- Prevent Google Translate from translating Material Icons (ligature text) -->
   <script>
-    (function() {
+    (function () {
       function protectIcons(root) {
         var icons = (root || document).querySelectorAll('.material-symbols-outlined, .material-icons');
         for (var i = 0; i < icons.length; i++) {
@@ -245,7 +474,7 @@
       // Run on page load
       protectIcons();
       // Watch for dynamically added icons (Angular lazy rendering)
-      var observer = new MutationObserver(function(mutations) {
+      var observer = new MutationObserver(function (mutations) {
         for (var i = 0; i < mutations.length; i++) {
           var added = mutations[i].addedNodes;
           for (var j = 0; j < added.length; j++) {

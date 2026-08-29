@@ -31,13 +31,15 @@ export class DownloadableForms implements OnInit {
     this.http.get<any>(`${environment.apiUrl}/documents?doctype=6`).subscribe({
       next: (response) => {
         const data = Array.isArray(response) ? response : (response.data || []);
-        this.documents.set(data);
-        this.isLoading.set(false);
+        if (data && data.length > 0) {
+          this.documents.set(data);
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Error fetching downloadable forms:', err);
-        this.error.set('Failed to load downloadable forms.');
-        this.isLoading.set(false);
+        // this.error.set('Failed to load downloadable forms.');
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

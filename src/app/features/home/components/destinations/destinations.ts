@@ -16,6 +16,7 @@ export class DestinationsComponent implements AfterViewInit, OnDestroy, OnInit {
   autoScrollInterval: any;
 
   destinations = signal<any[]>([]);
+  isLoading = signal<boolean>(true);
 
   constructor(private http: HttpClient, private ngZone: NgZone) {}
 
@@ -26,10 +27,14 @@ export class DestinationsComponent implements AfterViewInit, OnDestroy, OnInit {
   fetchDestinations() {
     this.http.get<any[]>(`${environment.apiUrl}/categories`).subscribe({
       next: (data) => {
-      this.destinations.set(data.sort((a: any, b: any) => a.displayorder - b.displayorder));
+        if (data && data.length > 0) {
+          this.destinations.set(data.sort((a: any, b: any) => a.displayorder - b.displayorder));
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Failed to fetch destinations', err);
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

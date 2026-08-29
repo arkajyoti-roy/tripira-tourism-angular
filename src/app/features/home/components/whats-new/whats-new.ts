@@ -44,6 +44,7 @@ export interface MarqueeItem {
 })
 export class WhatsNewComponent implements OnInit {
   items = signal<MarqueeItem[]>([]);
+  isLoading = signal<boolean>(true);
 
   constructor(private http: HttpClient) {}
 
@@ -64,10 +65,14 @@ export class WhatsNewComponent implements OnInit {
           });
         }
         
-        this.items.set(combined);
+        if (combined.length > 0) {
+          this.items.set(combined);
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Failed to fetch whats-new data', err);
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

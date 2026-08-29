@@ -25,13 +25,15 @@ export class DestinationsPageComponent implements OnInit {
     this.loading.set(true);
     this.http.get<any[]>(`${environment.apiUrl}/tours/destinations`).subscribe({
       next: (data) => {
-        const fifoData = data.sort((a, b) => a.id - b.id);
-        this.destinations.set(fifoData);
-        this.loading.set(false);
+        if (data && data.length > 0) {
+          const fifoData = data.sort((a, b) => a.id - b.id);
+          this.destinations.set(fifoData);
+          this.loading.set(false);
+        }
       },
       error: (err) => {
         console.error('Failed to fetch destinations', err);
-        this.loading.set(false);
+        // Do not set loading to false; keep skeleton visible if no data/error
       }
     });
   }

@@ -20,12 +20,14 @@ export class PhotoGalleries implements OnInit {
     this.http.get<any[]>(`${environment.apiUrl
       }/photos`).subscribe({
         next: (data) => {
-          this.photos.set(data.sort((a:any, b:any)=>a.displayorder - b.displayorder));
-          this.loading.set(false);
+          if (data && data.length > 0) {
+            this.photos.set(data.sort((a:any, b:any)=>a.displayorder - b.displayorder));
+            this.loading.set(false);
+          }
         },
         error: (err) => {
           console.error("Failed to fetch photos", err);
-          this.loading.set(false);
+          // Do not set loading to false; keep skeleton visible if no data/error
         }
       });
   }

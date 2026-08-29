@@ -30,13 +30,15 @@ export class Policy implements OnInit {
     this.http.get<any>(`${environment.apiUrl}/documents?doctype=3`).subscribe({
       next: (response) => {
         const data = Array.isArray(response) ? response : (response.data || []);
-        this.documents.set(data);
-        this.isLoading.set(false);
+        if (data && data.length > 0) {
+          this.documents.set(data);
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Error fetching policy documents:', err);
-        this.error.set('Failed to load policy documents.');
-        this.isLoading.set(false);
+        // this.error.set('Failed to load policy documents.');
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

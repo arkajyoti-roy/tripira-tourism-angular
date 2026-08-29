@@ -30,16 +30,18 @@ export class VideoGalleries implements OnInit {
   ngOnInit(){
     this.http.get<any[]>(`${environment.apiUrl}/videos`).subscribe({
       next: (data) => {
-        const processedData = data.map(video => ({
-          ...video,
-          videoId: this.extractVideoId(video.link)
-        }));
-        this.videos.set(processedData);
-        this.loading.set(false);
+        if (data && data.length > 0) {
+          const processedData = data.map(video => ({
+            ...video,
+            videoId: this.extractVideoId(video.link)
+          }));
+          this.videos.set(processedData);
+          this.loading.set(false);
+        }
       },
       error: (err) => {
         console.error(err);
-        this.loading.set(false);
+        // Do not set loading to false; keep skeleton visible if no data/error
       }
     });
   }

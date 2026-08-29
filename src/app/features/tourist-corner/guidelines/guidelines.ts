@@ -31,13 +31,15 @@ export class Guidelines implements OnInit {
       next: (response) => {
         // Handle if response is array or object with data property
         const data = Array.isArray(response) ? response : (response.data || []);
-        this.guidelines.set(data);
-        this.isLoading.set(false);
+        if (data && data.length > 0) {
+          this.guidelines.set(data);
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Error fetching guidelines:', err);
-        this.error.set('Failed to load guidelines.');
-        this.isLoading.set(false);
+        // this.error.set('Failed to load guidelines.');
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

@@ -30,13 +30,15 @@ export class Festivals implements OnInit {
     this.http.get<any>(`${environment.apiUrl}/tours/festivals`).subscribe({
       next: (response) => {
         const data = Array.isArray(response) ? response : (response.data || []);
-        this.festivals.set(data);
-        this.isLoading.set(false);
+        if (data && data.length > 0) {
+          this.festivals.set(data);
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Error fetching festivals:', err);
-        this.error.set('Failed to load festivals.');
-        this.isLoading.set(false);
+        // this.error.set('Failed to load festivals.');
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

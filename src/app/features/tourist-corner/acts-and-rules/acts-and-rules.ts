@@ -31,8 +31,10 @@ export class ActsAndRules implements OnInit {
     this.http.get<any>(`${environment.apiUrl}/documents?doctype=9`).subscribe({
       next: (response) => {
         const data = Array.isArray(response) ? response : (response.data || []);
-        this.documents.set(data);
-        this.isLoading.set(false);
+        if (data && data.length > 0) {
+          this.documents.set(data);
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Error fetching acts and rules:', err);
@@ -40,16 +42,15 @@ export class ActsAndRules implements OnInit {
         this.http.get<any>(`${environment.apiUrl}/acts-and-rules`).subscribe({
           next: (response) => {
             const data = Array.isArray(response) ? response : (response.data || []);
-            this.documents.set(data);
-            this.isLoading.set(false);
+            if (data && data.length > 0) {
+              this.documents.set(data);
+              this.isLoading.set(false);
+            }
           },
           error: (err2) => {
             console.error('Error fetching acts and rules (fallback):', err2);
-            this.error.set('Failed to load acts and rules.');
-            this.isLoading.set(false);
-            
-            // Fallback for demonstration if API fails
-          
+            // this.error.set('Failed to load acts and rules.');
+            // Do not set isLoading to false; keep skeleton visible if no data/error
           }
         });
       }

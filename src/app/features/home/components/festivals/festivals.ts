@@ -21,6 +21,7 @@ interface Slider {
 export class FestivalsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('slider') scrollContainer!: ElementRef;
   festivals = signal<Slider[]>([]);
+  isLoading = signal<boolean>(true);
   autoScrollInterval: any;
 
   constructor(private http: HttpClient) {}
@@ -40,10 +41,14 @@ export class FestivalsComponent implements OnInit, AfterViewInit, OnDestroy {
   fetchFestivals() {
     this.http.get<Slider[]>(`${environment.apiUrl}/tours/featured`).subscribe({
       next: (data) => {
-        this.festivals.set(data.sort((a:any, b:any)=> a.displayorder - b.displayorder));
+        if (data && data.length > 0) {
+          this.festivals.set(data.sort((a:any, b:any)=> a.displayorder - b.displayorder));
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Failed to fetch festivals', err);
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

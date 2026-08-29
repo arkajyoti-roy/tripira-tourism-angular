@@ -35,8 +35,17 @@
       
       <!-- Loading State -->
       @if (isLoading()) {
-      <div class="w-full flex justify-center py-10">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      <div class="w-full mt-4">
+        <div class="grid grid-cols-1 gap-6">
+          @for (item of [1, 2, 3, 4, 5]; track $index) {
+          <div class="bg-white rounded-md shadow-sm border border-gray-100 p-5 md:p-6 relative overflow-hidden animate-pulse">
+            <h3 class="flex items-center gap-3 m-0">
+              <div class="flex-shrink-0 w-10 h-10 bg-gray-200 rounded-md"></div>
+              <div class="w-3/4 h-5 bg-gray-200 rounded-md"></div>
+            </h3>
+          </div>
+          }
+        </div>
       </div>
       }
       

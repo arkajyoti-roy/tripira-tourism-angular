@@ -6,6 +6,7 @@ import { NavBar } from './core/components/nav-bar/nav-bar';
 import { Footer } from './core/components/footer/footer';
 import { SeoService } from './core/services/seo.service';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
+import Lenis from 'lenis';
 
 export const routeAnimations = trigger('routeAnimations', [
   transition('* <=> *', [
@@ -41,6 +42,9 @@ export class App implements AfterViewInit, OnInit {
   private viewportScroller = inject(ViewportScroller);
   private seoService = inject(SeoService);
   private scrollListener!: () => void;
+  private lenis: any;
+  private reqId: any;
+  private resizeObserver: ResizeObserver | undefined;
 
   ngOnInit() {
     // Manual scroll restoration: wait for route animations to complete before restoring position.
@@ -49,28 +53,27 @@ export class App implements AfterViewInit, OnInit {
       filter((event): event is Scroll => event instanceof Scroll)
     ).subscribe(event => {
       if (event.position) {
-        // Back/forward navigation (popstate): restore previous scroll position after animation
-        document.documentElement.style.scrollBehavior = 'auto';
-        void document.documentElement.offsetHeight;
         setTimeout(() => {
-          this.viewportScroller.scrollToPosition(event.position!);
-          setTimeout(() => {
-            document.documentElement.style.scrollBehavior = 'smooth';
-          }, 50);
+          if (this.lenis) {
+            this.lenis.scrollTo(event.position![1], { immediate: true });
+          } else {
+            this.viewportScroller.scrollToPosition(event.position!);
+          }
         }, 600); // Wait for route animation to complete (400ms + 150ms delay + buffer)
       } else if (event.anchor) {
-        // Anchor navigation
         setTimeout(() => {
-          this.viewportScroller.scrollToAnchor(event.anchor!);
+          if (this.lenis) {
+            this.lenis.scrollTo('#' + event.anchor);
+          } else {
+            this.viewportScroller.scrollToAnchor(event.anchor!);
+          }
         }, 600);
       } else {
-        // Forward/imperative navigation: scroll to top immediately
-        document.documentElement.style.scrollBehavior = 'auto';
-        void document.documentElement.offsetHeight;
-        this.viewportScroller.scrollToPosition([0, 0]);
-        setTimeout(() => {
-          document.documentElement.style.scrollBehavior = 'smooth';
-        }, 50);
+        if (this.lenis) {
+          this.lenis.scrollTo(0, { immediate: true });
+        } else {
+          this.viewportScroller.scrollToPosition([0, 0]);
+        }
       }
     });
 
@@ -84,9 +87,11 @@ export class App implements AfterViewInit, OnInit {
         if (isAdmin) {
           document.body.classList.add('admin-body');
           document.body.classList.remove('public-body');
+          this.destroyLenis();
         } else {
           document.body.classList.add('public-body');
           document.body.classList.remove('admin-body');
+          this.initLenis();
         }
       }
       
@@ -111,15 +116,60 @@ export class App implements AfterViewInit, OnInit {
     });
   }
 
+  private initLenis() {
+    if (this.lenis || typeof document === 'undefined') return;
+    this.ngZone.runOutsideAngular(() => {
+      this.lenis = new Lenis({
+        lerp: 0.1,
+        smoothWheel: true,
+      });
+
+      const raf = (time: number) => {
+        this.lenis?.raf(time);
+        this.reqId = requestAnimationFrame(raf);
+      };
+
+      this.reqId = requestAnimationFrame(raf);
+
+      let resizeTimeout: any;
+      this.resizeObserver = new ResizeObserver(() => {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          this.lenis?.resize();
+        }, 150);
+      });
+      this.resizeObserver.observe(document.body);
+    });
+  }
+
+  private destroyLenis() {
+    this.ngZone.runOutsideAngular(() => {
+      if (this.resizeObserver) {
+        this.resizeObserver.disconnect();
+        this.resizeObserver = undefined;
+      }
+      if (this.lenis) {
+        this.lenis.destroy();
+        this.lenis = undefined;
+      }
+      if (this.reqId) {
+        cancelAnimationFrame(this.reqId);
+        this.reqId = undefined;
+      }
+    });
+  }
+
   ngAfterViewInit() {
     const loader = document.getElementById('global-loader');
     if (loader) {
+      // Allow the 7.5s premium editorial animation sequence to complete
       setTimeout(() => {
         loader.style.opacity = '0';
+        loader.style.transform = 'translateY(-20px)'; // Add a subtle slide up on exit
         setTimeout(() => {
           loader.remove();
-        }, 600); // Wait for CSS transition to finish
-      }, 100); // Tiny delay to ensure Angular paints first
+        }, 800); // Wait for CSS transition to finish
+      }, 7500); 
     }
   }
 
@@ -137,7 +187,11 @@ export class App implements AfterViewInit, OnInit {
   }
 
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (this.lenis) {
+      this.lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   prepareRoute(outlet: RouterOutlet) {

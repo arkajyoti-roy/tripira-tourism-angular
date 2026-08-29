@@ -59,13 +59,15 @@ export class TouristGuide implements OnInit {
           return parsedDate >= today;
         });
 
-        this.guides.set(validData.sort((a:any, b:any)=> a.displayorder - b.displayorder));
-        this.isLoading.set(false);
+        if (validData && validData.length > 0) {
+          this.guides.set(validData.sort((a:any, b:any)=> a.displayorder - b.displayorder));
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Error fetching tourist guides:', err);
-        this.error.set('Failed to load tourist guides.');
-        this.isLoading.set(false);
+        // this.error.set('Failed to load tourist guides.');
+        // Do not set isLoading to false; keep skeleton visible if no data/error
       }
     });
   }

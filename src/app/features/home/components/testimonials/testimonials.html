@@ -9,54 +9,71 @@
     <!-- Testimonial Slider Container -->
     <div class="relative w-full h-[400px] sm:h-[300px] flex items-center justify-center perspective-1000">
       
-      @for (t of testimonials(); track t.name; let i = $index) {
-        <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center transition duration-700 ease-in-out cursor-pointer"
-             (click)="setIndex(i)" (mouseenter)="stopSlider()" (mouseleave)="startSlider()"
-             [ngClass]="{
-               'opacity-100 scale-100 z-20 translate-x-0': getSlideState(i) === 'active',
-               'opacity-50 scale-[0.85] z-10 -translate-x-[75%] sm:-translate-x-[45%]': getSlideState(i) === 'left',
-               'opacity-50 scale-[0.85] z-10 translate-x-[75%] sm:translate-x-[45%]': getSlideState(i) === 'right',
-               'opacity-0 scale-[0.7] z-0 translate-x-0 pointer-events-none': getSlideState(i) === 'hidden'
-             }">
-             
-             <!-- Refined Premium Card -->
-             <div class="bg-white border border-[#8C593B]/10 shadow-[0_10px_40px_rgb(140,89,59,0.08)] rounded-2xl p-8 sm:p-12 flex flex-col items-center text-center max-w-[700px] w-full relative">
-               
-               <!-- Subtle Quote Icon Background -->
-               <div class="absolute -top-6 left-6 text-[#8C593B]/5 text-[7rem] font-serif leading-none select-none">"</div>
-               
-               <!-- Stars -->
-               <div class="flex text-[#F4C95D] mb-6 z-10">
-                 @for (star of getStars(t.rating); track $index) {
-                   <span class="material-symbols-outlined !text-[1.3rem] filled" style="font-variation-settings: 'FILL' 1;">star</span>
-                 }
+      @if (isLoading()) {
+        <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center z-20">
+           <div class="bg-white border border-[#8C593B]/10 shadow-[0_10px_40px_rgb(140,89,59,0.08)] rounded-2xl p-8 sm:p-12 flex flex-col items-center text-center max-w-[700px] w-full relative animate-pulse">
+             <div class="w-32 h-6 bg-gray-200 rounded mb-6"></div>
+             <div class="w-full h-4 bg-gray-200 rounded mb-2"></div>
+             <div class="w-5/6 h-4 bg-gray-200 rounded mb-8"></div>
+             <div class="flex items-center gap-4 mt-auto">
+               <div class="w-12 h-12 rounded-full bg-gray-200"></div>
+               <div class="text-left flex flex-col gap-2">
+                 <div class="w-24 h-4 bg-gray-200 rounded"></div>
+                 <div class="w-16 h-3 bg-gray-200 rounded"></div>
                </div>
-               
-               <!-- Text -->
-               <p class="text-gray-700 text-[1.1rem] sm:text-[1.25rem] mb-8 leading-relaxed font-medium italic z-10 min-h-[140px] sm:min-h-[90px]">
-                 "{{ t.text }}"
-               </p>
-               
-               <!-- Author Info -->
-               <div class="flex items-center gap-4 z-10 mt-auto">
-                 @if (t.image) {
-                    <img [src]="t.image" [alt]="t.name" class="w-12 h-12 rounded-full object-cover shadow-md">
-                    <div style="display: none;" class="w-12 h-12 rounded-full bg-[#8C593B] shadow-md items-center justify-center text-white">
-                      <span class="material-symbols-outlined text-[1.5rem]">person</span>
-                    </div>
-                  } @else {
-                    <div class="w-12 h-12 rounded-full bg-[#8C593B] shadow-md flex items-center justify-center text-white">
-                      <span class="material-symbols-outlined text-[1.5rem]">person</span>
-                    </div>
-                  }
-                  <div class="text-left">
-                    <h4 class="font-bold text-gray-900 text-[1.05rem] tracking-wide uppercase">{{ t.name }}</h4>
-                    <span class="text-[#8C593B] font-medium text-[0.85rem] uppercase tracking-wider">{{ t.designation }}</span>
-                  </div>
-               </div>
-               
              </div>
+           </div>
         </div>
+      } @else {
+        @for (t of testimonials(); track t.name; let i = $index) {
+          <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center transition duration-700 ease-in-out cursor-pointer"
+               (click)="setIndex(i)" (mouseenter)="stopSlider()" (mouseleave)="startSlider()"
+               [ngClass]="{
+                 'opacity-100 scale-100 z-20 translate-x-0': getSlideState(i) === 'active',
+                 'opacity-50 scale-[0.85] z-10 -translate-x-[75%] sm:-translate-x-[45%]': getSlideState(i) === 'left',
+                 'opacity-50 scale-[0.85] z-10 translate-x-[75%] sm:translate-x-[45%]': getSlideState(i) === 'right',
+                 'opacity-0 scale-[0.7] z-0 translate-x-0 pointer-events-none': getSlideState(i) === 'hidden'
+               }">
+               
+               <!-- Refined Premium Card -->
+               <div class="bg-white border border-[#8C593B]/10 shadow-[0_10px_40px_rgb(140,89,59,0.08)] rounded-2xl p-8 sm:p-12 flex flex-col items-center text-center max-w-[700px] w-full relative">
+                 
+                 <!-- Subtle Quote Icon Background -->
+                 <div class="absolute -top-6 left-6 text-[#8C593B]/5 text-[7rem] font-serif leading-none select-none">"</div>
+                 
+                 <!-- Stars -->
+                 <div class="flex text-[#F4C95D] mb-6 z-10">
+                   @for (star of getStars(t.rating); track $index) {
+                     <span class="material-symbols-outlined !text-[1.3rem] filled" style="font-variation-settings: 'FILL' 1;">star</span>
+                   }
+                 </div>
+                 
+                 <!-- Text -->
+                 <p class="text-gray-700 text-[1.1rem] sm:text-[1.25rem] mb-8 leading-relaxed font-medium italic z-10 min-h-[140px] sm:min-h-[90px]">
+                   "{{ t.text }}"
+                 </p>
+                 
+                 <!-- Author Info -->
+                 <div class="flex items-center gap-4 z-10 mt-auto">
+                   @if (t.image) {
+                      <img [src]="t.image" [alt]="t.name" class="w-12 h-12 rounded-full object-cover shadow-md">
+                      <div style="display: none;" class="w-12 h-12 rounded-full bg-[#8C593B] shadow-md items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-[1.5rem]">person</span>
+                      </div>
+                    } @else {
+                      <div class="w-12 h-12 rounded-full bg-[#8C593B] shadow-md flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-[1.5rem]">person</span>
+                      </div>
+                    }
+                    <div class="text-left">
+                      <h4 class="font-bold text-gray-900 text-[1.05rem] tracking-wide uppercase">{{ t.name }}</h4>
+                      <span class="text-[#8C593B] font-medium text-[0.85rem] uppercase tracking-wider">{{ t.designation }}</span>
+                    </div>
+                 </div>
+                 
+               </div>
+          </div>
+        }
       }
     </div>
 

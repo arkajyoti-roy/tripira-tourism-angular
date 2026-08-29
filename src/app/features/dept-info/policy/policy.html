@@ -35,8 +35,18 @@
       
       <!-- Loading State -->
       @if (isLoading()) {
-      <div class="w-full bg-white rounded-md shadow-sm border border-gray-200 p-8 flex justify-center">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      <div class="w-full mt-4">
+        <div class="grid grid-cols-1 gap-6">
+          @for (item of [1, 2, 3, 4, 5]; track $index) {
+          <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white/40 p-5 md:p-6 relative overflow-hidden animate-pulse flex items-center justify-between gap-4">
+            <h3 class="flex items-center gap-4 m-0 flex-grow">
+              <div class="flex-shrink-0 w-[52px] h-[52px] bg-gray-200 rounded-xl"></div>
+              <div class="w-3/4 h-6 bg-gray-200 rounded"></div>
+            </h3>
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-200"></div>
+          </div>
+          }
+        </div>
       </div>
       }
       

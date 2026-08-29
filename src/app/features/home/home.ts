@@ -10,6 +10,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials';
 import { GalleryComponent } from './components/gallery/gallery';
 // import { FavoriteToursComponent } from './components/favorite-tours/favorite-tours';
 import { CuisinesExploreComponent } from './components/cuisines-explore/cuisines-explore';
+
 @Component({
   selector: 'app-home',
   imports: [

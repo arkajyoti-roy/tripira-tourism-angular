@@ -31,8 +31,10 @@ export class Brochure implements OnInit {
     this.http.get<any>(`${environment.apiUrl}/documents?doctype=8`).subscribe({
       next: (response) => {
         const data = Array.isArray(response) ? response : (response.data || []);
-        this.documents.set(data);
-        this.isLoading.set(false);
+        if (data && data.length > 0) {
+          this.documents.set(data);
+          this.isLoading.set(false);
+        }
       },
       error: (err) => {
         console.error('Error fetching brochures:', err);
@@ -40,13 +42,15 @@ export class Brochure implements OnInit {
         this.http.get<any>(`${environment.apiUrl}/brochures`).subscribe({
           next: (response) => {
             const data = Array.isArray(response) ? response : (response.data || []);
-            this.documents.set(data);
-            this.isLoading.set(false);
+            if (data && data.length > 0) {
+              this.documents.set(data);
+              this.isLoading.set(false);
+            }
           },
           error: (err2) => {
             console.error('Error fetching brochures (fallback):', err2);
-            this.error.set('Failed to load brochures.');
-            this.isLoading.set(false);
+            // this.error.set('Failed to load brochures.');
+            // Do not set isLoading to false; keep skeleton visible if no data/error
           }
         });
       }

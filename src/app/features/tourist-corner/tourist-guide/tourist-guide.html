@@ -39,8 +39,33 @@
 
       <!-- Loading State -->
       @if (isLoading()) {
-      <div class="w-full flex justify-center py-10">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      <div class="bg-white shadow-sm ring-1 ring-gray-300 rounded-lg overflow-x-auto mb-10 mt-4">
+        <table class="min-w-full w-full divide-y divide-gray-300 text-left">
+          <thead class="bg-gray-100">
+            <tr>
+              <th scope="col" class="py-4 pl-4 pr-3 text-left text-sm font-semibold text-gray-800 sm:pl-6">Sl No.</th>
+              <th scope="col" class="px-3 py-4 text-center text-sm font-semibold text-gray-800">Photo</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Name of the Guide</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Address & Contact No.</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Language known</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Service Area / Spot</th>
+              <th scope="col" class="px-3 py-4 text-left text-sm font-semibold text-gray-800">Valid upto</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-300 bg-white">
+            @for (item of [1, 2, 3, 4, 5]; track $index) {
+            <tr class="animate-pulse">
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 sm:pl-6"><div class="h-4 bg-gray-200 rounded w-1/2"></div></td>
+              <td class="px-3 py-4 text-center"><div class="w-16 h-16 mx-auto bg-gray-200 rounded"></div></td>
+              <td class="px-3 py-4"><div class="h-4 bg-gray-200 rounded w-3/4"></div></td>
+              <td class="px-3 py-4"><div class="h-4 bg-gray-200 rounded w-full mb-2"></div><div class="h-4 bg-gray-200 rounded w-1/2"></div></td>
+              <td class="px-3 py-4"><div class="h-4 bg-gray-200 rounded w-5/6"></div></td>
+              <td class="px-3 py-4"><div class="h-4 bg-gray-200 rounded w-2/3"></div></td>
+              <td class="px-3 py-4"><div class="h-4 bg-gray-200 rounded w-1/2"></div></td>
+            </tr>
+            }
+          </tbody>
+        </table>
       </div>
       }
       
