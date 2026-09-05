@@ -10,10 +10,10 @@ import { RouterModule } from '@angular/router';
 })
 export class HowToReach {
   airImages = [
-    'about/howtoreach/TripuraAirport.jpg',
-    'about/howtoreach/air.jpg',
-    'about/howtoreach/reach3.jpg',
-    // 'about/howtoreach/reach3.jpg'
+    'about/howtoreach/TripuraAirport.webp',
+    'about/howtoreach/air.webp',
+    'about/howtoreach/reach3.webp',
+    // 'about/howtoreach/reach3.webp'
   ];
   airCurrentIndex = signal(0);
 

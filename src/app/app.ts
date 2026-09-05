@@ -5,28 +5,27 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 import { NavBar } from './core/components/nav-bar/nav-bar';
 import { Footer } from './core/components/footer/footer';
 import { SeoService } from './core/services/seo.service';
+import { WordsPreloaderComponent } from './core/components/preloader/preloader';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
 import Lenis from 'lenis';
 
 export const routeAnimations = trigger('routeAnimations', [
   transition('* <=> *', [
     query(':enter', [
-      style({ opacity: 0, transform: 'translateY(15px)' })
+      style({ opacity: 0, transform: 'translateY(10px)' })
     ], { optional: true }),
-    group([
-      query(':leave', [
-        animate('300ms ease-in-out', style({ opacity: 0, transform: 'translateY(-15px)' }))
-      ], { optional: true }),
-      query(':enter', [
-        animate('400ms 150ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({ opacity: 1, transform: 'translateY(0)' }))
-      ], { optional: true })
-    ])
+    query(':leave', [
+      animate('150ms ease-in', style({ opacity: 0, transform: 'translateY(-10px)' }))
+    ], { optional: true }),
+    query(':enter', [
+      animate('250ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({ opacity: 1, transform: 'translateY(0)' }))
+    ], { optional: true })
   ])
 ]);
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, NavBar, Footer],
+  imports: [CommonModule, RouterOutlet, NavBar, Footer, WordsPreloaderComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
   animations: [routeAnimations]
@@ -59,7 +58,7 @@ export class App implements AfterViewInit, OnInit {
           } else {
             this.viewportScroller.scrollToPosition(event.position!);
           }
-        }, 600); // Wait for route animation to complete (400ms + 150ms delay + buffer)
+        }, 150); // Reduced to match the 150ms leave animation
       } else if (event.anchor) {
         setTimeout(() => {
           if (this.lenis) {
@@ -67,7 +66,7 @@ export class App implements AfterViewInit, OnInit {
           } else {
             this.viewportScroller.scrollToAnchor(event.anchor!);
           }
-        }, 600);
+        }, 150);
       } else {
         if (this.lenis) {
           this.lenis.scrollTo(0, { immediate: true });
@@ -160,17 +159,7 @@ export class App implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    const loader = document.getElementById('global-loader');
-    if (loader) {
-      // Allow the 7.5s premium editorial animation sequence to complete
-      setTimeout(() => {
-        loader.style.opacity = '0';
-        loader.style.transform = 'translateY(-20px)'; // Add a subtle slide up on exit
-        setTimeout(() => {
-          loader.remove();
-        }, 800); // Wait for CSS transition to finish
-      }, 7500); 
-    }
+    // Global loader removal is now handled by WordsPreloaderComponent
   }
 
   onScroll() {

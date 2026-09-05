@@ -77,8 +77,8 @@ export class TouristGuide implements OnInit {
       return guide.image_url;
     }
     const filename = guide.image || guide.photo;
-    if (!filename || filename === 'default-avatar.png') {
-      return '/images/avatar.jpg'; 
+    if (!filename || filename === 'default-avatar.webp') {
+      return '/images/avatar.webp'; 
     }
     if (filename.startsWith('http')) {
       return filename;

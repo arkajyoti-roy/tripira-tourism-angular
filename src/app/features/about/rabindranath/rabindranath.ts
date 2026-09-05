@@ -10,12 +10,12 @@ import { RouterModule } from '@angular/router';
 })
 export class Rabindranath {
   images = [
-    '/about/rabindranath/0.jpg',
-    '/about/rabindranath/1.jpg',
-    '/about/rabindranath/2.jpg',
-    '/about/rabindranath/3.jpg',
-    '/about/rabindranath/4.jpg',
-    '/about/rabindranath/5.jpg'
+    '/about/rabindranath/0.webp',
+    '/about/rabindranath/1.webp',
+    '/about/rabindranath/2.webp',
+    '/about/rabindranath/3.webp',
+    '/about/rabindranath/4.webp',
+    '/about/rabindranath/5.webp'
   ];
   
   currentIndex = 0;

@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Sihm {
-  images = signal<string[]>(['/establishment/sihm.jpg']); // Placeholder, user will provide
+  images = signal<string[]>(['/establishment/sihm.webp']); // Placeholder, user will provide
   currentImageIndex = signal<number>(0);
 
   nextImage() {

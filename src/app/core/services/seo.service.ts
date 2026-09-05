@@ -19,7 +19,7 @@ export class SeoService {
   private defaultTitle = 'Tripura Tourism';
   private defaultDescription = 'Official website of Tripura Tourism. Explore destinations, culture, festivals, and book accommodations in Tripura.';
   private defaultKeywords = 'Tripura Tourism, Travel, North East India, Agartala, Tourism, Holiday, Vacation, Accommodations, Heritage, tourist India, tourist places of India, Tourist attractions of india, beautiful places to visit in India, tourist northeast, tourist places of tripura, Tourist attractions of tripura, beautiful places to visit in tripura, tripura travel guide, tripura tourism government, unakoti hills, neermahal water palace, chabimura, pilak, jampui hills, tripurasundari temple matabari, north east india tour packages, travel to tripura, tripura destination guide';
-  private defaultImage = 'https://tripuratourism.gov.in/tripuratourismlogo.png';
+  private defaultImage = 'https://tripuratourism.gov.in/tripuratourismlogo.webp';
   
   constructor(
     private titleService: Title, 
@@ -71,7 +71,7 @@ export class SeoService {
       '@type': 'GovernmentOrganization',
       'name': 'Tripura Tourism',
       'url': 'https://tripuratourism.gov.in',
-      'logo': 'https://tripuratourism.gov.in/tripuratourismlogo.png',
+      'logo': 'https://tripuratourism.gov.in/tripuratourismlogo.webp',
       'sameAs': [
         'https://www.facebook.com/www.tripuratourism.gov.in/',
         'https://www.instagram.com/tourism.tripura/'

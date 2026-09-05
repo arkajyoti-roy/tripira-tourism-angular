@@ -15,7 +15,7 @@ export class AccommodationsComponent {
       rating: 5,
       reviews: 1,
       price: '2,464',
-      image: '/accomodation/getanjali.jpeg',
+      image: '/accomodation/getanjali.webp',
       link: 'https://tourism.tripura.gov.in/hotel?location_id=4'
     },
     {
@@ -23,7 +23,7 @@ export class AccommodationsComponent {
       rating: 5,
       reviews: 1,
       price: '2,240',
-      image: '/accomodation/sagarika.jpeg',
+      image: '/accomodation/sagarika.webp',
       link:'https://tourism.tripura.gov.in/hotel/sagarika-parjatan-niwas'
     },
     {
@@ -31,7 +31,7 @@ export class AccommodationsComponent {
       rating: 5,
       reviews: 2,
       price: '1,680',
-      image: '/accomodation/eden.jpeg',
+      image: '/accomodation/eden.webp',
       link:'https://tourism.tripura.gov.in/hotel/eden-tourist-lodge'
     }
   ];

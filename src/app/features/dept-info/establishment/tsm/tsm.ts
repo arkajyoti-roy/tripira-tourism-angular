@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Tsm {
-  images = signal<string[]>(['/establishment/tsm.jpg']); // Placeholder, user will provide
+  images = signal<string[]>(['/establishment/tsm.webp']); // Placeholder, user will provide
   currentImageIndex = signal<number>(0);
 
   nextImage() {

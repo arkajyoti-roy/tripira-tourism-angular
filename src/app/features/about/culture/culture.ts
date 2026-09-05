@@ -20,13 +20,13 @@ export class Culture {
       name: 'Bhil : Tribes of Tripura',
       description:
         'Bhills are considered as one of the oldest tribe in India. Once they were the ruler in parts of Rajasthan, Gujarat, Malwa, Madhya Pradesh and Bihar. They are a cross section of great Munda race and a wild tribe of India. Bhills could be identified as one of the Dravidian racial tribe of Western India and belong to Austroloid group of tribes. They speak a language of Dravidian origin. In Tripura total Bhill population is 2,336 as per 2001 Census. This tribe has migrated to Tripura from central India mainly from Bihar and Madhya Pradesh. Their economy is centralized with Tea garden, Brickfield and Agriculture. Their major concentrations in Tripura are mainly in Akinpur of Belonia, Bagan Bazar of Khowai Sub-Division. They are also found in North Tripura working in Tea gardens. Bhills are Hindus by religion. They appease deities of forest and evil spirits beside pujas of Lord Shiva and Durga. Small percentages among them follow Christianity. They cremate their dead followed series of rites as per their traditional customs and believe. Bhills are also fond of dance and music with traditional tune of Flute and Drum. In all family and community ceremonies they enjoy whole night by drinking and dancing. Bhills in other part of the country are well literate and enjoy modern weave of life.',
-      image: '/about/culture & tribe/bhil.jpg',
+      image: '/about/culture & tribe/bhil.webp',
     },
     {
       name: 'Bhutia : Tribes of Tripura',
       description:
         'Bhutias are Himalayan tribe and negligible in Tripura. They are similar to that of Lepchas in terms of racial identity, Linguistic affinity and religious activities. In Tripura Bhutias once were used to be engaged in the Royal Army for their warrior character and physical strength. But in course of time they left Tripura to their original homeland. Presently under 2001 Census they are only 29 persons in Tripura. Most of them in Tripura are in Govt. job like paramilitary. Few families are however permanent residents of Tripura. Their relatives also reside outside the State.',
-      image: '/about/culture & tribe/bhutia.jpg',
+      image: '/about/culture & tribe/bhutia.webp',
     },
     {
       name: 'Chaimal : Tribes of Tripura',
@@ -35,7 +35,7 @@ export class Culture {
 Chaimals belong to the Cocaso-Mongoloid origin. They speak in a language originated from Kuki-Chin group of language. Chaimal language has no difference with that of Halams. They can understand and speak Kok-Borok, Chaimal live on Jhum cultivation as well use plain land cultivation.
 
 They are Hindus and follow all rites and rituals as per Hindu customs. Due to modern weave of life, some literate persons of this community have taken Christianity as their religion. Like other tribes, they have separate form of dance, folk songs and music though performances are very occasional.`,
-      image: '/about/culture & tribe/chimal.jpg',
+      image: '/about/culture & tribe/chimal.webp',
     },
     {
       name: 'Chakma : Tribes of Tripura',
@@ -45,7 +45,7 @@ Chakmas are one of the major tribes of Tripura according to their population str
 Among Chakma there are 3(three) major groups like (i) Anokia, (ii) Tandugia, and (iii) Mangla. Linguistically Chakma language is mixed with loan words of Indu-Aryan language, Tibeto-Chinese and mainly Arakan language. Their language also be described as broken Bengali and Assamese language. Chakma have their own script in Burmese Alpha bets, though not in use rather Bengali script is being used and easy to learn.
 
 Economic activities of Chakmas are centralized with jhum cultivation, plain land cultivation and economic supporting works of vegetable growing. Fishing and wage earning. Chakmas are also ex-pert in trapping animals. They are well known for trapping wild elephants. In Tripura, especially in Gandacherra, a large number of Chakmas live as fisherman and also as boatman in Dumbur water areas.`,
-      image: '/about/culture & tribe/chakma.jpg',
+      image: '/about/culture & tribe/chakma.webp',
     },
     {
       name: 'Garo : Tribes of Tripura',
@@ -54,7 +54,7 @@ Economic activities of Chakmas are centralized with jhum cultivation, plain land
 Garos are matrilineal tribe. The mother in the family is treated as authoritarian head of the family. Property right therefore goes to the next daughter of the family. Garos are Hindus by tradition. Their socio - religious culture are therefore most akin to Hindu faith and practices. But for the last 50 years they in large scale converted their faith of religion towards Christianity.
 
 Garos wan-gala festival has great importance in their life. When new crop penetrates their granary, the whole community celebrate this wangala festival with colourful dance, songs and music. The long hand drum and other traditional musical instruments of Garos are really praise worthy and tune of these instruments are so melodious that these creates an eternal feelings in mind.`,
-      image: '/about/culture & tribe/garo.jpg',
+      image: '/about/culture & tribe/garo.webp',
     },
     {
       name: 'Halam : Tribes of Tripura',
@@ -65,7 +65,7 @@ Halams are basically Hindus and followers of Sakti-cult though Vaishnavism is sp
 Halams major concen tration are in Kamalpur, Sadar East, Molsom Bari and Kwipilong of Udaipur, Ampi, Ambassa etc. places of different Sub-Divisions. Among Halams Kolai, Murasing, Rupini speak in Kok-Borok and their social and religious culture also similar with Tripuris. Halams live in typical "Tong Ghar" specially made of bamboos and Chan grass. Apart from plain land cultivation they still practice Jhum cultivation and depend on both the activities beside other substitute works.
 
 Marriageable age among Halams 21-24 for boys and 18-20 for girls. As per traditional customs they still honour their customary laws in setting up of marriage alliances. They have their own social institute and village council. The council looks after and sorts out most of the social disputes over land, crime against women and children.`,
-      image: '/about/culture & tribe/halam.jpg',
+      image: '/about/culture & tribe/halam.webp',
     },
     {
       name: 'Jamatia : Tribes of Tripura',
@@ -76,7 +76,7 @@ Jamatia were the major strength of Royal Army of Tripura kingdom for which they 
 Jamatias are Hindus and have embraced Sakti cult and Vaishnavism. "Hoda Akra" is their supreme traditional Social Institute, which has power to look after to preserve and promote their every Social taboos, Customs and religion. All sort of social and criminal disputes in between the community members are also sorted by the 'Hoda'.
 
 Jamatias are fond of their traditional folk culture and observance of those components like Drama, Garia festival and other common dances of Kok-Borok speaking tribes. They have special from of Garia dance which denote their Hindu based religious culture. A large numbers among them follows Vaishnavism and observe all events as per tradition`,
-      image: '/about/culture & tribe/jamatia.jpg',
+      image: '/about/culture & tribe/jamatia.webp',
     },
     {
       name: 'Khashia : Tribes of Tripura',
@@ -85,7 +85,7 @@ Jamatias are fond of their traditional folk culture and observance of those comp
 Socially Khasias are Meghalayan tribe. In Tripura they are only 630 persons as per 2001 Census. They live mainly at Kailashahar and Dharmanagar. In true sense, Khasis have no ethnic relation with other Tripura tribes. They are staying here from 18th Century for economic reason. The Khasis in Tripura have their own garden of Betal leaf, which is popularly known as "Khasia Pan". Other than this plantation work they used to rear large number of cattle.
 
 By religion, Khasis were Hindus but from last part of 18th Century most of them embarrassed Christianity and follow the religious activities beside their amnesic rites and rituals. Their cultural life also has an important component of Indian Culture.`,
-      image: '/about/culture & tribe/Khasia.jpg',
+      image: '/about/culture & tribe/Khasia.webp',
     },
     {
       name: 'Kuki : Tribes of Tripura',
@@ -96,7 +96,7 @@ Darlong is another tribe known as Kukis. All together Kukis are 11,674 persons i
 Kukis are fond of music and dance. They work hard in jhum field and enjoy dance and music at community level. They do not arrange any marriage alliances outside their community. Tradition-ally they were not Christian. They had faith on lord Shiva beside different deities and spirits. But for the last fifty years majority of them have embraced Christianity.
 
 They have their own customary laws and village council. LAL is a term to denote village chief. This is the reason for which Darlong use Lal before their name. The village Chief generally meets up all sort of social and religious disputes including dispute relate to marriage and divorce. Kukis presently a small tribe in the state and socio-economically more advanced tribe.`,
-      image: '/about/culture & tribe/kuki.jpg',
+      image: '/about/culture & tribe/kuki.webp',
     },
     {
       name: 'Lepcha : Tribes of Tripura',
@@ -105,7 +105,7 @@ They have their own customary laws and village council. LAL is a term to denote 
 In Tripura Lepchas are only 105 persons as per 2001 Census and mainly found in Dhalai District of Tripura. Lepchas are Mongoloid tribe. Their language is an admixture of Nepalees and Sikkims languages, which is very familiar with Indo-Chinese language. They themselves call "Rong".
 
 Lepchas live on rearing large number of cattle and milch cows besides cultivation of Agricultural and Horticultural crops. Originally Lepchas were the nature worshiper and had belief in witch-craftship and spirits. But in due course they embarrassed Buddhism. In Tripura they are known as Nepalees and their social and community relationship also bounded with Nepalees.`,
-      image: '/about/culture & tribe/lepcha.jpg',
+      image: '/about/culture & tribe/lepcha.webp',
     },
     {
       name: 'Lushai : Tribes of Tripura',
@@ -114,7 +114,7 @@ Lepchas live on rearing large number of cattle and milch cows besides cultivatio
 The main occupation of the Lushais are Jhum and orange Cultivation. They are also famous as orange producing community. Before others Lusai are known as Head Hunter community. During 1st part of 19th Century most of the Lusai's converted as Christian and still follow Christianity as their religion.
 
 Their Bamboo Dance (Cheraw-dance) is very much popular in and outside the country. Literacy rate among them comparatively is higher then that of other minor tribes of Tripura. A large number among them could be found in Govt. jobs and other economic fields.`,
-      image: '/about/culture & tribe/lushai.jpg',
+      image: '/about/culture & tribe/lushai.webp',
     },
     {
       name: 'Mog : Tribes of Tripura',
@@ -123,7 +123,7 @@ Their Bamboo Dance (Cheraw-dance) is very much popular in and outside the countr
 Mogs are depends on Jhum Cultivation. By nature they are no so much active for advancement of life. They have social Administrative social council. Chief of this council is called as Chowdhury. They cremate their dead after observing rites and rituals. Wah Festival is their annual meeting of whole community people.
 
 There is a combination of folk songs and dance during this festival. In fact Mog's social culture and belief are centralized with Burmese culture. Their folk tales and folk songs are really mind blowing and touches core of heart. Mog community by tradition famous for their folk medicine. Beside their normal economic activities some of them earn through indigenous treatment/medicine.`,
-      image: '/about/culture & tribe/mog.jpg',
+      image: '/about/culture & tribe/mog.webp',
     },
     {
       name: 'Munda : Tribes of Tripura',
@@ -136,7 +136,7 @@ Mundas live in mixed villages with other tribes. They enjoy their life during wo
 Mundas are Hindus. They also have faith in their traditional deities. In every Munda village there would be three important features (1) SARANA, (2) AKHRA and (3) SASAN. Besides PAHAN (Priest) have an important role in the life of Mundas. Pahan look after all religious rites and rituals, community festival, marriage, treatment by appeasing village deities and funeral rites.
 
 Mundas economy is so hazard that they still live on hand to month. They frequently depend on village Mahajan. Even then, lot of changes in their socio-economic life could be observed now a days.`,
-      image: '/about/culture & tribe/munda.jpg',
+      image: '/about/culture & tribe/munda.webp',
     },
     {
       name: 'Noatia : Tribes of Tripura',
@@ -145,7 +145,7 @@ Mundas economy is so hazard that they still live on hand to month. They frequent
 Noatias have 11(eleven) major clans. These clans are Anokia, Khaklu, Totaram, Murasing,Noatia, Deildak, Keowa, Garjan, Tongbai Kalicha and Aslong. Noatias are Hindus and observe all pujas and festivals as per their tradition and customs. Among them Vaishnamism also have great influence. They also observe Garia and Baisu festivals like other Kok-Borok speaking tribes.
 
 In Tripura Noatias are concentrated in South Tripura and Longthorai Valley Sub-Division. As per 2001 Census their population in Tripura is 6655 persons. The main reason is that Noatias in course of time took title as "Tripura".`,
-      image: '/about/culture & tribe/noatia.jpg',
+      image: '/about/culture & tribe/noatia.webp',
     },
     {
       name: 'Orang : Tribes of Tripura',
@@ -158,7 +158,7 @@ Orang girls are fond to beautify themselves with silver ornaments and saries. Th
 Orang cremates their dead after observing series of rites and rituals. Economically Orang is fully depends on wage earning by dint of physical labour. Among them literacy rate is growing and economic consciousness is also in progress. As such in every spare of life Orang tribe residing Tripura is taking part in the development activities of the State.
 
 `,
-      image: '/about/culture & tribe/orang.jpg',
+      image: '/about/culture & tribe/orang.webp',
     },
     {
       name: 'Reang : Tribes of Tripura',
@@ -171,7 +171,7 @@ Reangs are still a nomadic tribe and a large numbers among them maintain their l
 Reangs traditionally are endogamous and do not marry outside their community. The village council cheif is known as "RAI" permits Divorce and Widow Marriage. They cremate their dead beside a river or charra after observing series of rites and rituals and funeral procession.
 
 `,
-      image: '/about/culture & tribe/reang.jpg',
+      image: '/about/culture & tribe/reang.webp',
     },
     {
       name: 'Santal : Tribes of Tripura',
@@ -180,7 +180,7 @@ Reangs traditionally are endogamous and do not marry outside their community. Th
 They are Hindus by religion and followers of Shakti-Cult. Holi is their main festival when they enjoy Haria (one sort of country liquor) and dance in-group with the melody of drum and sing-their traditional songs. Beside Santals have animistic faith being handed down from generation to generation. They have their priest who acts as religious head. Among them influence of Christianity is also not out of place. Agriculture and Hunting of wild animals sustain their additional food requirement. In fact most of them do not have land. Land usually allotted by Tea garden owner outside the garden generally cultivated by them to produce paddy and vegetable.
 
 Santals cremate their dead. The Christian Santals burry the dead. In case of death due to incurable diseases, accidental death or pre-mature death, bodies are buried. After cremation, bones and ash are brought in a grove over which a stone slave is placed in the memory of the deceased.The Santals are peace-loving tribe and live together with other communities in a peaceful co-existence.`,
-      image: '/about/culture & tribe/santal.jpg',
+      image: '/about/culture & tribe/santal.webp',
     },
     {
       name: 'Tripuri : Tribes of Tripura',
@@ -195,7 +195,7 @@ Once Tripuri society was controlled by the regional social councils, which had p
 Due to social transitions in all sphere of life particularly in the field of Agriculture, Socio-Cultural life, economic life, educational and health awareness, elite role etc. Tripuris are now treated as an advanced tribal community among the tribes of Tripura.
 
 `,
-      image: '/about/culture & tribe/tripuri.jpg',
+      image: '/about/culture & tribe/tripuri.webp',
     },
     {
       name: 'Uchoi : Tribes of Tripura',
@@ -210,7 +210,7 @@ Marriage among Uchais held during the age of 16-20 yrs, previously there was a m
 Uchais follow Hinduism in board sense. They believe in god and equally super natural forces. Their major deities are Radhak, Garia, Ker, Ganga Puja, Naksu Motai etc. Among them few families con-verted to Christianity and follow religious events as per Christian Calendar. According to Hindu religious thought, Uchais dispose their dead body by cremation after following rites and rituals and funeral procession.
 
 `,
-      image: '/about/culture & tribe/uchoi.jpg',
+      image: '/about/culture & tribe/uchoi.webp',
     },
   ];
 }
