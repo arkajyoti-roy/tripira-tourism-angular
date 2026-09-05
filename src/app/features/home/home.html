@@ -1,12 +1,57 @@
 <div class="w-full">
   <app-home-hero></app-home-hero>
-  <app-whats-new></app-whats-new>
-  <app-festivals></app-festivals>
-  <app-destinations></app-destinations>
-  <app-explore></app-explore>
-  <app-discover></app-discover>
-  <app-accommodations></app-accommodations>
-  <app-cuisines-explore></app-cuisines-explore>
-  <app-testimonials></app-testimonials>
-  <app-gallery></app-gallery>
+  
+  @defer (on viewport) {
+    <app-whats-new></app-whats-new>
+  } @placeholder {
+    <div class="min-h-[200px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-festivals></app-festivals>
+  } @placeholder {
+    <div class="min-h-[400px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-destinations></app-destinations>
+  } @placeholder {
+    <div class="min-h-[400px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-explore></app-explore>
+  } @placeholder {
+    <div class="min-h-[400px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-discover></app-discover>
+  } @placeholder {
+    <div class="min-h-[400px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-accommodations></app-accommodations>
+  } @placeholder {
+    <div class="min-h-[400px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-cuisines-explore></app-cuisines-explore>
+  } @placeholder {
+    <div class="min-h-[400px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-testimonials></app-testimonials>
+  } @placeholder {
+    <div class="min-h-[300px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
+
+  @defer (on viewport) {
+    <app-gallery></app-gallery>
+  } @placeholder {
+    <div class="min-h-[500px] w-full flex items-center justify-center bg-gray-50/50"><div class="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div></div>
+  }
 </div>
