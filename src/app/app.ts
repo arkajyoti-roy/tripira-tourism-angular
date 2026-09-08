@@ -128,6 +128,13 @@ export class App implements AfterViewInit, OnInit {
         smoothWheel: true,
       });
 
+
+  if ((window as any).isPreloaderActive) {
+        this.lenis.stop();
+        window.addEventListener('preloaderDone', () => {
+          this.lenis?.start();
+        }, { once: true });
+      }
       const raf = (time: number) => {
         this.lenis?.raf(time);
         this.reqId = requestAnimationFrame(raf);

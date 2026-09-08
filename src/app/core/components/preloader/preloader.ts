@@ -58,7 +58,8 @@ import gsap from 'gsap';
   `,
   styles: []
 })
-export class WordsPreloaderComponent implements AfterViewInit {
+export class WordsPreloaderComponent
+  implements OnInit, AfterViewInit {
   @ViewChild('preloaderContainer') preloaderContainer!: ElementRef;
   @ViewChild('bgVideo') bgVideo!: ElementRef;
   @ViewChild('overlay') overlay!: ElementRef;
@@ -68,9 +69,9 @@ export class WordsPreloaderComponent implements AfterViewInit {
   @ViewChild('progressContainer') progressContainer!: ElementRef;
   @ViewChild('progressBar') progressBar!: ElementRef;
   @ViewChildren('slideImages') slideImages!: QueryList<ElementRef>;
-  
+
   private ngZone = inject(NgZone);
-  
+
   slides = [
     { word: "Heritage", img: "explore-tripura/a01037e8-78ab-4a13-a5e9-f344660d9151.webp" },
     { word: "Devotion", img: "explore-tripura/8b3f757e-8284-4f78-8e52-f6e1c7c3d575.webp" },
@@ -79,15 +80,29 @@ export class WordsPreloaderComponent implements AfterViewInit {
     { word: "Wildlife", img: "explore-tripura/sepahijala.webp" },
     { word: "Tripura", img: "explore-tripura/a6f2b545-4591-41ae-855b-5b2d04c6acdf.webp" }
   ];
-  
+
+    ngOnInit() {
+    if (typeof window !== 'undefined') {
+      // Signal that the preloader is running
+      (window as any).isPreloaderActive = true; 
+    }
+  }
+
+
   ngAfterViewInit() {
-    this.ngZone.runOutsideAngular(async () => {
+    // ngOnInit() {
+      // if (typeof document !== 'undefined') {
+        // document.body.style.overflow = 'hidden';
       
+    // }
+
+    this.ngZone.runOutsideAngular(async () => {
+
       // 1. Force video playback and wait for it to be ready
       const videoReadyPromise = new Promise<void>((resolve) => {
         const vid = this.bgVideo?.nativeElement;
         if (!vid) return resolve();
-        
+
         vid.muted = true;
         const playPromise = vid.play();
         if (playPromise !== undefined) {
@@ -118,13 +133,13 @@ export class WordsPreloaderComponent implements AfterViewInit {
       });
 
       const imageTimeoutPromise = new Promise<void>(resolve => setTimeout(resolve, 1500));
-      
+
       // Wait for both video AND images to be ready
       await Promise.all([
         videoReadyPromise,
         Promise.race([Promise.all(decodePromises), imageTimeoutPromise])
       ]);
-      
+
       // 3. Double requestAnimationFrame: The ultimate fix for "startup jitter".
       // This forces the browser to commit all the heavy DOM changes and initial paints
       // before we drop the heavy GSAP timeline on it.
@@ -143,21 +158,25 @@ export class WordsPreloaderComponent implements AfterViewInit {
   }
 
   animatePreloader() {
-    const tl = gsap.timeline({
+     const tl = gsap.timeline({
       onComplete: () => {
         this.preloaderContainer.nativeElement.remove();
+        
+        // Signal that the preloader is done and fire an event
+        (window as any).isPreloaderActive = false;
+        window.dispatchEvent(new Event('preloaderDone'));
       }
     });
 
-    const slideDuration = 0.85; 
-    const totalDuration = this.slides.length * slideDuration; 
+    const slideDuration = 0.85;
+    const totalDuration = this.slides.length * slideDuration;
 
     // Smooth entry for background and structure
     tl.to([this.bgVideo.nativeElement, this.overlay.nativeElement], {
       opacity: 1,
       duration: 0.8,
       ease: "power2.inOut",
-      force3D: true 
+      force3D: true
     }, 0);
 
     tl.to(this.imageContainer.nativeElement, {
@@ -181,13 +200,13 @@ export class WordsPreloaderComponent implements AfterViewInit {
       ease: "none",
       force3D: true
     }, 0.3);
-    
+
     const slideElements = this.slideImages.toArray();
 
     // Word and Image Sequence
     this.slides.forEach((slide, index) => {
       const isLast = index === this.slides.length - 1;
-      const startTime = 0.3 + (index * slideDuration); 
+      const startTime = 0.3 + (index * slideDuration);
 
       // Ultimate Optimization: Update text via raw DOM API. 
       // This completely bypasses Angular's change detection engine, which was stalling the main thread!
@@ -197,16 +216,16 @@ export class WordsPreloaderComponent implements AfterViewInit {
       }, undefined, startTime);
 
       // Typography animation: Extremely crisp snap up
-      tl.fromTo(this.wordWrapper.nativeElement, 
+      tl.fromTo(this.wordWrapper.nativeElement,
         { yPercent: 50, opacity: 0, skewY: 4, letterSpacing: '2vw' },
         { yPercent: 0, opacity: 1, skewY: 0, letterSpacing: '1vw', duration: 0.6, ease: "power4.out", force3D: true },
         startTime
       );
-      
+
       if (!isLast) {
         tl.to(this.wordWrapper.nativeElement, {
           yPercent: -50, opacity: 0, skewY: -4, duration: 0.35, ease: "power3.in", force3D: true
-        }, startTime + slideDuration - 0.15); 
+        }, startTime + slideDuration - 0.15);
       } else {
         // Grand Finale: "Tripura" appears, Logo violently drops into center
         tl.fromTo(this.logo.nativeElement,
@@ -223,7 +242,7 @@ export class WordsPreloaderComponent implements AfterViewInit {
           ease: "power3.out",
           force3D: true
         }, startTime + 0.1);
-        
+
         // We don't darken the overlay here anymore, keeping background consistent
       }
 
