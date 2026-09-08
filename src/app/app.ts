@@ -84,6 +84,11 @@ export class App implements AfterViewInit, OnInit {
       
       if (typeof document !== 'undefined') {
         if (isAdmin) {
+          const staticLoader = document.getElementById('global-loader');
+          if (staticLoader) {
+            staticLoader.remove();
+          }
+          
           document.body.classList.add('admin-body');
           document.body.classList.remove('public-body');
           this.destroyLenis();
